@@ -1,4 +1,7 @@
 
+import 'package:progetto_309131/navigation_page.dart';
+import 'package:progetto_309131/screens/info/info_page.dart';
+import 'package:progetto_309131/screens/setting/setting_page.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
@@ -7,7 +10,7 @@ import 'package:provider/provider.dart';
 
 import 'package:progetto_309131/providers/service_tool.dart';
 
-import 'screens/home/home.dart';
+import 'screens/home/home_page.dart';
 void main() {
   runApp(MyApp());
 }
@@ -37,11 +40,11 @@ class App extends StatelessWidget {
       //home: HomePage(),
       initialRoute: '/',
       routes: {
-        '/': (context) => Home(), // HomePage(),
-        '/listTools': (context) => Home(),
-        '/editTool': (context) => Home(),
-        '/info': (context) => Home(),
-        '/setting': (context) => Home(),
+        '/': (context) => NavigationPage(), // HomePage(),
+        '/listTools': (context) => HomePage(),
+        '/editTool': (context) => HomePage(),
+        '/info': (context) => InfoPage(),
+        '/setting': (context) => SettingPage(),
       },
     );
   }

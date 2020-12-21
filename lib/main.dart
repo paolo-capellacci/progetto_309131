@@ -41,8 +41,8 @@ class App extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => NavigationPage(), // HomePage(),
-        '/listTools': (context) => HomePage(),
-        '/editTool': (context) => HomePage(),
+        //'/listTools': (context) => ListTools(),
+        //'/editTool': (context) => EditTool(),
         '/info': (context) => InfoPage(),
         '/setting': (context) => SettingPage(),
       },

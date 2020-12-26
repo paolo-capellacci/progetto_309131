@@ -30,8 +30,8 @@ class HomePage extends StatelessWidget {
                   Logo(),
                   TopHome(tool: tool),
                   CenterHome(tool: tool),
-                  //BottomHome(),
-                  WidgetSlider(),
+                  BottomHome(),
+
 
                 ],
               );
@@ -199,7 +199,7 @@ class _CenterHomeState extends State<CenterHome> {
             },
           ),
 
-          WhidgetSwitch(),//widget.tool.cool),
+          //WhidgetSwitch(),//widget.tool.cool),
         ],
       ),
     );
@@ -275,6 +275,7 @@ class _BottomHomeState extends State<BottomHome> {
   }
 }
 
+/*
 class WhidgetSwitch extends StatefulWidget {
 
   final Tool tool;
@@ -331,4 +332,4 @@ class _WidgetSliderState extends State<WidgetSlider> {
   }
 }
 
-
+*/

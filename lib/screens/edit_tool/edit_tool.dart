@@ -17,12 +17,16 @@ class EditTool extends StatefulWidget {
 }
 
 class _EditToolState extends State<EditTool> {
+
+  int cool = 0;
+
   TextEditingController _nameTC;
   TextEditingController _diameterTC;
   TextEditingController _sharpTC;
   TextEditingController _lengthTC;
   TextEditingController _materiaTC;
   TextEditingController _teethTC;
+
 
   @override
   void initState() {
@@ -33,6 +37,8 @@ class _EditToolState extends State<EditTool> {
     _lengthTC = TextEditingController(text: widget.tool.length.toString());
     _materiaTC = TextEditingController(text: widget.tool.material.toString());
     _teethTC = TextEditingController(text: widget.tool.teeth.toString());
+    cool = widget.tool.cool;
+
   }
 
   @override
@@ -78,6 +84,20 @@ class _EditToolState extends State<EditTool> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+
+                        new Center(
+                          child: widget.tool.cool == 1
+                              ? new Container(
+                            child: Image.asset(
+                              'assets/images/coll.png',
+                              fit: BoxFit.fitWidth,
+                              alignment: Alignment.centerLeft,
+                              width: 20,
+                            ),
+                          )
+                              : new Container(),
+                        ),
+
                         Container(
                           width: 100,
                           child: Image.asset(
@@ -125,6 +145,21 @@ class _EditToolState extends State<EditTool> {
                               ),
                             ),
                             SelectMaterial(),
+
+                            Switch(
+                              value: cool == 1,
+                              onChanged: (value) {
+                                setState(() {
+                                  if(cool == 1)
+                                    cool = 0;
+                                  else
+                                    cool = 1;
+                                  print('cange the value $cool');
+                                });
+                              },
+                              //activeTrackColor: Colors.lightGreenAccent,
+                              //activeColor: Colors.green,
+                            ),
                           ],
                         )
                       ],
@@ -149,7 +184,7 @@ class _EditToolState extends State<EditTool> {
                         double.parse(_lengthTC.value.text),
                         int.parse(_materiaTC.value.text),
                         int.parse(_teethTC.value.text),
-                        1);
+                        cool);
                   },
                 ),
               ],
@@ -216,6 +251,7 @@ class _SelectTeethState extends State<SelectTeeth> {
         value: selectTeeth,
         onChanged: (item) {
           print("selezionato ${item}");
+          //context.read<EditTool>().createState()._teethTC;
           setState(() {
             selectTeeth = item;
           });

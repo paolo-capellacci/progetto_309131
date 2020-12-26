@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:progetto_309131/providers/service_tool.dart';
 
 class ListTools extends StatelessWidget {
-  List<String> lista = ['ciao', 'ciao2', 'ciao3'];
+  //List<String> lista = ['ciao', 'ciao2', 'ciao3'];
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +58,21 @@ class ListTools extends StatelessWidget {
                                 margin: EdgeInsets.all(10),
                                 child: Row(
                                   children: [
+                                    new Center(
+                                      child: tool.cool == 1
+                                          ? new Container(
+                                              child: Image.asset(
+                                                'assets/images/coll.png',
+                                                fit: BoxFit.fitWidth,
+                                                alignment: Alignment.centerLeft,
+                                                width: 20,
+                                              ),
+                                            )
+                                          : new Container(),
+                                    ),
+
+                                    /*
+
                                     Container(
                                       child: Image.asset(
                                         'assets/images/coll.png',
@@ -65,7 +80,9 @@ class ListTools extends StatelessWidget {
                                         alignment: Alignment.centerLeft,
                                         width: 20,
                                       ),
-                                    ),
+                                   ),
+                                    */
+
                                     Container(
                                       child: Image.asset(
                                         'assets/images/${Tool.materialTools[tool.material]}.png',
@@ -83,7 +100,7 @@ class ListTools extends StatelessWidget {
                                           ),
                                           Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.end,
+                                                CrossAxisAlignment.end,
                                             children: [
                                               Text(
                                                 'Name:',
@@ -110,7 +127,7 @@ class ListTools extends StatelessWidget {
                                           ),
                                           Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Text(
                                                 tool.name,
@@ -118,38 +135,50 @@ class ListTools extends StatelessWidget {
                                               Text(
                                                 tool.id.toString(),
                                               ),
-                                              Text(tool.diameter.toString()),
-                                              Text(tool.length.toString()),
-                                              Text(tool.sharp.toString()),
-                                              Text(tool.material.toString()),
-                                              Text(tool.teeth.toString()),
+                                              // campo da eliminate
+                                              Text(
+                                                tool.diameter.toString(),
+                                              ),
+                                              Text(
+                                                tool.length.toString(),
+                                              ),
+                                              Text(
+                                                tool.sharp.toString(),
+                                              ),
+                                              Text(
+                                                tool.material.toString(),
+                                              ),
+                                              Text(
+                                                tool.teeth.toString(),
+                                              ),
                                             ],
                                           ),
                                         ],
                                       ),
                                     ),
-
-                                    //Spacer(),
-                                    /*
-                                    FloatingActionButton(
-                                      onPressed: () {
-                                        context.read<ServiceTool>().insert();
-                                      },
-                                      child: Icon(Icons.edit),
-                                      backgroundColor: Colors.blue,
-                                    ),
-                                    */
                                   ],
                                 ),
                               ),
-                              Row(children: [
-                                IconButton(icon: Icon(Icons.edit), onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (_)=>EditTool(tool: tools[index],)));
-                                }),
-                                IconButton(icon: Icon(Icons.delete), onPressed: (){
-
-                                }),
-                              ],),
+                              Row(
+                                children: [
+                                  IconButton(
+                                      icon: Icon(Icons.edit),
+                                      onPressed: () {
+                                        Navigator.of(context)
+                                            .push(MaterialPageRoute(
+                                                builder: (_) => EditTool(
+                                                      tool: tools[index],
+                                                    )));
+                                      }),
+                                  IconButton(
+                                      icon: Icon(Icons.delete),
+                                      onPressed: () {
+                                        context
+                                            .read<ServiceTool>()
+                                            .delete(tool.id);
+                                      }),
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -159,11 +188,11 @@ class ListTools extends StatelessWidget {
                 );
               },
             ),
-
-
             FloatingActionButton(
               onPressed: () {
-                context.read<ServiceTool>().insert(); // .update(121) .delete(122);
+                context
+                    .read<ServiceTool>()
+                    .insert(); // .update(121) .delete(122);
 
                 print('insered tool new');
                 //Navigator.of(context).pushNamed('/editTool');

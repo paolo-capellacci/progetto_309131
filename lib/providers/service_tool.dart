@@ -111,6 +111,7 @@ class ServiceTool extends ChangeNotifier {
 
     print('deleted $rowsDeleted tool(s): row ${idTool}');
 
-    notifyListeners();
+    getAllTools();
+    //notifyListeners();
   }
 }

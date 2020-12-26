@@ -1,6 +1,8 @@
 
 import 'package:progetto_309131/navigation_page.dart';
+import 'package:progetto_309131/screens/edit_tool/edit_tool.dart';
 import 'package:progetto_309131/screens/info/info_page.dart';
+import 'package:progetto_309131/screens/list_tools/list_page.dart';
 import 'package:progetto_309131/screens/setting/setting_page.dart';
 import 'package:provider/provider.dart';
 
@@ -41,8 +43,8 @@ class App extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => NavigationPage(), // HomePage(),
-        //'/listTools': (context) => ListTools(),
-        //'/editTool': (context) => EditTool(),
+        '/listTools': (context) => ListTools(),
+        '/editTool': (context) => EditTool(),
         '/info': (context) => InfoPage(),
         '/setting': (context) => SettingPage(),
       },

@@ -72,17 +72,6 @@ class ListTools extends StatelessWidget {
                                           : new Container(),
                                     ),
 
-                                    /*
-
-                                    Container(
-                                      child: Image.asset(
-                                        'assets/images/coll.png',
-                                        fit: BoxFit.fitWidth,
-                                        alignment: Alignment.centerLeft,
-                                        width: 20,
-                                      ),
-                                   ),
-                                    */
 
                                     Container(
                                       child: Image.asset(
@@ -92,6 +81,9 @@ class ListTools extends StatelessWidget {
                                         height: 120,
                                       ),
                                     ),
+
+
+
                                     Container(
                                       margin: EdgeInsets.only(left: 20),
                                       child: Row(

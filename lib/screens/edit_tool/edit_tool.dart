@@ -16,18 +16,14 @@ class EditTool extends StatefulWidget {
 }
 
 class _EditToolState extends State<EditTool> {
-  bool cool = true;
-  int _selectTeeth;
-
-  // int _selectMaterial;
-  FresaEnum _selectMaterialTool;
-
   TextEditingController _nameTC;
   TextEditingController _diameterTC;
   TextEditingController _sharpTC;
   TextEditingController _lengthTC;
-  //TextEditingController _materiaTC;
-  //TextEditingController _teethTC;
+
+  FresaEnum _selectMaterialTool;
+  int _selectTeeth;
+  bool _cool = true;
 
   @override
   void initState() {
@@ -36,11 +32,10 @@ class _EditToolState extends State<EditTool> {
     _diameterTC = TextEditingController(text: widget.tool.diameter.toString());
     _sharpTC = TextEditingController(text: widget.tool.sharp.toString());
     _lengthTC = TextEditingController(text: widget.tool.length.toString());
-    //_materiaTC = TextEditingController(text: widget.tool.material.toString());
-    //_teethTC = TextEditingController(text: widget.tool.teeth.toString());
-    _selectTeeth = widget.tool.teeth;
+
     _selectMaterialTool = widget.tool.material;
-    cool = widget.tool.cool;
+    _selectTeeth = widget.tool.teeth;
+    _cool = widget.tool.cool;
   }
 
   @override
@@ -58,161 +53,169 @@ class _EditToolState extends State<EditTool> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                /* name of the tool */
                 Row(
                   children: [
                     Container(
                       child: Text(
                         "Name: ",
                         style: TextStyle(
-                          color: Colors.black38,
-                          fontSize: 24,
+                          color: Colors.black54,
+                          fontSize: 20,
                         ),
                       ),
                     ),
                     Container(
                       width: 200,
                       child: TextFormField(
-                        style: TextStyle(color: Colors.black38, fontSize: 22),
+                        style: TextStyle(color: Colors.black54, fontSize: 20),
                         controller: _nameTC,
                       ),
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: 10,
+                ),
 
-                Column(
+                /* image of the tool, cool and the label */
+                Stack(
+                  alignment: Alignment.topCenter,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          //crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                          Center(
-                            child: cool
-                                ? new Container(
-                              child: Image.asset(
-                                'assets/images/coll.png',
-                                fit: BoxFit.fitWidth,
-                                alignment: Alignment.centerLeft,
-                                width: 20,
-                              ),
-                            )
-                                : new Container(),
-                          ),
-                          /* Consumer<SelectMaterialNotifier>(builder: (BuildContext context, value, Widget child) {
-                          return Container(
-                              width: 100,
-                              child: Image.asset(
-                              'assets/images/${value.material.image}',
-                              fit: BoxFit.fitHeight,
-                              alignment: Alignment.center,
-                              height: MediaQuery.of(context).size.height * 0.3,
-                          ),);
-                        },),*/
-                          Container(
-                            width: 100,
-                            child: Image.asset(
-                              'assets/images/${_selectMaterialTool.image}',
-                              fit: BoxFit.fitHeight,
-                              alignment: Alignment.center,
-                              height: MediaQuery.of(context).size.height * 0.3,
-                            ),
-                          ),
-                        ],),
-                        Column(
-                          children: [
-                            Container(
-                              width: 60,
-                              child: TextFormField(
-                                controller: _lengthTC,
-                              ),
-                            ),
-                            Container(
-                              width: 60,
-                              child: TextFormField(
-                                controller: _sharpTC,
-                              ),
-                            ),
-                            Container(
-                              width: 60,
-                              child: TextFormField(
-                                controller: _diameterTC,
-                              ),
-                            ),
-                          ],
+                    /* image tool */
+                    Center(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        //width: MediaQuery.of(context).size.width * 0.4,
+
+                        child: Image.asset(
+                          'assets/images/${_selectMaterialTool.image}',
+                          fit: BoxFit.fitHeight,
+                          alignment: Alignment.center,
+                          //height: MediaQuery.of(context).size.height * 0.3,
                         ),
-                        Column(
-                          children: [
-
-                            /* menu for select the type of the material Tool */
-                            DropdownButton<FresaEnum>(
-                                items: FresaEnum.values
-                                    .map((e) => DropdownMenuItem<FresaEnum>(
-                                        value: e, child: Text(e.text)))
-                                    .toList(),
-                                value: _selectMaterialTool,
-                                onChanged: (item) {
-                                  print("selezionato ${item}");
-                                  setState(() {
-                                    _selectMaterialTool = item;
-                                  });
-                                }),
-
-                            /* switch for activate and disactivate the cool */
-                            Switch(
-                              value: cool,
-                              onChanged: (value) {
-                                setState(() {
-                                cool = !cool;
-                                  print('cange the value $cool');
-                                });
-                              },
-                              //activeTrackColor: Colors.lightGreenAccent,
-                              //activeColor: Colors.green,
-                            ),
-                          ],
-                        )
-                      ],
+                      ),
                     ),
+
+                    /* image cool */
+                    Positioned(
+                      top: 80,
+                      left: 70,
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.25,
+                        width: MediaQuery.of(context).size.width * 0.15,
+                        child: _cool
+                            ? new Container(
+                                child: Image.asset(
+                                  'assets/images/coll.png',
+                                  fit: BoxFit.fitWidth,
+                                  alignment: Alignment.center,
+                                  //height: MediaQuery.of(context).size.height * 0.15,
+                                ),
+                              )
+                            : new Container(),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 120,
+                      right: 30,
+                      child: Container(
+                        width: 60,
+                        child: TextFormField(
+                          controller: _lengthTC,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 20,
+                      right: 50,
+                      child: Container(
+                        width: 60,
+                        child: TextFormField(
+                          controller: _sharpTC,
+                        ),
+                      ),
+                    ),
+
+                    /* label of the data length, sharp, diameter */
                   ],
                 ),
 
-                // TextField(
-                //   controller: nameTC,),
-                //SelectTeeth(),
-                DropdownButton<int>(
-                    items: <int>[1, 2, 3, 4, 6, 8, 12]
-                        .map((e) => DropdownMenuItem<int>(
-                            value: e, child: Text(e.toString())))
-                        .toList(),
-                    value: _selectTeeth,
-                    onChanged: (item) {
-                      print("selezionato ${item}");
-                      //context.read<EditTool>().createState()._teethTC;
-                      setState(() {
-                        _selectTeeth = item;
-                      });
-                    }),
+                /* label diameter */
+                Container(
+                  width: 60,
+                  child: TextFormField(
+                    controller: _diameterTC,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: Switch(
+                        value: _cool,
+                        onChanged: (value) {
+                          setState(() {
+                            _cool = !_cool;
+                            print('cange the value $_cool');
+                          });
+                        },
+                        //activeTrackColor: Colors.lightGreenAccent,
+                        //activeColor: Colors.green,
+                      ),
+                    ),
+                    Text('Flut  '),
+                    Container(
+                      child: DropdownButton<int>(
+                          items: <int>[1, 2, 3, 4, 6, 8, 12]
+                              .map((e) => DropdownMenuItem<int>(
+                                  value: e, child: Text(e.toString())))
+                              .toList(),
+                          value: _selectTeeth,
+                          onChanged: (item) {
+                            print("selezionato ${item}");
+                            //context.read<EditTool>().createState()._teethTC;
+                            setState(() {
+                              _selectTeeth = item;
+                            });
+                          }),
+                    ),
+                    DropdownButton<FresaEnum>(
+                        items: FresaEnum.values
+                            .map((e) => DropdownMenuItem<FresaEnum>(
+                                value: e, child: Text(e.text)))
+                            .toList(),
+                        value: _selectMaterialTool,
+                        onChanged: (item) {
+                          print("selezionato ${item}");
+                          setState(() {
+                            _selectMaterialTool = item;
+                          });
+                        }),
+                  ],
+                ),
+                Spacer(),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: ElevatedButton(
+                    child: Text('Salva'),
+                    onPressed: () {
+                      print('id: ${widget.tool.id} ');
 
-                ElevatedButton(
-                  child: Text('Salva'),
-                  onPressed: () {
-                    print('id: ${widget.tool.id} ');
-
-                    Provider.of<ServiceTool>(context, listen: false).update(
-                        widget.tool.id,
-                        _nameTC.value.text,
-                        double.parse(_diameterTC.value.text),
-                        double.parse(_sharpTC.value.text),
-                        double.parse(_lengthTC.value.text),
-                        _selectMaterialTool,
-                        //int.parse(_materiaTC.value.text),
-                        _selectTeeth,
-                        //int.parse(_teethTC.value.text),
-                        cool);
-                  },
+                      Provider.of<ServiceTool>(context, listen: false).update(
+                          widget.tool.id,
+                          _nameTC.value.text,
+                          double.parse(_diameterTC.value.text),
+                          double.parse(_sharpTC.value.text),
+                          double.parse(_lengthTC.value.text),
+                          _selectMaterialTool,
+                          //int.parse(_materiaTC.value.text),
+                          _selectTeeth,
+                          //int.parse(_teethTC.value.text),
+                          _cool);
+                    },
+                  ),
                 ),
               ],
             ),
@@ -222,7 +225,6 @@ class _EditToolState extends State<EditTool> {
     );
   }
 }
-
 
 class SelectMaterialToolNotifier extends ChangeNotifier {
   SelectMaterialToolNotifier(FresaEnum selectedMaterialTool) {

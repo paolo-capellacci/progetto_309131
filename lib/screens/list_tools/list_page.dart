@@ -5,6 +5,7 @@ import 'package:progetto_309131/models/tool.dart';
 import 'package:progetto_309131/screens/edit_tool/edit_tool.dart';
 import 'package:provider/provider.dart';
 
+import 'package:progetto_309131/models/fresa_enum.dart';
 import 'package:progetto_309131/providers/service_tool.dart';
 
 class ListTools extends StatelessWidget {
@@ -59,7 +60,7 @@ class ListTools extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     new Center(
-                                      child: tool.cool == 1
+                                      child: tool.cool
                                           ? new Container(
                                               child: Image.asset(
                                                 'assets/images/coll.png',
@@ -85,7 +86,7 @@ class ListTools extends StatelessWidget {
 
                                     Container(
                                       child: Image.asset(
-                                        'assets/images/${Tool.materialTools[tool.material]}.png',
+                                        'assets/images/${tool.material.image}',
                                         fit: BoxFit.cover,
                                         alignment: Alignment.centerLeft,
                                         height: 120,
@@ -146,7 +147,7 @@ class ListTools extends StatelessWidget {
                                                 tool.sharp.toString(),
                                               ),
                                               Text(
-                                                tool.material.toString(),
+                                                tool.material.text //tool.material.toString(),
                                               ),
                                               Text(
                                                 tool.teeth.toString(),

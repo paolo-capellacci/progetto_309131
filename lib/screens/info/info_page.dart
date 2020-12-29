@@ -55,16 +55,30 @@ class _InfoPageState extends State<InfoPage> {
                   ],
                 ),
 
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    getText2(appName),
-                    //getText2(packageName),
-                    getText2(version),
-                    getText2(buildNumber),
-                  ],
-                ),
+               FutureBuilder<PackageInfo>(
+                   future:  PackageInfo.fromPlatform(),
+                   builder: (context,snapshot){
+                     String appName = '-';
+                     String version = '-';
+                     String builder = '-';
+
+                     if(snapshot.hasData){
+                       appName = snapshot.data.appName;
+                       version = snapshot.data.version;
+                       builder = snapshot.data.buildNumber;
+                     }
+                     return  Column(
+                 mainAxisAlignment: MainAxisAlignment.start,
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                   Text('AppName: $appName'),
+                   Text('version: $version'),
+                   Text('builder: $builder'),
+                   //getText2(packageName),
+                   // getText2(version),
+                   // getText2(buildNumber),
+                 ],
+               );}),
               ],
             ),
             Spacer(),

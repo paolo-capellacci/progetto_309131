@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import 'fresa_enum.dart';
+
 class Tool extends Equatable {
   static final id_column = 'id';
   static final name_column = 'name';
@@ -45,9 +47,9 @@ class Tool extends Equatable {
   final double diameter;
   final double sharp;
   final double length;
-  final int material;
+  final FresaEnum material;
   final int teeth;
-  final int cool;
+  final bool cool;
 
   final int materialWork;
   final double workHeight;
@@ -90,9 +92,9 @@ class Tool extends Equatable {
       diameter_column: diameter,
       sharp_column: sharp,
       length_column: length,
-      material_column: material,
+      material_column: material.index,
       teeth_column: teeth,
-      cool_column: cool,
+      cool_column: cool ? 1 : 0,
       materialWork_column: materialWork,
       workHeight_column: workHeight,
       workPercent_column: workPercent
@@ -105,9 +107,9 @@ class Tool extends Equatable {
         diameter = json[diameter_column],
         sharp = json[sharp_column],
         length = json[length_column],
-        material = json[material_column],
+        material = FresaEnum.values[json[material_column]],
         teeth = json[teeth_column],
-        cool = json[cool_column],
+        cool = json[cool_column] == 0 ? false:true,
         materialWork = json[materialWork_column],
         workHeight = json[workHeight_column],
         workPercent = json[workPercent_column];

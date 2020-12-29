@@ -63,24 +63,22 @@ class _GridState extends State<SliderGrid> {
             ),
           ),
           */
-          Container(
-            transform: Matrix4.rotationZ(0.00),
-            child: Slider(
-              value: _currentSlider,
-              min: 0.0,
-              max: 100.0,
-              divisions: 20,
-              label: _currentSlider.round().toString(),
-              onChanged: (double value) {
-                print('slicer ${value}');
-                setState(
-                  () {
-                    _currentSlider = value;
-                  },
-                );
-              },
-            ),
+          Slider(
+            value: posx,
+            min: 0.0,
+            max: 1.0,
+            divisions: 20,
+            label: posx.round().toString(),
+            onChanged: (double value) {
+              print('slicer ${value}');
+              setState(
+                () {
+                  posx = value;
+                },
+              );
+            },
           ),
+          /*
           new Container(
             child: new Transform(
               alignment: FractionalOffset.centerLeft,
@@ -105,14 +103,33 @@ class _GridState extends State<SliderGrid> {
               ),
             ),
           ),
+          */
 
-          Container(
-            color: Colors.blue,
-            width: 40,
-            height: 40,
-            alignment: Alignment(200.0, 400.0),
-            padding: EdgeInsets.only(top: 100),
-          ),
+          LayoutBuilder(builder: (context,constraints){
+            final maxWidth = constraints.maxWidth - 40;
+            return SizedBox(
+              height: 60,
+              child: Stack(
+                fit:StackFit.expand,
+                children: [
+                  Positioned(
+                    top:0,
+                    left: maxWidth * posx,
+                    child: Center(
+                      child: Container(
+                        color: Colors.blue,
+                        width: 40,
+                        height: 40,
+                        //alignment: Alignment(200.0, 400.0),
+                        //padding: EdgeInsets.only(top: 100),
+                      ),
+                    ),)
+                ],
+              ),
+            );
+          }),
+
+
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:progetto_309131/models/database_tool.dart';
+import 'package:progetto_309131/models/fresa_enum.dart';
 import 'package:progetto_309131/models/tool.dart';
 
 
@@ -21,9 +22,9 @@ class ServiceTool extends ChangeNotifier {
         diameter: 12.00,
         sharp: 12.00,
         length: 50.00,
-        material: 2,
+        material: FresaEnum.fresaHss,
         teeth: 4,
-        cool: 1,
+        cool: true,
         materialWork: 2,
         workHeight: 12,
         workPercent: 30);
@@ -67,7 +68,7 @@ class ServiceTool extends ChangeNotifier {
   }
 
   void update(int idTool, String name, double diameter, double sharp,
-      double length, int material, int teeth, int cool) async {
+      double length, FresaEnum material, int teeth, bool cool) async {
     // row to update
     /*
     Map<String, dynamic> row = {

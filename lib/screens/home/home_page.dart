@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:progetto_309131/models/materials_enum.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:progetto_309131/models/tool.dart';
-import 'package:progetto_309131/models/fresa_enum.dart';
+import 'package:progetto_309131/models/tools_enum.dart';
 import 'package:progetto_309131/providers/service_tool.dart';
 import 'package:progetto_309131/screens/widget/logo.dart';
 
@@ -33,7 +34,7 @@ class HomePage extends StatelessWidget {
                     Logo(),
                     TopHome(tool: tool),
                     CenterHome(tool: tool),
-                    BottomHome(),
+                    BottomHome(tool: tool),
 
 
                   ],
@@ -220,13 +221,29 @@ class CenterHome extends StatelessWidget {
 }
 
 class BottomHome extends StatefulWidget {
+
+  final Tool tool;
+
+  const BottomHome({Key key, this.tool}) : super(key: key);
+
   @override
   _BottomHomeState createState() => _BottomHomeState();
 }
 
 class _BottomHomeState extends State<BottomHome> {
 
+  MaterialEnum _selectMaterialWork ;
   int _seletedMaterial = 10;
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    _selectMaterialWork = widget.tool.materialWork;
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -241,13 +258,29 @@ class _BottomHomeState extends State<BottomHome> {
           LimitedBox(
             maxHeight: 200,
             child: Image.asset(
-              "assets/images/material$_seletedMaterial.png",
+              'assets/images/materialWork/${_selectMaterialWork.image}', //${_selectMaterialWork.image}',
               fit: BoxFit.fitHeight,
               alignment: Alignment.center,
               height: MediaQuery.of(context).size.height * 0.2,
             ),
           ),
 
+
+          /* menu for select the type of the material Work */
+          DropdownButton<MaterialEnum>(
+              items: MaterialEnum.values
+                  .map((e) => DropdownMenuItem<MaterialEnum>(
+                  value: e, child: Text(e.text)))
+                  .toList(),
+              value: _selectMaterialWork,
+              onChanged: (item) {
+                print("selezionato ${item}");
+                setState(() {
+                  _selectMaterialWork = item;
+                });
+              }),
+
+          /*
           DropdownButton(
               value: _seletedMaterial,
               items: [
@@ -282,67 +315,23 @@ class _BottomHomeState extends State<BottomHome> {
                   _seletedMaterial = value;
                 });
               })
+          */
         ],
       ),
     );
   }
 }
 
-/*
-class WhidgetSwitch extends StatefulWidget {
 
-  final Tool tool;
+class SelectMaterialNotifier extends ChangeNotifier {
+  SelectMaterialNotifier(MaterialEnum selectedMaterial) {
+    materialWork = selectedMaterial;
+  }
 
-  const WhidgetSwitch({Key key, this.tool}) : super(key: key);
+  MaterialEnum materialWork;
 
-  @override
-  _WhidgetSwitchState createState() => _WhidgetSwitchState();
-}
-
-class _WhidgetSwitchState extends State<WhidgetSwitch> {
-
-  bool isSwitched = true;//widget.tool.cool;// tool.cool == 1 ? true: false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Switch(
-        value: isSwitched,
-        onChanged: (value) {
-          setState(() {
-            isSwitched = value;
-            print(isSwitched);
-          });
-        },
-      ),
-    );
+  changeMaterial(MaterialEnum material) {
+    this.materialWork = material;
+    notifyListeners();
   }
 }
-
-class WidgetSlider extends StatefulWidget {
-  @override
-  _WidgetSliderState createState() => _WidgetSliderState();
-}
-
-class _WidgetSliderState extends State<WidgetSlider> {
-
-  double _currentSlider = 10.0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Slider(
-        value: _currentSlider,
-        min: 0.0,
-        max: 100.0,
-        divisions: 20,
-        label: _currentSlider.round().toString(),
-        onChanged: (double value) {
-          print('slicer ${value}');
-          setState(() {
-            _currentSlider = value;
-          });
-        });
-  }
-}
-
-*/

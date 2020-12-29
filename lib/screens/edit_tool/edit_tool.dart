@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:progetto_309131/models/fresa_enum.dart';
+import 'package:progetto_309131/models/tools_enum.dart';
 import 'package:progetto_309131/models/tool.dart';
 
 import 'package:progetto_309131/providers/service_tool.dart';
@@ -20,7 +20,7 @@ class _EditToolState extends State<EditTool> {
   int _selectTeeth;
 
   // int _selectMaterial;
-  FresaEnum _selectMaterial;
+  FresaEnum _selectMaterialTool;
 
   TextEditingController _nameTC;
   TextEditingController _diameterTC;
@@ -39,7 +39,7 @@ class _EditToolState extends State<EditTool> {
     //_materiaTC = TextEditingController(text: widget.tool.material.toString());
     //_teethTC = TextEditingController(text: widget.tool.teeth.toString());
     _selectTeeth = widget.tool.teeth;
-    _selectMaterial = widget.tool.material;
+    _selectMaterialTool = widget.tool.material;
     cool = widget.tool.cool;
   }
 
@@ -114,7 +114,7 @@ class _EditToolState extends State<EditTool> {
                           Container(
                             width: 100,
                             child: Image.asset(
-                              'assets/images/${_selectMaterial.image}',
+                              'assets/images/${_selectMaterialTool.image}',
                               fit: BoxFit.fitHeight,
                               alignment: Alignment.center,
                               height: MediaQuery.of(context).size.height * 0.3,
@@ -145,47 +145,22 @@ class _EditToolState extends State<EditTool> {
                         ),
                         Column(
                           children: [
-                            /*
-                            Container(
-                              width: 60,
-                              child: TextFormField(
-                                controller: _materiaTC,
-                              ),
-                            ),
-                            Container(
-                              width: 60,
-                              child: TextFormField(
-                                controller: _teethTC,
-                                cursorHeight: 40,
-                              ),
-                            ),
-                            */
-                            //SelectMaterial(),
-                            /*Consumer<SelectMaterialNotifier>(builder: (BuildContext context, value, Widget child) {
-                              return  DropdownButton<FresaEnum>(
-                                  items: FresaEnum.values
-                                      .map((e) => DropdownMenuItem<FresaEnum>(
-                                      value: e,
-                                      child: Text(e.image)))
-                                      .toList(),
-                                  value: value.material,
-                                  onChanged: (item) {
-                                    print("selezionato ${item}");
-                                    value.changeMaterial(item);
-                                  });
-                            },),*/
+
+                            /* menu for select the type of the material Tool */
                             DropdownButton<FresaEnum>(
                                 items: FresaEnum.values
                                     .map((e) => DropdownMenuItem<FresaEnum>(
                                         value: e, child: Text(e.text)))
                                     .toList(),
-                                value: _selectMaterial,
+                                value: _selectMaterialTool,
                                 onChanged: (item) {
                                   print("selezionato ${item}");
                                   setState(() {
-                                    _selectMaterial = item;
+                                    _selectMaterialTool = item;
                                   });
                                 }),
+
+                            /* switch for activate and disactivate the cool */
                             Switch(
                               value: cool,
                               onChanged: (value) {
@@ -232,7 +207,7 @@ class _EditToolState extends State<EditTool> {
                         double.parse(_diameterTC.value.text),
                         double.parse(_sharpTC.value.text),
                         double.parse(_lengthTC.value.text),
-                        _selectMaterial,
+                        _selectMaterialTool,
                         //int.parse(_materiaTC.value.text),
                         _selectTeeth,
                         //int.parse(_teethTC.value.text),
@@ -247,71 +222,11 @@ class _EditToolState extends State<EditTool> {
     );
   }
 }
-/*
-class SelectMaterial extends StatefulWidget {
-  final Tool tool;
 
-  const SelectMaterial({Key key, this.tool}) : super(key: key);
 
-  @override
-  _SelectMaterialState createState() => _SelectMaterialState();
-}
-
-class _SelectMaterialState extends State<SelectMaterial> {
-  int selectMaterial = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<int>(
-        items: <int>[0, 1, 2, 3, 4, 5]
-            .map((e) => DropdownMenuItem<int>(
-                value: e, child: Text(Tool.materialTools[e])))
-            .toList(),
-        value: selectMaterial,
-        onChanged: (item) {
-          print("selezionato ${item}");
-          setState(() {
-            selectMaterial = item;
-          });
-        });
-  }
-}
-
-class SelectTeeth extends StatefulWidget {
-  final Tool tool;
-
-  const SelectTeeth({Key key, this.tool}) : super(key: key);
-
-  @override
-  _SelectTeethState createState() => _SelectTeethState();
-}
-
-class _SelectTeethState extends State<SelectTeeth> {
-  int selectTeeth = 3;
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<int>(
-        items: <int>[1, 2, 3, 4, 6, 8, 12]
-            .map((e) =>
-                DropdownMenuItem<int>(value: e, child: Text(e.toString())))
-            .toList(),
-        value: selectTeeth,
-        onChanged: (item) {
-          print("selezionato ${item}");
-          //context.read<EditTool>().createState()._teethTC;
-          setState(() {
-            selectTeeth = item;
-          });
-        });
-  }
-}
-
-*/
-
-class SelectMaterialNotifier extends ChangeNotifier {
-  SelectMaterialNotifier(FresaEnum selectedMaterial) {
-    material = selectedMaterial;
+class SelectMaterialToolNotifier extends ChangeNotifier {
+  SelectMaterialToolNotifier(FresaEnum selectedMaterialTool) {
+    material = selectedMaterialTool;
   }
 
   FresaEnum material;

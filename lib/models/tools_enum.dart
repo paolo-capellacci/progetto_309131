@@ -1,10 +1,12 @@
+
+
 enum FresaEnum {
-  fresaHm,
-  fresaHmR,
-  fresaHss,
-  insertToolCer,
-  insertToolDia,
-  insertToolHm,
+  FresaHss,
+  FresaHm,
+  FresaHmR,
+  InsertToolHm,
+  InsertToolCer,
+  InsertToolDia,
 }
 
 extension FresaEnumExt on FresaEnum {
@@ -13,17 +15,17 @@ extension FresaEnumExt on FresaEnum {
 
   int get velocity {
     switch (this) {
-      case FresaEnum.fresaHss:
+      case FresaEnum.FresaHss:
         return 5;
-      case FresaEnum.fresaHm:
+      case FresaEnum.FresaHm:
         return 8;
-      case FresaEnum.fresaHmR:
+      case FresaEnum.FresaHmR:
         return 10;
-      case FresaEnum.insertToolHm:
+      case FresaEnum.InsertToolHm:
         return 11;
-      case FresaEnum.insertToolCer:
+      case FresaEnum.InsertToolCer:
         return 15;
-      case FresaEnum.insertToolDia:
+      case FresaEnum.InsertToolDia:
         return 16;
     }
   }

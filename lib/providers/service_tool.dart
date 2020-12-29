@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:progetto_309131/models/database_tool.dart';
-import 'package:progetto_309131/models/fresa_enum.dart';
+import 'package:progetto_309131/models/materials_enum.dart';
+import 'package:progetto_309131/models/tools_enum.dart';
 import 'package:progetto_309131/models/tool.dart';
 
 
@@ -22,10 +23,10 @@ class ServiceTool extends ChangeNotifier {
         diameter: 12.00,
         sharp: 12.00,
         length: 50.00,
-        material: FresaEnum.fresaHss,
+        material: FresaEnum.FresaHss,
         teeth: 4,
         cool: true,
-        materialWork: 2,
+        materialWork: MaterialEnum.Steel, //MaterialEnum.Iron,
         workHeight: 12,
         workPercent: 30);
     final id = await dbTool.insert(tool);
@@ -90,7 +91,7 @@ class ServiceTool extends ChangeNotifier {
         material: material,
         teeth: teeth,
         cool: cool,
-        materialWork: 2,
+        materialWork: MaterialEnum.Iron,
         workHeight: 12,
         workPercent: 30);
 

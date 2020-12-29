@@ -5,7 +5,7 @@ import 'package:progetto_309131/models/tool.dart';
 import 'package:progetto_309131/screens/edit_tool/edit_tool.dart';
 import 'package:provider/provider.dart';
 
-import 'package:progetto_309131/models/fresa_enum.dart';
+import 'package:progetto_309131/models/tools_enum.dart';
 import 'package:progetto_309131/providers/service_tool.dart';
 
 class ListTools extends StatelessWidget {

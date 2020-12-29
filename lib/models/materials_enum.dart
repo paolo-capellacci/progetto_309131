@@ -1,10 +1,12 @@
+
+
 enum MaterialEnum {
   Wood,
   Plastic,
   Alluminium,
   Iron,
   Steel,
-  TemperateStell,
+  TemperateSteel,
 }
 
 extension MaterialEnumExt on MaterialEnum {
@@ -14,17 +16,17 @@ extension MaterialEnumExt on MaterialEnum {
   int get velocity {
     switch (this) {
       case MaterialEnum.Wood:
-        return 5;
+        return 2;
       case MaterialEnum.Plastic:
-        return 8;
+        return 5;
       case MaterialEnum.Alluminium:
         return 10;
       case MaterialEnum.Iron:
-        return 11;
+        return 40;
       case MaterialEnum.Steel:
-        return 15;
-      case MaterialEnum.TemperateStell:
-        return 16;
+        return 60;
+      case MaterialEnum.TemperateSteel:
+        return 80;
     }
   }
 }

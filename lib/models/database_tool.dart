@@ -101,6 +101,13 @@ class DatabaseTool {
 
   }
 
+  Future<int> updateMaterialWork(Tool tool) async {
+    Database db = await instance.database;
+    return await db.update(table, tool.toMap(), where: '${Tool.id_column} = ?', whereArgs: [tool.id]);
+
+  }
+
+
   // Deletes the row specified by the id. The number of affected rows is
   // returned. This should be 1 as long as the row exists.
   Future<int> delete(Tool tool) async {

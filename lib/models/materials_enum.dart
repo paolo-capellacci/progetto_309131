@@ -13,7 +13,7 @@ extension MaterialEnumExt on MaterialEnum {
   String get text => toString().replaceFirst('MaterialEnum.', '');
   String get image => '$text.png';
 
-  int get velocity {
+  int get value {
     switch (this) {
       case MaterialEnum.Wood:
         return 2;

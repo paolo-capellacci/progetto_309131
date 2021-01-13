@@ -45,8 +45,7 @@ class ListTools extends StatelessWidget {
                     itemCount: tools.length,
                     itemBuilder: (context, index) {
                       final tool = tools[index];
-                      final isSelected =
-                          context.read<ServiceTool>().selectedTool == tool;
+                      final isSelected = context.read<ServiceTool>().selectedTool == tool;
                       return GestureDetector(
                         onTap: () {
                           context.read<ServiceTool>().setSelectedTool(index);
@@ -72,7 +71,6 @@ class ListTools extends StatelessWidget {
                                           : new Container(),
                                     ),
 
-
                                     Container(
                                       child: Image.asset(
                                         'assets/images/${tool.material.image}',
@@ -81,8 +79,6 @@ class ListTools extends StatelessWidget {
                                         height: 120,
                                       ),
                                     ),
-
-
 
                                     Container(
                                       margin: EdgeInsets.only(left: 20),

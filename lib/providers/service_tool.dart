@@ -71,17 +71,7 @@ class ServiceTool extends ChangeNotifier {
   void update(int idTool, String name, double diameter, double sharp,
       double length, FresaEnum material, int teeth, bool cool) async {
     // row to update
-    /*
-    Map<String, dynamic> row = {
-      DatabaseTool.Id   : 1,
-      DatabaseTool.name : 'Tool 03',
-      DatabaseTool.diameter  : 32.00,
-      DatabaseTool.sharp  : 20.00,
-      DatabaseTool.length  : 40.01,
-      DatabaseTool.material  : 3,
-      DatabaseTool.teeth : 3
-    };
-    */
+
     final tool = Tool(
         id: idTool,
         name: name,
@@ -102,6 +92,22 @@ class ServiceTool extends ChangeNotifier {
     getAllTools();
     // notifyListeners();
   }
+
+  void updateMaterialWork(int idTool, MaterialEnum material) async {
+    // row to update
+
+    final tool = Tool(
+        id: idTool,
+        materialWork: material);
+
+    //aggiorna tools
+    final rowsAffected = await dbTool.updateMaterialWork(tool);
+    print('updated $rowsAffected tool(${idTool})');
+    // Aggiorna lista tools
+    getAllTools();
+    // notifyListeners();
+  }
+
 
   void delete(int idTool) async {
     // Assuming that the number of rows is the id for the last row.

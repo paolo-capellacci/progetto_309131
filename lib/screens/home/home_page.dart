@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:progetto_309131/models/materials_enum.dart';
+import 'package:progetto_309131/models/work.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+
 
 import 'package:progetto_309131/models/tool.dart';
 import 'package:progetto_309131/models/tools_enum.dart';
 import 'package:progetto_309131/providers/service_tool.dart';
 import 'package:progetto_309131/screens/widget/logo.dart';
+import 'package:progetto_309131/providers/service_tool.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -132,13 +135,17 @@ class TopHome extends StatelessWidget {
 
 class CalcolaNotifier extends ChangeNotifier{
 
+
   String speed1 = '-';
   String speed2 = '-';
   String speed3 = '-';
 
+  final SingletonWork work = SingletonWork.instance;
+
   bool loading = false;
 
   calcola(Tool tool)async{
+
     loading = true;
     notifyListeners();
     // http://paoloweb.altervista.org/00/request.php?diameter=12.34&teeth=43.21%27
@@ -147,18 +154,26 @@ class CalcolaNotifier extends ChangeNotifier{
       'diameter': '${tool.diameter}',
       'sharp': '${tool.sharp}',
       'length': '${tool.length}',
-      'material': '${tool.material}',
+      'material': '${tool.material.value }',
       'teeth': '${tool.teeth}',
-      'materialWork': '${tool.materialWork}',
-      'workHeight': '${tool.workHeight}',
-      'workPercent': '${tool.workPercent}'
+      'cool': '${tool.cool}',
+
+      'materialWork': '${work.materialWork}',
+      'workPercent': '${work.workZ}',
+      'workHeight': '${work.workX}',
+
     });
+
+
+    print('materialWork: ${work.materialWork}');
+    print('workX: ${work.workX}');
+    print('workZ: ${work.workZ}');
 
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');
 
     final result = response.body.split(',');
-    print(result[0]);
+    //print(result[0]);
 
     speed1 = result[0];
     speed2 = result[1];
@@ -277,45 +292,10 @@ class _BottomHomeState extends State<BottomHome> {
                 print("selezionato ${item}");
                 setState(() {
                   _selectMaterialWork = item;
+                  //Provider.of<ServiceTool>(context, listen: false).updateMaterialWork(widget.tool.id, item);
                 });
               }),
 
-          /*
-          DropdownButton(
-              value: _seletedMaterial,
-              items: [
-                DropdownMenuItem(
-                  child: Text("Wood"),
-                  value: 80,
-                ),
-                DropdownMenuItem(
-                  child: Text("Plastic"),
-                  value: 60,
-                ),
-                DropdownMenuItem(
-                    child: Text("Aluminium"),
-                    value: 40
-                ),
-                DropdownMenuItem(
-                    child: Text("Iron"),
-                    value: 10
-                ),
-                DropdownMenuItem(
-                    child: Text("Steel"),
-                    value: 5
-                ),
-                DropdownMenuItem(
-                    child: Text("Temperate Steel"),
-                    value: 2
-                ),
-              ],
-              onChanged: (value) {
-                print('select: ${value}');
-                setState(() {
-                  _seletedMaterial = value;
-                });
-              })
-          */
         ],
       ),
     );

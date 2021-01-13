@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:progetto_309131/providers/service_tool.dart';
+import 'package:progetto_309131/models/work.dart';
 
 import 'screens/home/home_page.dart';
 void main() {
@@ -26,11 +27,14 @@ class MyApp extends StatelessWidget {
         //ServiceTool()..getAllTools()
         final service = ServiceTool();
         service.getAllTools();
+        final SingletonWork work = SingletonWork.instance;
         return service;
       },
       child: App(),
     );
   }
+
+
 }
 
 

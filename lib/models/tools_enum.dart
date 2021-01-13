@@ -13,7 +13,7 @@ extension FresaEnumExt on FresaEnum {
   String get text => toString().replaceFirst('FresaEnum.', '');
   String get image => '$text.png';
 
-  int get velocity {
+  int get value {
     switch (this) {
       case FresaEnum.FresaHss:
         return 5;

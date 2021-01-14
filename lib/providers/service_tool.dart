@@ -92,7 +92,7 @@ class ServiceTool extends ChangeNotifier {
     getAllTools();
     // notifyListeners();
   }
-
+/*
   void updateMaterialWork(int idTool, MaterialEnum material) async {
     // row to update
 
@@ -107,7 +107,7 @@ class ServiceTool extends ChangeNotifier {
     getAllTools();
     // notifyListeners();
   }
-
+*/
 
   void delete(int idTool) async {
     // Assuming that the number of rows is the id for the last row.

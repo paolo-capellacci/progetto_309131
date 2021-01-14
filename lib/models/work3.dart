@@ -9,26 +9,27 @@ class SingletonWork {
 
   static final SingletonWork instance = SingletonWork._privateConstructor();
 
-  int materialWork = 0;
-  int workX = 0;
-  int workZ = 0;
+  int materialWork = 40;
+  double workX = 0.0;
+  double workZ = 0.0;
 
 
 
   void initPreferences() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (prefs.getInt('materialWork') == null)
-      prefs.setInt('materialWork', 1);
+      prefs.setInt('materialWork', 40);
 
-    if (prefs.getInt('workX') == null)
-      prefs.setInt('workX', 10);
+    if (prefs.getDouble('workX') == null)
+      prefs.setDouble('workX', 10.0);
 
-    if (prefs.getInt('workZ') == null)
-      prefs.setInt('workZ', 10);
+    if (prefs.getDouble('workZ') == null)
+      prefs.setDouble('workZ', 10.0);
+
 
     materialWork = prefs.getInt('materialWork');
-    workX = prefs.getInt('workX');
-    workZ = prefs.getInt('workZ');
+    workX = prefs.getDouble('workX');
+    workZ = prefs.getDouble('workZ');
 
   }
 

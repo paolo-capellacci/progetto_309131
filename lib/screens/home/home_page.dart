@@ -1,6 +1,9 @@
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:progetto_309131/models/materials_enum.dart';
-import 'package:progetto_309131/models/work.dart';
+import 'package:progetto_309131/models/work3.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,7 +13,7 @@ import 'package:progetto_309131/models/tool.dart';
 import 'package:progetto_309131/models/tools_enum.dart';
 import 'package:progetto_309131/providers/service_tool.dart';
 import 'package:progetto_309131/screens/widget/logo.dart';
-import 'package:progetto_309131/providers/service_tool.dart';
+import 'package:progetto_309131/models/work3.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -37,8 +40,8 @@ class HomePage extends StatelessWidget {
                     Logo(),
                     TopHome(tool: tool),
                     CenterHome(tool: tool),
-                    BottomHome(tool: tool),
-
+                    //BottomHome(tool: tool),
+                    BottomHome2(),
 
                   ],
                 );
@@ -95,6 +98,7 @@ class TopHome extends StatelessWidget {
                       Text('Length: '),
                       Text('Material: '),
                       Text('Teeth: '),
+                      Text('cool: '),
                     ],
                   ),
                 ),
@@ -110,6 +114,7 @@ class TopHome extends StatelessWidget {
                       Text(tool.length.toString()),
                       Text(tool.material.text),
                       Text(tool.teeth.toString()),
+                      Text(tool.cool.toString()),
                     ],
                   ),
                 ),
@@ -135,7 +140,6 @@ class TopHome extends StatelessWidget {
 
 class CalcolaNotifier extends ChangeNotifier{
 
-
   String speed1 = '-';
   String speed2 = '-';
   String speed3 = '-';
@@ -158,13 +162,13 @@ class CalcolaNotifier extends ChangeNotifier{
       'teeth': '${tool.teeth}',
       'cool': '${tool.cool}',
 
-      'materialWork': '${work.materialWork}',
+      'materialWork': '${work.materialWork}.',
       'workPercent': '${work.workZ}',
       'workHeight': '${work.workX}',
 
+
     });
-
-
+    //print('material: ${tool.material.value}');
     print('materialWork: ${work.materialWork}');
     print('workX: ${work.workX}');
     print('workZ: ${work.workZ}');
@@ -175,9 +179,9 @@ class CalcolaNotifier extends ChangeNotifier{
     final result = response.body.split(',');
     //print(result[0]);
 
-    speed1 = result[0];
-    speed2 = result[1];
-    speed3 = result[2];
+    speed1 = '10';//result[0];
+    speed2 = '10';//result[1];
+    speed3 = '10';//result[2];
     loading = false;
 
     notifyListeners();
@@ -223,6 +227,7 @@ class CenterHome extends StatelessWidget {
               child: Text('Calcola'),
               onPressed: () async {
                context.read<CalcolaNotifier>().calcola(tool);
+
               },
             ),
 
@@ -302,6 +307,70 @@ class _BottomHomeState extends State<BottomHome> {
   }
 }
 
+class BottomHome2 extends StatefulWidget {
+  @override
+  _BottomHome2State createState() => _BottomHome2State();
+}
+
+class _BottomHome2State extends State<BottomHome2> {
+
+  MaterialEnum _selectMaterialWork ;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _selectMaterialWork = MaterialEnum.Steel;
+
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.all(10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+
+          LimitedBox(
+            maxHeight: 200,
+            child: Image.asset(
+              'assets/images/materialWork/${_selectMaterialWork.image}', //${_selectMaterialWork.image}',
+              fit: BoxFit.fitHeight,
+              alignment: Alignment.center,
+              height: MediaQuery.of(context).size.height * 0.2,
+            ),
+          ),
+
+
+          /* menu for select the type of the material Work */
+          DropdownButton<MaterialEnum>(
+              items: MaterialEnum.values
+                  .map((e) => DropdownMenuItem<MaterialEnum>(
+                  value: e, child: Text(e.text)))
+                  .toList(),
+              value: _selectMaterialWork,
+              onChanged: (item) {
+                print("selezionato ${item}");
+                setState(() {
+                  _selectMaterialWork = item;
+                });
+              }),
+
+        ],
+      ),
+    );
+  }
+
+  void updateMaterial() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    //this._selectMaterialWork = prefs.getInt('materialWork');
+  }
+
+}
 
 class SelectMaterialNotifier extends ChangeNotifier {
   SelectMaterialNotifier(MaterialEnum selectedMaterial) {

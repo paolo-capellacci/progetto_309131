@@ -1,4 +1,3 @@
-
 import 'package:progetto_309131/navigation_page.dart';
 import 'package:progetto_309131/screens/edit_tool/edit_tool.dart';
 import 'package:progetto_309131/screens/info/info_page.dart';
@@ -10,9 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:progetto_309131/providers/service_tool.dart';
-import 'package:progetto_309131/models/work.dart';
+import 'package:progetto_309131/models/work3.dart';
 
+import 'providers/work.dart';
 import 'screens/home/home_page.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -21,22 +22,24 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
-    return ChangeNotifierProvider(
-      create: (context){
-        //ServiceTool()..getAllTools()
-        final service = ServiceTool();
-        service.getAllTools();
-        final SingletonWork work = SingletonWork.instance;
-        return service;
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) {
+            //ServiceTool()..getAllTools()
+            final service = ServiceTool();
+            service.getAllTools();
+            //final SingletonWork work = SingletonWork.instance;
+            return service;
+          },
+        ),
+        ChangeNotifierProvider(create: (context) => Work()),
+      ],
       child: App(),
     );
   }
 
-
 }
-
 
 class App extends StatelessWidget {
   @override

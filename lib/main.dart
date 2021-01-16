@@ -33,7 +33,13 @@ class MyApp extends StatelessWidget {
             return service;
           },
         ),
-        ChangeNotifierProvider(create: (context) => Work()),
+        //ChangeNotifierProvider(create: (context) => Work()),
+        ChangeNotifierProvider(
+            create: (context) {
+              final myWork = Work();
+              myWork.loadAll();
+              return myWork;
+            }),
       ],
       child: App(),
     );

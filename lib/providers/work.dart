@@ -11,7 +11,6 @@ class Work extends ChangeNotifier {
 
   void initWork()  {
 
-
   }
 
   void loadAll() async {

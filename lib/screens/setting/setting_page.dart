@@ -128,7 +128,6 @@ class _GridState extends State<SliderGrid> {
                   updateZ(value);
                 },
               );
-
             },
           ),
         ],

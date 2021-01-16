@@ -1,5 +1,9 @@
 //import 'dart:html';
 
+//import 'dart:js';
+
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:progetto_309131/models/materials_enum.dart';
@@ -13,7 +17,7 @@ import 'package:progetto_309131/models/tool.dart';
 import 'package:progetto_309131/models/tools_enum.dart';
 import 'package:progetto_309131/providers/service_tool.dart';
 import 'package:progetto_309131/screens/widget/logo.dart';
-import 'package:progetto_309131/models/work3.dart';
+import 'package:progetto_309131/providers/work.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -41,7 +45,7 @@ class HomePage extends StatelessWidget {
                     TopHome(tool: tool),
                     CenterHome(tool: tool),
                     //BottomHome(tool: tool),
-                    BottomHome2(),
+                    BottomHome(),
 
                   ],
                 );
@@ -162,9 +166,9 @@ class CalcolaNotifier extends ChangeNotifier{
       'teeth': '${tool.teeth}',
       'cool': '${tool.cool}',
 
-      'materialWork': '${work.materialWork}.',
-      'workPercent': '${work.workZ}',
-      'workHeight': '${work.workX}',
+      'materialWork': '${work.materialWork}',
+      'workPercent': '${work.workX}',
+      'workHeight': '${work.workZ}',
 
 
     });
@@ -187,6 +191,7 @@ class CalcolaNotifier extends ChangeNotifier{
     notifyListeners();
   }
 }
+
 
 class CenterHome extends StatelessWidget {
   final Tool tool;
@@ -240,17 +245,17 @@ class CenterHome extends StatelessWidget {
   }
 }
 
-class BottomHome extends StatefulWidget {
+class BottomHomeEx extends StatefulWidget {
 
   final Tool tool;
 
-  const BottomHome({Key key, this.tool}) : super(key: key);
+  const BottomHomeEx({Key key, this.tool}) : super(key: key);
 
   @override
-  _BottomHomeState createState() => _BottomHomeState();
+  _BottomHomeExState createState() => _BottomHomeExState();
 }
 
-class _BottomHomeState extends State<BottomHome> {
+class _BottomHomeExState extends State<BottomHomeEx> {
 
   MaterialEnum _selectMaterialWork ;
   int _seletedMaterial = 10;
@@ -307,12 +312,12 @@ class _BottomHomeState extends State<BottomHome> {
   }
 }
 
-class BottomHome2 extends StatefulWidget {
+class BottomHome extends StatefulWidget {
   @override
-  _BottomHome2State createState() => _BottomHome2State();
+  _BottomHomeState createState() => _BottomHomeState();
 }
 
-class _BottomHome2State extends State<BottomHome2> {
+class _BottomHomeState extends State<BottomHome> {
 
   MaterialEnum _selectMaterialWork ;
 

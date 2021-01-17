@@ -77,6 +77,7 @@ class _InfoPageState extends State<InfoPage> {
                    //getText2(packageName),
                    // getText2(version),
                    // getText2(buildNumber),
+
                  ],
                );}),
               ],

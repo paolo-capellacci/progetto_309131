@@ -44,6 +44,7 @@ class _GridState extends State<SliderGrid> {
   double posx = 0.0; // work.workX;
   double posz = 0.0; // work.workZ;
 
+
 /*
   @override
   void initState()  {
@@ -101,9 +102,9 @@ class _GridState extends State<SliderGrid> {
           Slider(
             value: posx,
             min: 0.0,
-            max: 100.0,
-            divisions: 20,
-            label: posx.round().toString(),
+            max: 95.0,
+            divisions: 19,
+            label: (posx.round() + 5).toString(),
             onChanged: (double value) {
               //print('slicer ${value}');
               setState(
@@ -114,12 +115,14 @@ class _GridState extends State<SliderGrid> {
               );
             },
           ),
+
+
           Slider(
             value: posz,
             min: 0.0,
-            max: 100.0,
-            divisions: 20,
-            label: posz.round().toString(),
+            max: 95.0,
+            divisions: 19,
+            label: (posz.round() + 5).toString(),
             onChanged: (double value) {
               //print('slicer ${value}');
               setState(
@@ -130,6 +133,9 @@ class _GridState extends State<SliderGrid> {
               );
             },
           ),
+
+
+
         ],
       ),
     );

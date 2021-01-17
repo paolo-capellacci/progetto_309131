@@ -2,7 +2,7 @@
 
 //import 'dart:js';
 
-import 'dart:js';
+//import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
@@ -167,15 +167,15 @@ class CalcolaNotifier extends ChangeNotifier{
       'cool': '${tool.cool}',
 
       'materialWork': '${work.materialWork}',
-      'workPercent': '${work.workX}',
-      'workHeight': '${work.workZ}',
+      'workPercent': '${work.workX + 5}',
+      'workHeight': '${work.workZ + 5}',
 
 
     });
     //print('material: ${tool.material.value}');
     print('materialWork: ${work.materialWork}');
-    print('workX: ${work.workX}');
-    print('workZ: ${work.workZ}');
+    print('workX: ${work.workX + 5}');
+    print('workZ: ${work.workZ + 5}');
 
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');

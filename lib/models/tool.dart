@@ -16,7 +16,7 @@ class Tool extends Equatable {
   static final materialWork_column = 'materialWork';
   static final workHeight_column = 'workHeight';
   static final workPercent_column = 'workPercent';
-
+/*
   static final materialsImage = [
     'material0',
     'material1',
@@ -25,6 +25,7 @@ class Tool extends Equatable {
     'material4',
     'material5'
   ];
+  */
   static final materialTools = [
     'fresaHss',
     'fresaHm',

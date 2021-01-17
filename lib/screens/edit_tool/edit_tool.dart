@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:progetto_309131/models/tools_enum.dart';
 import 'package:progetto_309131/models/tool.dart';
 
@@ -36,6 +37,17 @@ class _EditToolState extends State<EditTool> {
     _selectMaterialTool = widget.tool.material;
     _selectTeeth = widget.tool.teeth;
     _cool = widget.tool.cool;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    _nameTC.dispose();
+    _diameterTC.dispose();
+    _sharpTC.dispose();
+    _lengthTC.dispose();
+
   }
 
   @override
@@ -121,8 +133,10 @@ class _EditToolState extends State<EditTool> {
                       right: 30,
                       child: Container(
                         width: 60,
-                        child: TextFormField(
+                        child: TextField(
                           keyboardType: TextInputType.numberWithOptions(signed: false, decimal: true) ,
+                          inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9.,]')),],
+                          //onChanged: (value) => doubleVar = double.parse(value),
                           controller: _lengthTC,
                         ),
                       ),
@@ -132,7 +146,7 @@ class _EditToolState extends State<EditTool> {
                       right: 50,
                       child: Container(
                         width: 60,
-                        child: TextFormField(
+                        child: TextField(
                           keyboardType: TextInputType.number,
                           controller: _sharpTC,
                         ),
@@ -146,7 +160,7 @@ class _EditToolState extends State<EditTool> {
                 /* label diameter */
                 Container(
                   width: 60,
-                  child: TextFormField(
+                  child: TextField(
                     controller: _diameterTC,
                   ),
                 ),

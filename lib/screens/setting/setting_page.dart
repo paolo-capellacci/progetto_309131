@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:progetto_309131/models/materials_enum.dart';
+import 'package:progetto_309131/models/tools_enum.dart';
+import 'package:progetto_309131/providers/service_tool.dart';
 import 'package:progetto_309131/providers/work.dart';
 import 'package:progetto_309131/screens/widget/logo.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +20,8 @@ class SettingPage extends StatelessWidget {
           children: <Widget>[
             Logo(),
             Text('Setting Page'),
-            SliderGrid(),
+            //SliderGrid(),
+            CenterSetting(),
             /*
             Consumer<Work>(
                 builder: (context, work, child) {
@@ -32,120 +36,86 @@ class SettingPage extends StatelessWidget {
   }
 }
 
-class SliderGrid extends StatefulWidget {
+class CenterSetting extends StatefulWidget {
   @override
-  _GridState createState() => new _GridState();
+  _CenterSettingState createState() => _CenterSettingState();
 }
 
-class _GridState extends State<SliderGrid> {
-
-  //final SingletonWork work = SingletonWork.instance;
-
-  double posx = 0.0; // work.workX;
-  double posz = 0.0; // work.workZ;
-
-
-/*
+class _CenterSettingState extends State<CenterSetting> {
   @override
-  void initState()  {
-    super.initState();
-
-    update();
-
-  }
-*/
-
-  void update() async {
-
-    posx = context.watch<Work>().getX();
-    posz = context.watch<Work>().getZ();
-  }
-
-
-  @override
-  build(BuildContext context) {
-    return Container(
-      //alignment: Alignment.centerLeft,
-      //width: 300,
-      height: 300,
-      padding: EdgeInsets.only(top: 20),
-      margin: EdgeInsets.all(16),
-      child: Column(
-        children: [
-          Container(
-            height: 160,
-            child: LayoutBuilder(builder: (context,constraints){
-              final maxWidth = constraints.maxWidth - 40;
-              return SizedBox(
-                height: 60,
-                child: Stack(
-                  fit:StackFit.expand,
-                  children: [
-                    Positioned(
-                      top:maxWidth * posz * 0.007,
-                      left: maxWidth * posx * 0.01,
-                      child: Center(
-                        child: Container(
-                          color: Colors.blue,
-                          width: 40,
-                          height: 40,
-                          //alignment: Alignment(200.0, 400.0),
-                          //padding: EdgeInsets.only(top: 100),
+  Widget build(BuildContext context) {
+    return Consumer<ListWork>(
+      builder: (context, work, child) {
+        return Column(
+          children: [
+            Container(
+              //color: Colors.yellow,
+              height: 200,
+              child: LayoutBuilder(builder: (context, constraints) {
+                final centerWidth = constraints.maxWidth / 2;
+                return SizedBox(
+                  height: 10,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Positioned(
+                        //top: 1,
+                        //left: centerWidth,
+                        child: Image.asset(
+                          'assets/images/${FresaEnum.FresaHmR.image}', //${_selectMaterialWork.image}',
+                          fit: BoxFit.fitHeight,
+                          alignment: Alignment.center,
+                          height: MediaQuery.of(context).size.height * 0.18,
                         ),
-                      ),)
-                  ],
-                ),
-              );
-            }),
-          ),
+                      ),
 
-          Slider(
-            value: posx,
-            min: 0.0,
-            max: 95.0,
-            divisions: 19,
-            label: (posx.round() + 5).toString(),
-            onChanged: (double value) {
-              //print('slicer ${value}');
-              setState(
-                () {
-                  posx = value;
-                  updateX(value);
-                },
-              );
-            },
-          ),
-
-
-          Slider(
-            value: posz,
-            min: 0.0,
-            max: 95.0,
-            divisions: 19,
-            label: (posz.round() + 5).toString(),
-            onChanged: (double value) {
-              //print('slicer ${value}');
-              setState(
-                    () {
-                  posz = value;
-                  updateZ(value);
-                },
-              );
-            },
-          ),
-
-
-
-        ],
-      ),
+                      Positioned(
+                        top: 200 - work.getZ() * 1,
+                        left: centerWidth - 225 + work.getX()*0.46,
+                        //top: maxWidth * work.getX() * 0.01,
+                        //left: maxWidth * work.getZ() * 0.01,
+                        child: Center(
+                          child: Container(
+                            color: Color.fromRGBO(0, 0, 255, 0.5),
+                            width: 200,
+                            height: 200,
+                            //alignment: Alignment(200.0, 400.0),
+                            //padding: EdgeInsets.only(top: 100),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }),
+            ),
+            Slider(
+              value: work.getX(),
+              min: 5.0,
+              max: 100.0,
+              divisions: 19,
+              label: (work.getX().round()).toString(),
+              onChanged: (double value) {
+                setState(() {
+                  work.setX(value);
+                });
+              },
+            ),
+            Slider(
+              value: work.getZ(),
+              min: 5.0,
+              max: 100.0,
+              divisions: 19,
+              label: (work.getZ().round()).toString(),
+              onChanged: (double value) {
+                setState(() {
+                  work.setZ(value);
+                });
+              },
+            ),
+          ],
+        );
+      },
     );
   }
-
-  void updateX(double x) async {
-    context.read<Work>().updateX(x);
-  }
-  void updateZ(double z) async {
-    context.read<Work>().updateZ(z);
-  }
-
 }

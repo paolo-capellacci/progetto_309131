@@ -1,11 +1,12 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:progetto_309131/models/materials_enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Work extends ChangeNotifier {
 
-  int materialWork = 40;
+  MaterialEnum materialWork = MaterialEnum.Iron;
   double workX = 10.0;
   double workZ = 10.0;
 
@@ -25,7 +26,7 @@ class Work extends ChangeNotifier {
       prefs.setDouble('workZ', 10.0);
 
 
-    materialWork = prefs.getInt('materialWork');
+    //materialWork = prefs.getInt('materialWork');
     workX = prefs.getDouble('workX');
     workZ = prefs.getDouble('workZ');
 
@@ -58,6 +59,51 @@ class Work extends ChangeNotifier {
 
   double getZ() {
     return workZ;
+  }
+
+}
+
+class ListWork extends ChangeNotifier {
+
+  List<Work> _work = [];
+
+  Future<List<Work>> getWork() async {
+
+    _work.add(Work());
+
+    notifyListeners();
+  }
+  void setX(double x) async {
+
+    _work[0].workX = x;
+
+    notifyListeners();
+  }
+
+  void setZ(double z) async {
+
+    _work[0].workZ = z;
+
+    notifyListeners();
+  }
+
+  void setMaterial(MaterialEnum m) async {
+
+    _work[0].materialWork = m;
+
+    notifyListeners();
+  }
+
+  double getX() {
+    return _work[0].workX;
+  }
+
+  double getZ() {
+    return _work[0].workZ;
+  }
+
+  MaterialEnum getMaterial() {
+    return _work[0].materialWork;
   }
 
 }

@@ -16,10 +16,12 @@ import 'providers/work.dart';
 import 'screens/home/home_page.dart';
 
 void main() {
+  /*
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
   ]);
+  */
   runApp(MyApp());
 }
 // /Users/paolo/Library/Developer/CoreSimulator/Devices/80190513-8E62-4C4E-BA86-B87A218D2398/data/Containers/Data/Application/59155C5C-8D61-43FC-ADC1-706881596099/Documents
@@ -41,8 +43,8 @@ class MyApp extends StatelessWidget {
         //ChangeNotifierProvider(create: (context) => Work()),
         ChangeNotifierProvider(
             create: (context) {
-              final myWork = Work();
-              myWork.loadAll();
+              final myWork = ListWork();
+              myWork.getWork();
               return myWork;
             }),
       ],

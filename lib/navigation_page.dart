@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:progetto_309131/prova.dart';
 import 'package:progetto_309131/screens/home/home_page.dart';
 import 'package:progetto_309131/screens/info/info_page.dart';
 import 'package:progetto_309131/screens/setting/setting_page.dart';
@@ -19,6 +20,13 @@ class _NavigationPageState extends State<NavigationPage> {
     SettingPage(),
   ];
 
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,28 +36,29 @@ class _NavigationPageState extends State<NavigationPage> {
       body: _children[_currentIndex],
       // new
       bottomNavigationBar: BottomNavigationBar(
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+        onTap: onTabTapped, // new
+        currentIndex: _currentIndex,
+
         items: [
           new BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            title: Text('Home'),
+            label: 'Home',// Text('Home'),
           ),
           new BottomNavigationBarItem(
             icon: Icon(Icons.info),
-            title: Text('Info'),
+            label: 'Info',// Text('Info'),
           ),
           new BottomNavigationBarItem(
-              icon: Icon(Icons.settings), title: Text('Settings'))
+            icon: Icon(Icons.settings),
+            label: 'Setting', //Text('Settings'),
+          ),
         ],
+
       ),
     );
   }
 }
-
+/*
 class PlaceholderWidget extends StatelessWidget {
   final Color color;
 
@@ -62,3 +71,5 @@ class PlaceholderWidget extends StatelessWidget {
     );
   }
 }
+
+*/

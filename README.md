@@ -30,3 +30,9 @@ per bloccare la rotazione dello schermo si è aggiunta nel main
   		<string>UIInterfaceOrientationLandscapeLeft</string>
   		<string>UIInterfaceOrientationLandscapeRight</string>
   	</array>
+  	
+  	
+## ToDo
+    sistemare il calcolo delle velocità nel lato web
+    convalidare i numeri decimali e approssimarli a 2 decimali
+    

@@ -26,6 +26,7 @@ class Tool extends Equatable {
     'material5'
   ];
   */
+  /*
   static final materialTools = [
     'fresaHss',
     'fresaHm',
@@ -42,7 +43,7 @@ class Tool extends Equatable {
     'Steel',
     'Tempered Steel'
   };
-
+*/
   // Update the Tool class to include a `toMap` method.
   final int id;
   final String name;

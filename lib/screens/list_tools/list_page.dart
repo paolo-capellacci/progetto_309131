@@ -68,7 +68,9 @@ class ListTools extends StatelessWidget {
                                                 width: 20,
                                               ),
                                             )
-                                          : new Container(),
+                                          : new Container(
+                                        width: 20,
+                                      ),
                                     ),
 
                                     Container(
@@ -142,14 +144,17 @@ class ListTools extends StatelessWidget {
                                               ),
                                             ],
                                           ),
+
                                         ],
                                       ),
                                     ),
+
                                   ],
                                 ),
                               ),
                               Row(
                                 children: [
+                                  Spacer(),
                                   IconButton(
                                       icon: Icon(Icons.edit),
                                       onPressed: () {

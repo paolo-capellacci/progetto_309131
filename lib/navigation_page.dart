@@ -1,12 +1,8 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:progetto_309131/screens/home/home_page.dart';
 import 'package:progetto_309131/screens/info/info_page.dart';
 import 'package:progetto_309131/screens/setting/setting_page.dart';
-
 
 class NavigationPage extends StatefulWidget {
   @override
@@ -32,8 +28,11 @@ class _NavigationPageState extends State<NavigationPage> {
       body: _children[_currentIndex],
       // new
       bottomNavigationBar: BottomNavigationBar(
-        onTap: onTabTapped, // new
-        currentIndex: _currentIndex, // new
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
         items: [
           new BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -44,21 +43,11 @@ class _NavigationPageState extends State<NavigationPage> {
             title: Text('Info'),
           ),
           new BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              title: Text('Settings')
-          )
+              icon: Icon(Icons.settings), title: Text('Settings'))
         ],
       ),
     );
   }
-
-  void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
-
 }
 
 class PlaceholderWidget extends StatelessWidget {

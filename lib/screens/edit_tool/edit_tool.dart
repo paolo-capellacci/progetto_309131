@@ -122,6 +122,7 @@ class _EditToolState extends State<EditTool> {
                       child: Container(
                         width: 60,
                         child: TextFormField(
+                          keyboardType: TextInputType.numberWithOptions(signed: false, decimal: true) ,
                           controller: _lengthTC,
                         ),
                       ),
@@ -132,6 +133,7 @@ class _EditToolState extends State<EditTool> {
                       child: Container(
                         width: 60,
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           controller: _sharpTC,
                         ),
                       ),
@@ -197,7 +199,8 @@ class _EditToolState extends State<EditTool> {
                 ),
                 Spacer(),
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  alignment: Alignment.topRight,
+                  //width: MediaQuery.of(context).size.width * 0.8,
                   child: ElevatedButton(
                     child: Text('Salva'),
                     onPressed: () {
@@ -217,6 +220,16 @@ class _EditToolState extends State<EditTool> {
                     },
                   ),
                 ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 1,
+                  child: ElevatedButton(
+                    child: Text('Go back'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ),
+
               ],
             ),
           ),

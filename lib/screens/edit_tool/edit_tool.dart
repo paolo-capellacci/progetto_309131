@@ -17,6 +17,9 @@ class EditTool extends StatefulWidget {
 }
 
 class _EditToolState extends State<EditTool> {
+
+  UnfocusDisposition disposition = UnfocusDisposition.scope;
+  
   TextEditingController _nameTC;
   TextEditingController _diameterTC;
   TextEditingController _sharpTC;
@@ -162,6 +165,7 @@ class _EditToolState extends State<EditTool> {
                   width: 60,
                   child: TextField(
                     controller: _diameterTC,
+
                   ),
                 ),
                 Row(
@@ -218,14 +222,25 @@ class _EditToolState extends State<EditTool> {
                   child: ElevatedButton(
                     child: Text('Salva'),
                     onPressed: () {
+
+                      final String diameter = validateNumber(_diameterTC.value.text);
+                      final String sharp = validateNumber(_sharpTC.value.text);
+                      final String length = validateNumber(_lengthTC.value.text);
+
+                      /*
+                      _diameterTC = TextEditingController(text: diameter);
+                      _sharpTC = TextEditingController(text: sharp);
+                      _lengthTC = TextEditingController(text: length);
+                      */
+
                       print('id: ${widget.tool.id} ');
 
                       Provider.of<ServiceTool>(context, listen: false).update(
                           widget.tool.id,
                           _nameTC.value.text,
-                          double.parse(_diameterTC.value.text),
-                          double.parse(_sharpTC.value.text),
-                          double.parse(_lengthTC.value.text),
+                          double.parse(diameter),
+                          double.parse(sharp),
+                          double.parse(length),
                           _selectMaterialTool,
                           //int.parse(_materiaTC.value.text),
                           _selectTeeth,
@@ -250,6 +265,49 @@ class _EditToolState extends State<EditTool> {
         ),
       ),
     );
+  }
+
+  String validateNumber(String s) {
+
+    String numberS1 = '';
+
+    //stringa.forEach(e) => print(e);
+    int i = 0;
+    for (i = 0; i < s.length; i++) {
+      if(s[i] == ','){
+        numberS1 += '.';
+      }
+      else {
+        numberS1 += s[i];
+      }
+    }
+
+    String numberS2 = '';
+    if(numberS1.contains('.')){
+      // change the eventual error point
+      List<String> number_split = numberS1.split('.');
+      print(number_split);
+
+      // take only int part and one decimal part
+      numberS2 = number_split[0] + '.' + number_split[1];
+    } else {
+      numberS2 = numberS1;
+    }
+
+    // convert the string in the double and
+    // change the value in 1 if the value is min of 1
+    double numberS3 = double.parse(numberS2);
+    if(numberS3 < 1) {
+      numberS3 = 1.00;
+    }
+
+    // insert only two decimal number
+    int numberS4 = (numberS3 * 100).toInt();
+
+    double numberS5 = (numberS4 / 100).toDouble();
+    final String numberS6 = numberS5.toString();
+
+    return numberS6;
   }
 }
 

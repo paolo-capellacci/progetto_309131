@@ -47,6 +47,8 @@ class MyApp extends StatelessWidget {
               myWork.getWork();
               return myWork;
             }),
+        ChangeNotifierProvider(
+            create: (context) => Work()),
       ],
       child: App(),
     );

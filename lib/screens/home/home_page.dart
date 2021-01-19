@@ -148,7 +148,7 @@ class CalcolaNotifier extends ChangeNotifier {
 
   bool loading = false;
 
-  calcola(Tool tool, ListWork work) async {
+  calcola(Tool tool, Work work) async {
     loading = true;
     notifyListeners();
     // http://paoloweb.altervista.org/00/request.php?diameter=12.34&teeth=43.21%27
@@ -225,7 +225,7 @@ class CenterHome extends StatelessWidget {
                 ElevatedButton(
                   child: Text('Calcola'),
                   onPressed: () async {
-                    final work = context.read<ListWork>();
+                    final work = context.read<Work>();
                     print('wqrerewrerew ${work.getX()}');
                     context.read<CalcolaNotifier>().calcola(tool, work);
                   },
@@ -250,7 +250,7 @@ class _BottomHomeState extends State<BottomHome> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ListWork>(
+    return Consumer<Work>(
       builder: (context, work, child) {
         return Container(
           height: MediaQuery.of(context).size.height * 0.20,

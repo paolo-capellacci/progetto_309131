@@ -44,7 +44,7 @@ class CenterSetting extends StatefulWidget {
 class _CenterSettingState extends State<CenterSetting> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<ListWork>(
+    return Consumer<Work>(
       builder: (context, work, child) {
         return Column(
           children: [
@@ -71,7 +71,7 @@ class _CenterSettingState extends State<CenterSetting> {
 
                       Positioned(
                         top: 200 - work.getZ() * 1,
-                        left: centerWidth - 225 + work.getX()*0.46,
+                        left: centerWidth - 220 + work.getX()*0.4,
                         //top: maxWidth * work.getX() * 0.01,
                         //left: maxWidth * work.getZ() * 0.01,
                         child: Center(
@@ -94,7 +94,7 @@ class _CenterSettingState extends State<CenterSetting> {
               min: 5.0,
               max: 100.0,
               divisions: 19,
-              label: (work.getX().round()).toString(),
+              label: (work.getX().round()).toString() + ' %',
               onChanged: (double value) {
                 setState(() {
                   work.setX(value);
@@ -106,7 +106,7 @@ class _CenterSettingState extends State<CenterSetting> {
               min: 5.0,
               max: 100.0,
               divisions: 19,
-              label: (work.getZ().round()).toString(),
+              label: ((work.getZ()).round()).toString() + ' %',
               onChanged: (double value) {
                 setState(() {
                   work.setZ(value);

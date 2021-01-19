@@ -6,9 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Work extends ChangeNotifier {
 
-  MaterialEnum materialWork = MaterialEnum.Iron;
-  double workX = 10.0;
-  double workZ = 10.0;
+  MaterialEnum _materialWork = MaterialEnum.Iron;
+  double _workX = 10.0;
+  double _workZ = 10.0;
 
   void initWork()  {
 
@@ -27,38 +27,42 @@ class Work extends ChangeNotifier {
 
 
     //materialWork = prefs.getInt('materialWork');
-    workX = prefs.getDouble('workX');
-    workZ = prefs.getDouble('workZ');
+    _workX = prefs.getDouble('workX');
+    _workZ = prefs.getDouble('workZ');
 
     notifyListeners();
   }
 
 
-  void updateX(double x) async {
+  void setX(double x) async {
 
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    workX = x;
-    prefs.setDouble('workX', x);
+    _workX = x;
 
     notifyListeners();
   }
-  void updateZ(double z) async {
+  void setZ(double z) async {
 
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    workZ = z;
-    prefs.setDouble('workZ', z);
+    _workZ = z;
 
     notifyListeners();
   }
 
   double getX() {
-    return workX;
+    return _workX;
   }
 
   double getZ() {
-    return workZ;
+    return _workZ;
+  }
+  void setMaterial(MaterialEnum m) async {
+
+    _materialWork = m;
+
+    notifyListeners();
+  }
+
+  MaterialEnum getMaterial() {
+    return _materialWork;
   }
 
 }
@@ -75,35 +79,35 @@ class ListWork extends ChangeNotifier {
   }
   void setX(double x) async {
 
-    _work[0].workX = x;
+    _work[0]._workX = x;
 
     notifyListeners();
   }
 
   void setZ(double z) async {
 
-    _work[0].workZ = z;
+    _work[0]._workZ = z;
 
     notifyListeners();
   }
 
   void setMaterial(MaterialEnum m) async {
 
-    _work[0].materialWork = m;
+    _work[0]._materialWork = m;
 
     notifyListeners();
   }
 
   double getX() {
-    return _work[0].workX;
+    return _work[0]._workX;
   }
 
   double getZ() {
-    return _work[0].workZ;
+    return _work[0]._workZ;
   }
 
   MaterialEnum getMaterial() {
-    return _work[0].materialWork;
+    return _work[0]._materialWork;
   }
 
 }

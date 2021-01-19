@@ -19,7 +19,7 @@ class EditTool extends StatefulWidget {
 class _EditToolState extends State<EditTool> {
 
   UnfocusDisposition disposition = UnfocusDisposition.scope;
-  
+
   TextEditingController _nameTC;
   TextEditingController _diameterTC;
   TextEditingController _sharpTC;

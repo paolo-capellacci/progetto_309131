@@ -45,7 +45,8 @@ class ListTools extends StatelessWidget {
                     itemCount: tools.length,
                     itemBuilder: (context, index) {
                       final tool = tools[index];
-                      final isSelected = context.read<ServiceTool>().selectedTool == tool;
+                      final isSelected =
+                          context.read<ServiceTool>().selectedTool == tool;
                       return GestureDetector(
                         onTap: () {
                           context.read<ServiceTool>().setSelectedTool(index);
@@ -69,10 +70,9 @@ class ListTools extends StatelessWidget {
                                               ),
                                             )
                                           : new Container(
-                                        width: 20,
-                                      ),
+                                              width: 20,
+                                            ),
                                     ),
-
                                     Container(
                                       child: Image.asset(
                                         'assets/images/${tool.material.image}',
@@ -81,7 +81,6 @@ class ListTools extends StatelessWidget {
                                         height: 120,
                                       ),
                                     ),
-
                                     Container(
                                       margin: EdgeInsets.only(left: 20),
                                       child: Row(
@@ -136,19 +135,17 @@ class ListTools extends StatelessWidget {
                                               Text(
                                                 tool.sharp.toString(),
                                               ),
-                                              Text(
-                                                tool.material.text //tool.material.toString(),
-                                              ),
+                                              Text(tool.material
+                                                      .text //tool.material.toString(),
+                                                  ),
                                               Text(
                                                 tool.teeth.toString(),
                                               ),
                                             ],
                                           ),
-
                                         ],
                                       ),
                                     ),
-
                                   ],
                                 ),
                               ),
@@ -171,6 +168,52 @@ class ListTools extends StatelessWidget {
                                             .read<ServiceTool>()
                                             .delete(tool.id);
                                       }),
+                                  IconButton(
+                                    icon: Icon(Icons.delete),
+                                    onPressed: () async {
+                                      // Apertura asincrona di dialogo
+                                      //var mustClose =
+                                      await showDialog(
+                                        context: context,
+                                        barrierDismissible: true,
+                                        builder: (context) {
+                                          return AlertDialog(
+                                            title: Text('Conferm the delete'),
+                                            content: Text(
+                                                'The process is not reverse'),
+                                            actions: [
+                                              TextButton(
+                                                  child: Text('Ok!'),
+                                                  onPressed: () {
+                                                    // Chiusura del dialogo con valore di ritorno true
+
+                                                    context
+                                                        .read<ServiceTool>()
+                                                        .delete(tool.id);
+                                                    Navigator.of(context)
+                                                        .pop(); //(false);
+                                                  },
+                                                  style: ButtonStyle(
+                                                      textStyle:
+                                                          MaterialStateProperty
+                                                              .all(TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold)))),
+                                              TextButton(
+                                                child: Text('Cancel'),
+                                                onPressed: () {
+                                                  // Chiusura del dialogo con valore di ritorno false
+                                                  Navigator.of(context)
+                                                      .pop(); //(false);
+                                                },
+                                              )
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                             ],

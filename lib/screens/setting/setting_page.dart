@@ -70,8 +70,8 @@ class _CenterSettingState extends State<CenterSetting> {
                       ),
 
                       Positioned(
-                        top: 200 - work.getZ() * 1,
-                        left: centerWidth - 220 + work.getX()*0.4,
+                        top: 200 - work.getX() * 1,
+                        left: centerWidth - 220 + work.getX() * 0.4,
                         //top: maxWidth * work.getX() * 0.01,
                         //left: maxWidth * work.getZ() * 0.01,
                         child: Center(
@@ -106,7 +106,7 @@ class _CenterSettingState extends State<CenterSetting> {
               min: 5.0,
               max: 100.0,
               divisions: 19,
-              label: ((work.getZ()).round()).toString() + ' %',
+              label: ((work.getZ().round()).toString() + ' %'),
               onChanged: (double value) {
                 setState(() {
                   work.setZ(value);

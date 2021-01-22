@@ -301,13 +301,8 @@ class _EditToolState extends State<EditTool> {
       numberS3 = 1.00;
     }
 
-    // insert only two decimal number
-    int numberS4 = (numberS3 * 100).toInt();
-
-    double numberS5 = (numberS4 / 100).toDouble();
-    final String numberS6 = numberS5.toString();
-
-    return numberS6;
+    // convert the number in the string and take only 2 decimal
+    return numberS3.toStringAsFixed(2);
   }
 }
 

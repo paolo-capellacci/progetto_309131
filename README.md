@@ -36,3 +36,9 @@ per bloccare la rotazione dello schermo si è aggiunta nel main
     sistemare il calcolo delle velocità nel lato web
     convalidare i numeri decimali e approssimarli a 2 decimali
     
+    
+## link
+   https://stackoverflow.com/questions/46651974/swipe-list-item-for-more-options-flutter
+   
+   per costruire funzioni non lineari
+   https://www.mathepower.com/it/sistemiequazionilineari.php

@@ -16,17 +16,17 @@ extension MaterialEnumExt on MaterialEnum {
   int get value {
     switch (this) {
       case MaterialEnum.Wood:
-        return 2;
-      case MaterialEnum.Plastic:
-        return 5;
-      case MaterialEnum.Alluminium:
-        return 10;
-      case MaterialEnum.Iron:
         return 40;
+      case MaterialEnum.Plastic:
+        return 30;
+      case MaterialEnum.Alluminium:
+        return 20;
+      case MaterialEnum.Iron:
+        return 10;
       case MaterialEnum.Steel:
-        return 60;
+        return 5;
       case MaterialEnum.TemperateSteel:
-        return 80;
+        return 2;
     }
   }
 }

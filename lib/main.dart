@@ -61,7 +61,7 @@ class App extends StatelessWidget {
         '/': (context) => NavigationPage(), // HomePage(),
         '/listTools': (context) => ListTools(),
         '/editTool': (context) => EditTool(),
-        '/info': (context) => InfoPage(),
+        '/info': (context) => InfoApp2(),
         '/setting': (context) => SettingPage(),
       },
     );

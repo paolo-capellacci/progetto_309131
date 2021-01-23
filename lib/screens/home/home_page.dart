@@ -165,6 +165,7 @@ class CalcolaNotifier extends ChangeNotifier {
       'workHeight': '${work.getZ()}',
     });
     //print('material: ${tool.material.value}');
+    print('cool:  ${tool.cool}');
     print('materialWork: ${work.getMaterial().value }');
     print('workX: ${work.getX()}');
     print('workZ: ${work.getZ()}');

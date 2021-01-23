@@ -135,9 +135,7 @@ class ListTools extends StatelessWidget {
                                               Text(
                                                 tool.sharp.toString(),
                                               ),
-                                              Text(tool.material
-                                                      .text //tool.material.toString(),
-                                                  ),
+                                              Text(tool.material.text),
                                               Text(
                                                 tool.teeth.toString(),
                                               ),

@@ -18,11 +18,64 @@ class SettingPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Logo(),
-            Text('Setting Page'),
-            //SliderGrid(),
-            CenterSetting(),
             /*
+            Card(
+              child: Logo(),
+            ),
+            */
+
+            Card(
+              child: Container(
+                margin: const EdgeInsets.all(10.0),
+                child: Center(
+                  child: Text(
+                    'Setting Page',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: MediaQuery.of(context).size.height * 0.04,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            /*
+            Row(
+              children: [
+                Card(
+                  child: Container(
+                    //height: MediaQuery.of(context).size.height * 0.5,
+                    child: CenterSetting(),
+                  ),
+                ),
+                Card(
+                  child: Container(
+                    child: Text('seconda colonna'),
+                  ),
+                ),
+              ],
+            ),
+*/
+            Card(
+              child: Container(
+                margin: const EdgeInsets.all(10.0),
+                child: CenterSetting(),
+              ),
+            ),
+            TextVales(),
+            Card(
+              child: Container(
+                margin: const EdgeInsets.all(10),
+                child: SliderX(),
+              ),
+            ),
+            Card(
+              child: Container(
+                margin: const EdgeInsets.all(10),
+                child: SliderZ(),
+              ),
+            ),
+            /*
+
             Consumer<Work>(
                 builder: (context, work, child) {
                   return Text("the value of the consumer is: ${work.workX}");
@@ -68,9 +121,8 @@ class _CenterSettingState extends State<CenterSetting> {
                           height: MediaQuery.of(context).size.height * 0.18,
                         ),
                       ),
-
                       Positioned(
-                        top: 200 - work.getX() * 1,
+                        top: 200 - work.getZ() * 1,
                         left: centerWidth - 220 + work.getX() * 0.4,
                         //top: maxWidth * work.getX() * 0.01,
                         //left: maxWidth * work.getZ() * 0.01,
@@ -89,31 +141,118 @@ class _CenterSettingState extends State<CenterSetting> {
                 );
               }),
             ),
-            Slider(
-              value: work.getX(),
-              min: 5.0,
-              max: 100.0,
-              divisions: 19,
-              label: (work.getX().round()).toString() + ' %',
-              onChanged: (double value) {
-                setState(() {
-                  work.setX(value);
-                });
-              },
-            ),
-            Slider(
-              value: work.getZ(),
-              min: 5.0,
-              max: 100.0,
-              divisions: 19,
-              label: ((work.getZ().round()).toString() + ' %'),
-              onChanged: (double value) {
-                setState(() {
-                  work.setZ(value);
-                });
-              },
-            ),
           ],
+        );
+      },
+    );
+  }
+}
+
+class TextVales extends StatefulWidget {
+  @override
+  _TextValesState createState() => _TextValesState();
+}
+
+class _TextValesState extends State<TextVales> {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<Work>(builder: (context, work, child) {
+      return Expanded(
+
+        child: Container(
+          child: Card(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text('Percent Radius: '),
+                    Text('Percent Sharp: '),
+                  ],
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  //mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${work.getX()} %',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      )
+                    ),
+                    Text('${work.getZ()} %',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold
+                    ),),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    });
+  }
+}
+
+class SliderX extends StatefulWidget {
+  @override
+  _SliderXState createState() => _SliderXState();
+}
+
+class _SliderXState extends State<SliderX> {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<Work>(
+      builder: (context, work, child) {
+        return Container(
+          child: Slider(
+            value: work.getX(),
+            min: 5.0,
+            max: 100.0,
+            divisions: 19,
+            label: (work.getX().round()).toString() + ' %',
+            onChanged: (double value) {
+              setState(() {
+                work.setX(value);
+              });
+            },
+          ),
+        );
+      },
+    );
+  }
+}
+
+class SliderZ extends StatefulWidget {
+  @override
+  _SliderZState createState() => _SliderZState();
+}
+
+class _SliderZState extends State<SliderZ> {
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<Work>(
+      builder: (context, work, child) {
+        return Container(
+          child: Slider(
+            value: work.getZ(),
+            min: 5.0,
+            max: 100.0,
+            divisions: 19,
+            label: ((work.getZ().round()).toString() + ' %'),
+            onChanged: (double value) {
+              setState(() {
+                work.setZ(value);
+              });
+            },
+          ),
+          //transform: Matrix4.rotationZ(1),
         );
       },
     );

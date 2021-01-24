@@ -17,7 +17,8 @@ class SettingPage extends StatelessWidget {
         title: Text('Setting work'),
       ),
       body: Container(
-        margin: EdgeInsets.all(8),
+        margin: EdgeInsets.all(4),
+        padding: EdgeInsets.all(4),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,20 +49,20 @@ class SettingPage extends StatelessWidget {
 
             Card(
               child: Container(
-                margin: const EdgeInsets.all(10.0),
+                margin: const EdgeInsets.all(4),
                 child: CenterSetting(),
               ),
             ),
             TextVales(),
             Card(
               child: Container(
-                margin: const EdgeInsets.all(10),
+                margin: const EdgeInsets.all(4),
                 child: SliderX(),
               ),
             ),
             Card(
               child: Container(
-                margin: const EdgeInsets.all(10),
+                margin: const EdgeInsets.all(4),
                 child: SliderZ(),
               ),
             ),
@@ -87,7 +88,7 @@ class _CenterSettingState extends State<CenterSetting> {
           children: [
             Container(
               //color: Colors.yellow,
-              height: 200,
+              height: 176,
               child: LayoutBuilder(builder: (context, constraints) {
                 final centerWidth = constraints.maxWidth / 2;
                 return SizedBox(
@@ -106,7 +107,7 @@ class _CenterSettingState extends State<CenterSetting> {
                         ),
                       ),
                       Positioned(
-                        top: 200 - work.getZ() * 1,
+                        top: 176 - work.getZ() * 1,
                         left: centerWidth - 320 + work.getX() * 0.4,
                         //top: maxWidth * work.getX() * 0.01,
                         //left: maxWidth * work.getZ() * 0.01,

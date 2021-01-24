@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    flex: 10,
+                    flex: 12,
                     child: Container(
                       //color: Colors.yellow,
                       child: Card(
@@ -79,12 +79,6 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class Merda extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Text('merda');
-  }
-}
 
 class TopHome extends StatelessWidget {
   final Tool tool;
@@ -146,7 +140,7 @@ class TopHome extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text('id: '),
+                        //Text('id: '),
                         Text('Name: '),
                         Text('Diameter: '),
                         Text('Sharp: '),
@@ -159,7 +153,7 @@ class TopHome extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(tool.id.toString()),
+                        //Text(tool.id.toString()),
                         Text(tool.name),
                         Text(tool.diameter.toString()),
                         Text(tool.sharp.toString()),

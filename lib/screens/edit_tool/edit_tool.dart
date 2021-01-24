@@ -55,6 +55,7 @@ class _EditToolState extends State<EditTool> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(122, 151, 185, 1.0),
         title: Text('Edit Tools'),
       ),
       body: Container(
@@ -156,7 +157,12 @@ class _EditToolState extends State<EditTool> {
                         child: Container(
                           width: 60,
                           child: TextField(
-                            keyboardType: TextInputType.number,
+                            keyboardType: TextInputType.numberWithOptions(
+                                signed: false, decimal: true),
+                            inputFormatters: [
+                              FilteringTextInputFormatter.allow(
+                                  RegExp('[0-9.,]')),
+                            ],
                             controller: _sharpTC,
                           ),
                         ),
@@ -170,6 +176,12 @@ class _EditToolState extends State<EditTool> {
                   Container(
                     width: 60,
                     child: TextField(
+                      keyboardType: TextInputType.numberWithOptions(
+                          signed: false, decimal: true),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(
+                            RegExp('[0-9.,]')),
+                      ],
                       controller: _diameterTC,
                     ),
                   ),

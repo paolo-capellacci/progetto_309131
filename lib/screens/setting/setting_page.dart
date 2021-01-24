@@ -12,13 +12,24 @@ class SettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(122, 151, 185, 1.0),
+        title: Text('Setting work'),
+      ),
       body: Container(
-        margin: EdgeInsets.all(16),
+        margin: EdgeInsets.all(8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-
+            Card(
+              child: Container(
+                padding: EdgeInsets.all(4),
+                margin: EdgeInsets.all(4),
+                child: Logo(),
+              ),
+            ),
+/*
             Card(
               child: Container(
                 margin: const EdgeInsets.all(10.0),
@@ -33,6 +44,7 @@ class SettingPage extends StatelessWidget {
                 ),
               ),
             ),
+            */
 
             Card(
               child: Container(

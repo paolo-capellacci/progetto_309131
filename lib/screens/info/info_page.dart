@@ -9,45 +9,51 @@ import 'package:progetto_309131/screens/widget/mark.dart';
 class InfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(8),
-      margin: EdgeInsets.all(8),
-      child: Column(
-        children: [
-          Card(
-            child: Container(
-              padding: EdgeInsets.all(8),
-              margin: EdgeInsets.all(8),
-              child: Logo(),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(122, 151, 185, 1.0),
+        title: Text('Info'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(4),
+        margin: EdgeInsets.all(4),
+        child: Column(
+          children: [
+            Card(
+              child: Container(
+                padding: EdgeInsets.all(4),
+                margin: EdgeInsets.all(4),
+                child: Logo(),
+              ),
             ),
-          ),
 
-          Card(
-            child: Container(
-              padding: EdgeInsets.all(8),
-              margin: EdgeInsets.all(8),
-              child: InfoApp(),
-            ),
-          ),
-
-          Expanded(
-            child: Card(
+            Card(
               child: Container(
                 padding: EdgeInsets.all(8),
                 margin: EdgeInsets.all(8),
-                child: Center(
-                  child: Image.asset(
-                    "assets/images/first_imag.png",
-                    //fit: BoxFit.fitWidth,
-                    alignment: Alignment.centerLeft,
+                child: InfoApp(),
+              ),
+            ),
+
+            Expanded(
+              child: Card(
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  margin: EdgeInsets.all(8),
+                  child: Center(
+                    child: Image.asset(
+                      "assets/images/first_imag.png",
+                      //fit: BoxFit.fitWidth,
+                      alignment: Alignment.centerLeft,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
 
 
-        ],
+          ],
+        ),
       ),
     );
   }

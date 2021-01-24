@@ -1,3 +1,4 @@
+//import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -11,60 +12,67 @@ import 'package:progetto_309131/providers/work.dart';
 import 'package:progetto_309131/screens/widget/logo.dart';
 import 'package:provider/provider.dart';
 
-
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => CalcolaNotifier(),
-      child: Scaffold(
-        body: Container(
-          margin: EdgeInsets.all(8),
-          child: Selector<ServiceTool, Tool>(shouldRebuild: (pre, next) {
-            return pre != next;
-          }, selector: (context, notifier) {
-            return notifier.selectedTool;
-          }, builder: (BuildContext context, tool, child) {
-            if (tool == null) {
-              return CircularProgressIndicator();
-            }
-            return Column(
-              children: [
-                Card(
-                  child: Logo(),
-                ),
-                Expanded(
-                  flex: 20,
-                  child: Container(
-                    //color: Colors.lightGreenAccent,
-                    child: Card(
-                      child: TopHome(tool: tool),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(122, 151, 185, 1.0),
+        title: Text('Home'),
+      ),
+      body: ChangeNotifierProvider(
+        create: (_) => CalcolaNotifier(),
+        child: Scaffold(
+          body: Container(
+            margin: EdgeInsets.all(8),
+            child: Selector<ServiceTool, Tool>(shouldRebuild: (pre, next) {
+              return pre != next;
+            }, selector: (context, notifier) {
+              return notifier.selectedTool;
+            }, builder: (BuildContext context, tool, child) {
+              if (tool == null) {
+                return CircularProgressIndicator();
+              }
+              return Column(
+                children: [
+                  Card(
+                    child: Container(
+                      padding: EdgeInsets.all(4),
+                      margin: EdgeInsets.all(4),
+                      child: Logo(),
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 10,
-                  child: Container(
-                    //color: Colors.yellow,
-                    child: Card(
-                      child: CenterHome(tool: tool),
+                  Expanded(
+                    flex: 20,
+                    child: Container(
+                      //color: Colors.lightGreenAccent,
+                      child: Card(
+                        child: TopHome(tool: tool),
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 15,
-                  child: Container(
-                    //color: Colors.greenAccent,
-                    child: Card(
-                      child: BottomHome(),
+                  Expanded(
+                    flex: 10,
+                    child: Container(
+                      //color: Colors.yellow,
+                      child: Card(
+                        child: CenterHome(tool: tool),
+                      ),
                     ),
                   ),
-                ),
-
-              ],
-            );
-          }),
+                  Expanded(
+                    flex: 15,
+                    child: Container(
+                      //color: Colors.greenAccent,
+                      child: Card(
+                        child: BottomHome(),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }),
+          ),
         ),
       ),
     );
@@ -87,96 +95,95 @@ class TopHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CalcolaNotifier>(
         builder: (BuildContext context, value, Widget child) {
-          return Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.27,
-                  width: MediaQuery.of(context).size.width * 0.35,
-                  child: Stack(
-                    //alignment: Alignment.center,
-                    //fit: StackFit.loose,
+      return Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.27,
+              width: MediaQuery.of(context).size.width * 0.35,
+              child: Stack(
+                //alignment: Alignment.center,
+                //fit: StackFit.loose,
 
-                    children: [
-
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Container(
-                          child: tool.cool == true
-                              ? new Container(
-                            child: Image.asset(
-                              'assets/images/coll.png',
-                              fit: BoxFit.fitWidth,
-                              alignment: Alignment.center,
-                              height:
-                              MediaQuery.of(context).size.height * 0.13,
-                            ),
-                          )
-                              : new Container(),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          child: Image.asset(
-                            'assets/images/${tool.material.image}',
-                            fit: BoxFit.fitHeight,
-                            //alignment: Alignment.centerLeft,
-                            height: MediaQuery.of(context).size.height * 0.27,
-                          ),
-                        ),
-                      ),
-     ],
-                    //overflow: Overflow.clip,
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      child: tool.cool == true
+                          ? new Container(
+                              child: Image.asset(
+                                'assets/images/coll.png',
+                                fit: BoxFit.fitWidth,
+                                alignment: Alignment.center,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.13,
+                              ),
+                            )
+                          : new Container(),
+                    ),
                   ),
-                ),
-                Column(
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      child: Image.asset(
+                        'assets/images/${tool.material.image}',
+                        fit: BoxFit.fitHeight,
+                        //alignment: Alignment.centerLeft,
+                        height: MediaQuery.of(context).size.height * 0.27,
+                      ),
+                    ),
+                  ),
+                ],
+                //overflow: Overflow.clip,
+              ),
+            ),
+            Column(
+              children: [
+                Row(
                   children: [
-                    Row(
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text('id: '),
-                            Text('Name: '),
-                            Text('Diameter: '),
-                            Text('Sharp: '),
-                            Text('Length: '),
-                            Text('Material: '),
-                            Text('Teeth: '),
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(tool.id.toString()),
-                            Text(tool.name),
-                            Text(tool.diameter.toString()),
-                            Text(tool.sharp.toString()),
-                            Text(tool.length.toString()),
-                            Text(tool.material.text),
-                            Text(tool.teeth.toString()),
-                          ],
-                        )
+                        Text('id: '),
+                        Text('Name: '),
+                        Text('Diameter: '),
+                        Text('Sharp: '),
+                        Text('Length: '),
+                        Text('Material: '),
+                        Text('Teeth: '),
                       ],
                     ),
-                    ElevatedButton(
-                      child: Text('Select Tools'),
-                      onPressed: () async {
-                        print('vai alla lista tools');
-                        Navigator.of(context).pushNamed('/listTools');
-                        //Navigator.of(context).pushNamedAndRemoveUntil('/listTools', (route) => route.settings.name == '/');
-                      },
-                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(tool.id.toString()),
+                        Text(tool.name),
+                        Text(tool.diameter.toString()),
+                        Text(tool.sharp.toString()),
+                        Text(tool.length.toString()),
+                        Text(tool.material.text),
+                        Text(tool.teeth.toString()),
+                      ],
+                    )
                   ],
-                )
+                ),
+                ElevatedButton(
+                  child: Text('Select Tools'),
+                  onPressed: () async {
+                    print('vai alla lista tools');
+                    Navigator.of(context).pushNamed('/listTools');
+                    //Navigator.of(context).pushNamedAndRemoveUntil('/listTools', (route) => route.settings.name == '/');
+                  },
+                ),
               ],
-            ),
-          );
-        });
+            )
+          ],
+        ),
+      );
+    });
   }
 }
 
@@ -209,8 +216,8 @@ class CenterHome extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text('${value.speed1} g/m: '),
-                  Text('${value.speed2} m/s:'),
-                  Text('${value.speed3} m/s:'),
+                  Text('${value.speed2} mm/s:'),
+                  Text('${value.speed3} mm/s:'),
                 ],
               ),
               Spacer(),
@@ -219,14 +226,21 @@ class CenterHome extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 )
               else
-                ElevatedButton(
-                  child: Text('Calcola'),
-                  onPressed: () async {
-                    final work = context.read<Work>();
-                    print('wqrerewrerew ${work.getX()}');
-                    context.read<CalcolaNotifier>().calcola(tool, work);
-                  },
+                Column(
+                  children: [
+                    Text('Diameter: ${context.watch<Work>().getX()} %'),
+                    Text('         Flut: ${context.watch<Work>().getZ()} %'),
+                    ElevatedButton(
+                      child: Text('Calcola'),
+                      onPressed: () async {
+                        final work = context.read<Work>();
+                        print('wqrerewrerew ${work.getX()}');
+                        context.read<CalcolaNotifier>().calcola(tool, work);
+                      },
+                    ),
+                  ],
                 ),
+              Spacer(),
 
               //WhidgetSwitch(),//widget.tool.cool),
             ],
@@ -269,7 +283,7 @@ class _BottomHomeState extends State<BottomHome> {
               DropdownButton<MaterialEnum>(
                 items: MaterialEnum.values
                     .map((e) => DropdownMenuItem<MaterialEnum>(
-                    value: e, child: Text(e.text)))
+                        value: e, child: Text(e.text)))
                     .toList(),
                 value: work.getMaterial(),
                 onChanged: (item) {

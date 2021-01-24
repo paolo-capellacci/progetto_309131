@@ -9,10 +9,10 @@ import 'package:path_provider/path_provider.dart';
 class DatabaseTool {
   /*
 
-  | ID primario | name   | diameter | Sharp  | length | Material | Teeth  | materialWork | workHeight | workPercent |
-  | INTEGER     | string | double   | double | double | int      | int    | int          | double     | int         |
-  | ============|========|==========|========|========|==========|========|==============|============|=============|
-  | 123         | tool 1 |  12.02   |  24.00 | 40.00  | [0; 5]   | [1-12] | [0; 5]       | 2.20       | 90%         |
+  | ID primario | name   | diameter | Sharp  | length | Material | Teeth  |     cool     |
+  | INTEGER     | string | double   | double | double | int      | int    | int          |
+  | ============|========|==========|========|========|==========|========|==============|
+  | 123         | tool 1 |  12.02   |  24.00 | 40.00  | [0; 5]   | [1-12] | [0; 1]       |
 
    */
 
@@ -57,11 +57,7 @@ class DatabaseTool {
             ${Tool.length_column} REAL NOT NULL,
             ${Tool.material_column} INTEGER NOT NULL,
             ${Tool.teeth_column} INTEGER NOT NULL,   
-            ${Tool.cool_column} INTEGER NOT NULL,   
-            ${Tool.materialWork_column} INTEGER NOT NULL,
-            ${Tool.workHeight_column} REAL NOT NULL,
-            ${Tool.workPercent_column} INTEGER NOT NULL
-            
+            ${Tool.cool_column} INTEGER NOT NULL
           )
           ''');
   }
@@ -80,8 +76,10 @@ class DatabaseTool {
   // All of the rows are returned as a list of maps, where each map is
   // a key-value list of columns.
   Future<List<Tool>> getAllTools() async {
+
     Database db = await instance.database;
     final list =  await db.query(table);
+
     return list.map((json)=>Tool.fromJson(json)).toList();
   }
 
@@ -115,8 +113,5 @@ class DatabaseTool {
     return await db.delete(table, where: '${Tool.id_column} = ?', whereArgs: [tool.id]);
 
   }
-
-
-
 
 }

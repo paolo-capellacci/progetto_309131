@@ -15,9 +15,6 @@ class Tool extends Equatable {
   final int teeth;
   final bool cool;
 
-  final MaterialEnum materialWork;
-  final double workHeight;
-  final int workPercent;
 
   // costruttore
   Tool(
@@ -28,10 +25,8 @@ class Tool extends Equatable {
         this.length,
         this.material,
         this.teeth,
-        this.cool,
-        this.materialWork,
-        this.workHeight,
-        this.workPercent});
+        this.cool
+      });
 
   @override
   List<Object> get props => [
@@ -42,10 +37,7 @@ class Tool extends Equatable {
     length,
     material,
     teeth,
-    cool,
-    materialWork,
-    workHeight,
-    workPercent,
+    cool
   ];
 
 
@@ -57,10 +49,7 @@ class Tool extends Equatable {
         length = json[length_column],
         material = FresaEnum.values[json[material_column]],
         teeth = json[teeth_column],
-        cool = json[cool_column] == 0 ? false : true,
-        materialWork = MaterialEnum.values[json[materialWork_column]],
-        workHeight = json[workHeight_column],
-        workPercent = json[workPercent_column];
+        cool = json[cool_column] == 0 ? false : true;
 
 
   static final id_column = 'id';
@@ -72,9 +61,6 @@ class Tool extends Equatable {
   static final teeth_column = 'teeth';
   static final cool_column = 'cool';
 
-  static final materialWork_column = 'materialWork';
-  static final workHeight_column = 'workHeight';
-  static final workPercent_column = 'workPercent';
 
 
   // Convert a Tool into a Map. The keys must correspond to the names of the
@@ -88,10 +74,7 @@ class Tool extends Equatable {
       length_column: length,
       material_column: material.index,
       teeth_column: teeth,
-      cool_column: cool ? 1 : 0,
-      materialWork_column: materialWork.index,
-      workHeight_column: workHeight,
-      workPercent_column: workPercent
+      cool_column: cool ? 1 : 0
     };
   }
 

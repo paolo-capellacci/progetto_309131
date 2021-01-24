@@ -15,6 +15,7 @@ class ListTools extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(122, 151, 185, 1.0),
         title: Text('List of Tools'),
       ),
       body: Container(
@@ -159,6 +160,7 @@ class ListTools extends StatelessWidget {
                                                       tool: tools[index],
                                                     )));
                                       }),
+                                  /*
                                   IconButton(
                                       icon: Icon(Icons.delete),
                                       onPressed: () {
@@ -166,6 +168,7 @@ class ListTools extends StatelessWidget {
                                             .read<ServiceTool>()
                                             .delete(tool.id);
                                       }),
+                                  */
                                   IconButton(
                                     icon: Icon(Icons.delete),
                                     onPressed: () async {

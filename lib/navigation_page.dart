@@ -32,9 +32,12 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      /*
       appBar: AppBar(
-        title: Text('Speed Tools'),
+        backgroundColor: Color.fromRGBO(122, 151, 185, 1.0),
+        title: Text('Home'),
       ),
+      */
       body: _children[_currentIndex],
       // new
       bottomNavigationBar: BottomNavigationBar(

@@ -18,6 +18,8 @@ class ServiceTool extends ChangeNotifier {
   List<Tool> tools = [];
 
   Future insert() async {
+
+
     final tool = Tool(
         name: 'Tool 000',
         diameter: 12.00,
@@ -25,10 +27,9 @@ class ServiceTool extends ChangeNotifier {
         length: 50.00,
         material: FresaEnum.FresaHss,
         teeth: 4,
-        cool: true,
-        materialWork: MaterialEnum.Steel, //MaterialEnum.Iron,
-        workHeight: 12,
-        workPercent: 30);
+        cool: true
+
+    );
     final id = await dbTool.insert(tool);
     print('inserted row id: $id');
     getAllTools();
@@ -42,6 +43,7 @@ class ServiceTool extends ChangeNotifier {
       tools = await dbTool.getAllTools();
 
       if (tools.isEmpty) {
+
         await insert();
         print('insert record');
 
@@ -81,9 +83,8 @@ class ServiceTool extends ChangeNotifier {
         material: material,
         teeth: teeth,
         cool: cool,
-        materialWork: MaterialEnum.Iron,
-        workHeight: 12,
-        workPercent: 30);
+
+    );
 
     //aggiorna tools
     final rowsAffected = await dbTool.update(tool);
@@ -92,22 +93,6 @@ class ServiceTool extends ChangeNotifier {
     getAllTools();
     // notifyListeners();
   }
-/*
-  void updateMaterialWork(int idTool, MaterialEnum material) async {
-    // row to update
-
-    final tool = Tool(
-        id: idTool,
-        materialWork: material);
-
-    //aggiorna tools
-    final rowsAffected = await dbTool.updateMaterialWork(tool);
-    print('updated $rowsAffected tool(${idTool})');
-    // Aggiorna lista tools
-    getAllTools();
-    // notifyListeners();
-  }
-*/
 
   void delete(int idTool) async {
     // Assuming that the number of rows is the id for the last row.

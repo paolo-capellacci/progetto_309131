@@ -42,3 +42,5 @@ per bloccare la rotazione dello schermo si è aggiunta nel main
    
    per costruire funzioni non lineari
    https://www.mathepower.com/it/sistemiequazionilineari.php
+   https://computer4dummy.altervista.org/programmazione-guide-alla-programmazione/python-data-analisi/numpy-per-python/risolvere-un-sistema-lineare/
+   

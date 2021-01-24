@@ -24,6 +24,7 @@ void main() {
   */
   runApp(MyApp());
 }
+// directory per db nel simulatore iSO
 // /Users/paolo/Library/Developer/CoreSimulator/Devices/80190513-8E62-4C4E-BA86-B87A218D2398/data/Containers/Data/Application/59155C5C-8D61-43FC-ADC1-706881596099/Documents
 
 class MyApp extends StatelessWidget {
@@ -40,7 +41,6 @@ class MyApp extends StatelessWidget {
             return service;
           },
         ),
-        //ChangeNotifierProvider(create: (context) => Work()),
 
         ChangeNotifierProvider(
             create: (context) => Work()),
@@ -61,7 +61,7 @@ class App extends StatelessWidget {
         '/': (context) => NavigationPage(), // HomePage(),
         '/listTools': (context) => ListTools(),
         '/editTool': (context) => EditTool(),
-        '/info': (context) => InfoApp2(),
+        '/info': (context) => InfoApp(),
         '/setting': (context) => SettingPage(),
       },
     );

@@ -14,7 +14,6 @@ class InfoPage extends StatelessWidget {
       margin: EdgeInsets.all(8),
       child: Column(
         children: [
-
           Card(
             child: Container(
               padding: EdgeInsets.all(8),
@@ -23,49 +22,30 @@ class InfoPage extends StatelessWidget {
             ),
           ),
 
-          /*
           Card(
             child: Container(
               padding: EdgeInsets.all(8),
               margin: EdgeInsets.all(8),
-              child: Mark(),
-            ),
-          ),
-*/
-
-
-          Card(
-            child: Container(
-              padding: EdgeInsets.all(8),
-              margin: EdgeInsets.all(8),
-              child: InfoApp3(),
+              child: InfoApp(),
             ),
           ),
 
-        ],
-      ),
-    );
-  }
-}
+          Expanded(
+            child: Card(
+              child: Container(
+                padding: EdgeInsets.all(8),
+                margin: EdgeInsets.all(8),
+                child: Center(
+                  child: Image.asset(
+                    "assets/images/first_imag.png",
+                    //fit: BoxFit.fitWidth,
+                    alignment: Alignment.centerLeft,
+                  ),
+                ),
+              ),
+            ),
+          ),
 
-class InfoApp3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Column(
-                children: [
-                  Text('AppName:'),
-                  Text('Version: '),
-                  Text('Build: '),
-
-                ],
-              )
-            ],
-          )
 
         ],
       ),
@@ -74,8 +54,7 @@ class InfoApp3 extends StatelessWidget {
 }
 
 
-
-
+/* ========== class InfoApp =============== */
 class InfoApp extends StatefulWidget {
   @override
   _InfoAppState createState() => _InfoAppState();
@@ -83,43 +62,6 @@ class InfoApp extends StatefulWidget {
 
 class _InfoAppState extends State<InfoApp> {
 
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Column(
-                  children: [
-                    Text('AppName:'),
-                    Text('Version: '),
-                    Text('Build: '),
-
-                  ],
-                )
-              ],
-            )
-
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
-
-
-
-class InfoApp2 extends StatefulWidget {
-  @override
-  _InfoApp2State createState() => _InfoApp2State();
-}
-
-class _InfoApp2State extends State<InfoApp2> {
   String appName = " ";
   String packageName = " ";
   String version = " ";
@@ -127,86 +69,67 @@ class _InfoApp2State extends State<InfoApp2> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        //padding: EdgeInsets.all(20),
-
-        child: Column(
-          children: [
-            Text(
-              'Info',
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 30.0,
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text('Version: '),
+                  Text('Build: '),
+                  Text('Version: '),
+                  Text('Build: '),
+                ],
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    getText1('App Name: '),
-                    //getText1('Package: '),
-                    getText1('Version: '),
-                    getText1('Builder: '),
-                  ],
-                ),
-                FutureBuilder<PackageInfo>(
-                    future: PackageInfo.fromPlatform(),
-                    builder: (context, snapshot) {
-                      String appName = '-';
-                      String version = '-';
-                      String builder = '-';
 
-                      if (snapshot.hasData) {
-                        appName = snapshot.data.appName;
-                        version = snapshot.data.version;
-                        builder = snapshot.data.buildNumber;
-                      }
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('AppName: $appName'),
-                          Text('version: $version'),
-                          Text('builder: $builder'),
-                          //getText2(packageName),
-                          // getText2(version),
-                          // getText2(buildNumber),
-                        ],
-                      );
-                    }),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+              FutureBuilder<PackageInfo>(
+                future: PackageInfo.fromPlatform(),
+                builder: (context, snapshot) {
 
-  Text getText1(String s) {
-    return Text(
-      '${s}',
-      style: TextStyle(
-        color: Colors.black54,
-        fontSize: 22.0,
-      ),
-    );
-  }
+                  String name = '-';
+                  String package = '-';
+                  String version = '-';
+                  String builder = '-';
 
-  Text getText2(String s) {
-    return Text(
-      '${s}',
-      style: TextStyle(
-        color: Colors.black54,
-        fontSize: 22.0,
-        fontWeight: FontWeight.bold,
+                  if (snapshot.hasData) {
+                    name = snapshot.data.appName;
+                    package = snapshot.data.packageName;
+                    version = snapshot.data.version;
+                    builder = snapshot.data.buildNumber;
+                  }
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('$name',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold
+                        ),),
+                      Text('$package',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold
+                        ),),
+                      Text('$version',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold
+                      ),),
+                      Text('$builder',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold
+                        ),),
+                    ],
+                  );
+                },
+              ),
+
+            ],
+          )
+        ],
       ),
     );
   }
@@ -221,7 +144,6 @@ class _InfoApp2State extends State<InfoApp2> {
   Future initStateAsync() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
-    print('init');
     appName = await packageInfo.appName;
     packageName = await packageInfo.packageName;
     version = await packageInfo.version;
@@ -235,3 +157,4 @@ class _InfoApp2State extends State<InfoApp2> {
     super.dispose();
   }
 }
+

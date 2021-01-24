@@ -18,6 +18,7 @@ class _NavigationPageState extends State<NavigationPage> {
   final List<Widget> _children = [
     HomePage(),
     InfoPage(),
+    //ProvaHome(),
     SettingPage(),
   ];
 

@@ -18,11 +18,6 @@ class SettingPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            /*
-            Card(
-              child: Logo(),
-            ),
-            */
 
             Card(
               child: Container(
@@ -38,23 +33,7 @@ class SettingPage extends StatelessWidget {
                 ),
               ),
             ),
-            /*
-            Row(
-              children: [
-                Card(
-                  child: Container(
-                    //height: MediaQuery.of(context).size.height * 0.5,
-                    child: CenterSetting(),
-                  ),
-                ),
-                Card(
-                  child: Container(
-                    child: Text('seconda colonna'),
-                  ),
-                ),
-              ],
-            ),
-*/
+
             Card(
               child: Container(
                 margin: const EdgeInsets.all(10.0),
@@ -74,14 +53,7 @@ class SettingPage extends StatelessWidget {
                 child: SliderZ(),
               ),
             ),
-            /*
 
-            Consumer<Work>(
-                builder: (context, work, child) {
-                  return Text("the value of the consumer is: ${work.workX}");
-                },
-            ),
-            */
           ],
         ),
       ),
@@ -123,16 +95,14 @@ class _CenterSettingState extends State<CenterSetting> {
                       ),
                       Positioned(
                         top: 200 - work.getZ() * 1,
-                        left: centerWidth - 220 + work.getX() * 0.4,
+                        left: centerWidth - 320 + work.getX() * 0.4,
                         //top: maxWidth * work.getX() * 0.01,
                         //left: maxWidth * work.getZ() * 0.01,
                         child: Center(
                           child: Container(
                             color: Color.fromRGBO(0, 0, 255, 0.5),
-                            width: 200,
-                            height: 200,
-                            //alignment: Alignment(200.0, 400.0),
-                            //padding: EdgeInsets.only(top: 100),
+                            width: 300,
+                            height: 300,
                           ),
                         ),
                       ),
@@ -168,7 +138,7 @@ class _TextValesState extends State<TextVales> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text('Percent Radius: '),
+                    Text('Percent Diameter: '),
                     Text('Percent Sharp: '),
                   ],
                 ),

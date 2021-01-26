@@ -1,19 +1,19 @@
-import 'package:flutter/services.dart';
-import 'package:progetto_309131/navigation_page.dart';
-import 'package:progetto_309131/screens/edit_tool/edit_tool.dart';
-import 'package:progetto_309131/screens/info/info_page.dart';
-import 'package:progetto_309131/screens/list_tools/list_page.dart';
-import 'package:progetto_309131/screens/setting/setting_page.dart';
+
+
 import 'package:provider/provider.dart';
+import 'providers/service_tool.dart';
+import 'providers/work.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'package:progetto_309131/providers/service_tool.dart';
-import 'package:progetto_309131/models/work3.dart';
+import 'navigation_page.dart';
 
-import 'providers/work.dart';
-import 'screens/home/home_page.dart';
+import 'screens/edit_tool/edit_tool.dart';
+import 'screens/info/info_page.dart';
+import 'screens/list_tools/list_page.dart';
+import 'screens/setting/setting_page.dart';
+
 
 void main() {
   /*

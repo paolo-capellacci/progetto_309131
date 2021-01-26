@@ -1,10 +1,9 @@
 import 'package:flutter_slidable/flutter_slidable.dart';
-
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart'
+    '';
 import 'package:progetto_309131/providers/service_tool.dart';
-
-
 import 'package:progetto_309131/screens/edit_tool/edit_tool.dart';
 import 'package:progetto_309131/models/tools_enum.dart';
 
@@ -42,7 +41,6 @@ class ListTools extends StatelessWidget {
 
                 child:
                 return Expanded(
-
                   child: Container(
                     color: Colors.white,
                     child: ListView.builder(
@@ -58,8 +56,6 @@ class ListTools extends StatelessWidget {
                           child: Slidable(
                             actionPane: SlidableDrawerActionPane(),
                             actionExtentRatio: 0.25,
-
-
                             child: Card(
                               color: isSelected ? Colors.white70 : null,
                               child: Column(
@@ -71,16 +67,17 @@ class ListTools extends StatelessWidget {
                                         new Center(
                                           child: tool.cool
                                               ? new Container(
-                                            child: Image.asset(
-                                              'assets/images/coll.png',
-                                              fit: BoxFit.fitWidth,
-                                              alignment: Alignment.centerLeft,
-                                              width: 20,
-                                            ),
-                                          )
+                                                  child: Image.asset(
+                                                    'assets/images/coll.png',
+                                                    fit: BoxFit.fitWidth,
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    width: 20,
+                                                  ),
+                                                )
                                               : new Container(
-                                            width: 20,
-                                          ),
+                                                  width: 20,
+                                                ),
                                         ),
                                         Container(
                                           child: Image.asset(
@@ -99,14 +96,12 @@ class ListTools extends StatelessWidget {
                                               ),
                                               Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.end,
+                                                    CrossAxisAlignment.end,
                                                 children: [
                                                   Text(
-                                                    'Name:',
+                                                    'Name: ',
                                                   ),
-                                                  Text(
-                                                    'id: ',
-                                                  ),
+                                                  //Text('id: ',),
                                                   Text(
                                                     'Diameter: ',
                                                   ),
@@ -126,15 +121,13 @@ class ListTools extends StatelessWidget {
                                               ),
                                               Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     tool.name,
                                                   ),
-                                                  Text(
-                                                    tool.id.toString(),
-                                                  ),
-                                                  // campo da eliminate
+                                                  //Text(tool.id.toString(),),
+
                                                   Text(
                                                     tool.diameter.toString(),
                                                   ),
@@ -144,7 +137,9 @@ class ListTools extends StatelessWidget {
                                                   Text(
                                                     tool.sharp.toString(),
                                                   ),
-                                                  Text(tool.material.text),
+                                                  Text(
+                                                    tool.material.text,
+                                                  ),
                                                   Text(
                                                     tool.teeth.toString(),
                                                   ),
@@ -260,40 +255,42 @@ class ListTools extends StatelessWidget {
                                 onTap: () {
                                   print('Edit');
 
-                                  Navigator.of(context)
-                                      .push(MaterialPageRoute(
+                                  Navigator.of(context).push(MaterialPageRoute(
                                       builder: (_) => EditTool(
-                                        tool: tools[index],
-                                      )));
-
+                                            tool: tools[index],
+                                          )));
                                 },
                               ),
                               IconSlideAction(
                                 caption: 'Delete',
                                 color: Colors.red,
                                 icon: Icons.delete,
-
                                 onTap: () {
                                   print('Delete');
 
                                   context.read<ServiceTool>().delete(tool.id);
-
-
                                 },
-
-
                               ),
                             ],
-
                           ),
-
                         );
                       },
                     ),
                   ),
-
                 );
               },
+            ),
+            FloatingActionButton(
+              onPressed: () {
+                context
+                    .read<ServiceTool>()
+                    .insert(); // .update(121) .delete(122);
+
+                print('insered tool new');
+                //Navigator.of(context).pushNamed('/editTool');
+              },
+              child: Icon(Icons.add),
+              backgroundColor: Colors.blue,
             ),
           ],
         ),

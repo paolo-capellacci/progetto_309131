@@ -1,16 +1,17 @@
-//import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'package:progetto_309131/models/tool.dart';
+import 'package:provider/provider.dart';
+
 import 'package:progetto_309131/providers/service_tool.dart';
+import 'package:progetto_309131/providers/work.dart';
 
 import 'package:progetto_309131/models/materials_enum.dart';
 import 'package:progetto_309131/models/tools_enum.dart';
-import 'package:progetto_309131/providers/work.dart';
+import 'package:progetto_309131/models/tool.dart';
 
 import 'package:progetto_309131/screens/widget/logo.dart';
-import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -111,7 +112,7 @@ class TopHome extends StatelessWidget {
                                 fit: BoxFit.fitWidth,
                                 alignment: Alignment.center,
                                 height:
-                                    MediaQuery.of(context).size.height * 0.13,
+                                    MediaQuery.of(context).size.height * 0.10,
                               ),
                             )
                           : new Container(),

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
-import 'package:progetto_309131/models/materials_enum.dart';
-import 'package:progetto_309131/models/tools_enum.dart';
-import 'package:progetto_309131/providers/service_tool.dart';
-import 'package:progetto_309131/providers/work.dart';
-import 'package:progetto_309131/screens/widget/logo.dart';
+
 import 'package:provider/provider.dart';
+import 'package:progetto_309131/providers/work.dart';
+
+import 'package:progetto_309131/models/tools_enum.dart';
+import 'package:progetto_309131/screens/widget/logo.dart';
 
 class SettingPage extends StatelessWidget {
   @override

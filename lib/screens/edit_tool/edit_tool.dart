@@ -1,11 +1,12 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+
 import 'package:progetto_309131/models/tools_enum.dart';
 import 'package:progetto_309131/models/tool.dart';
-
 import 'package:progetto_309131/providers/service_tool.dart';
-import 'package:provider/provider.dart';
 
 class EditTool extends StatefulWidget {
   final Tool tool;
@@ -234,10 +235,18 @@ class _EditToolState extends State<EditTool> {
                   ),
                   Spacer(),
                   Container(
-                    alignment: Alignment.topRight,
-                    //width: MediaQuery.of(context).size.width * 0.8,
+                    //alignment: Alignment.topRight,
+                    width: MediaQuery.of(context).size.width * 1,
+
                     child: ElevatedButton(
+
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreenAccent),
+                      ),
+
+
                       child: Text('Salva'),
+
                       onPressed: () {
                         final String diameter =
                             validateNumber(_diameterTC.value.text);
@@ -246,11 +255,6 @@ class _EditToolState extends State<EditTool> {
                         final String length =
                             validateNumber(_lengthTC.value.text);
 
-                        /*
-                        _diameterTC = TextEditingController(text: diameter);
-                        _sharpTC = TextEditingController(text: sharp);
-                        _lengthTC = TextEditingController(text: length);
-                        */
 
                         print('id: ${widget.tool.id} ');
 
@@ -268,6 +272,7 @@ class _EditToolState extends State<EditTool> {
                       },
                     ),
                   ),
+                  /*
                   Container(
                     width: MediaQuery.of(context).size.width * 1,
                     child: ElevatedButton(
@@ -276,7 +281,11 @@ class _EditToolState extends State<EditTool> {
                         Navigator.of(context).pop();
                       },
                     ),
+
+
                   ),
+
+        */
                 ],
               ),
             ),

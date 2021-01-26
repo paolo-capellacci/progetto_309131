@@ -1,10 +1,9 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+
 import 'package:package_info/package_info.dart';
 import 'package:progetto_309131/screens/widget/logo.dart';
-import 'package:progetto_309131/screens/widget/mark.dart';
 
 class InfoPage extends StatelessWidget {
   @override

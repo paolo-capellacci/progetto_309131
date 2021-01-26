@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:progetto_309131/prova.dart';
-import 'package:progetto_309131/prova2.dart';
-import 'package:progetto_309131/screens/home/home_page.dart';
-import 'package:progetto_309131/screens/info/info_page.dart';
-import 'package:progetto_309131/screens/setting/setting_page.dart';
+
+import 'screens/home/home_page.dart';
+import 'screens/info/info_page.dart';
+import 'screens/setting/setting_page.dart';
 
 class NavigationPage extends StatefulWidget {
   @override

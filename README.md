@@ -76,11 +76,15 @@ Risoluzione equazioni di secondo grado passante per 3 punti: https://www.lezioni
 Poi ho implementato il tutto usando Colab.
 
 import numpy as np
+
 import matplotlib.pyplot as plt
 
 M1 = np.array([[1,1,1],[25,5,1], [100, 10, 1]])
+
 M2 = np.array([0.2, 0.1, 0.05])
+
 print(M1)
+
 print(M2)
 
 np.linalg.solve(M1, M2)

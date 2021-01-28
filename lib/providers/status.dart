@@ -2,18 +2,29 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 class Status extends ChangeNotifier {
 
-  int selectId = 0;
 
-  void setId(int id) {
-    selectId = id;
+
+
+
+  void setId(int id) async {
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.setInt('id', id);
 
     notifyListeners();
   }
-  int getId() {
 
-    return selectId;
+
+  Future<int> getId() async {
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    return prefs.getInt('id');
   }
 
 

@@ -89,7 +89,7 @@ print(M2)
 
 np.linalg.solve(M1, M2)
 
-
+![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/FresaHm.png)
 
 ## Getting Started
 

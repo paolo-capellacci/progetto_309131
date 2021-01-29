@@ -2,6 +2,8 @@
 
 Speed Tools
 
+![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/app_speed_tools.png)
+
 ## Campo di utilizzo dell'App
 
 Questa app è da considerarsi un'utiliti che permette di calcolare le velocità della rotazione ed avanzamenti degli utensili come frese e punte, utilizzate su centri di lavoro cnc ma anche su macchine utensili manuali.
@@ -12,7 +14,7 @@ L'app mette a disposizione una pagina iniziale `Home`, una pagina `List Tools`, 
 Inoltre la pagina `Home`, dipone di un menù in basso `BottomNavigationBar` che permette di ottenre informazioni sulla versione dell'app, e di settare la quantità di materiale da esportare sia radiale che lungo l'asse `Z`.
 La pagina `Home`, nella parte in alto, mostra l'utensile selezionato con le sue caratteristiche. Nella parte in basso vi è la possibilità di selezionare il tipo di materiale tramite un menù a discesa. Nella parte centrale vi è un riepologo della quantità del materiale da esportare e un pulsate che permette di avviare il calcolo delle velocità che vengono riportare come velocità di rotazione in giri al minuto, di avanzamento verso l'asse `XY` in millimetri al minuto ed eventuale velocità di avanzamento rispetto l'asse `Z`.
 
-![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/app_speed_tools.png)
+![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/home.png)
 
 ## Materiale dell'utesile
 Le varie tiplogie di materiale da lavorare sono state inserite un un tipo enumerato con i seguenti tipi:
@@ -50,12 +52,22 @@ le tiplogie di materile da lavorare vanno dal Legno, ai materiali Plasiti, all'a
 ## SettingPage
 Questa pagina nella parte in alto, mostra la figura di un'utensile ed eventuale box quadrato, che all'inizio e quasi totalmente nascosto che che si può spostare tramite uno `Slider` per impostare la quantità del materiale da esportare in percentuale `radiale` ed uno `Slider` per impostare la quantità di materile da esportare rispetto l'asse `Z`.
 
+![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/setting.png)
+
 ## InfoPage
 Questa pagina mostra mostra la versione dell'app ed in numero della Build oltre al logo ed un'immagine che mostra l'uso degli utensili.
+Per prelevare le informazioni del numero di versione e di bild si è fatto uso della libreria `package_info: ^0.4.3+2`, si è fatto poi uso dell' `@override` del metodo `void initState()` che a sua volta richiama un metodo `async` dato che deve attendere le info dall'app.
+Per avere anche la versione del motore di calcolo ho inserito una pagina php che mi torna il numero della versione. La scelta di mettere sul web il calcolo è stata per evitare di aggiornare la app nello store solo per un aggiornamento che riguarda il calcolo. Così facendo è possibile fare delle modifice, perfezzionare il calcolo senza chiedere all'utente di aggiornare l'app. 
+
+![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/info.png)
+
 
 ## ListTools
 Questa pagina mostra la lista delgli utensili, libreria utensili, dove in ogni cella viene mostrato l'immagine dell'utensile cossispondente, il nome dell'utensile, e le carattristiche fisiche dell'utensile. In fondo alla pagine vi è un pulsante che permette di aggiungere unovi utensili con parametri di default.
 Le celle della lista dispongono del `GestureDetector` che permetta la selezione di una cella dove l'utensile al suo interno rarà quello che poi ritroviamo nella pagina `Home`. Inoltre le celle dispongono di un effetto `Slidable` che permette di mostrate un menu nascosto trascinando la cella verso sinistra. Il menu mette a disposizione il comando `Delete` per eliminare quell'utensile, ed il pulsante `Edit` che permette di personolizzare l'utensile portandolo nella pagine Edit.
+L'esempio di codice per lo Slidable è stao reperito da `https://stackoverflow.com/questions/46651974/swipe-list-item-for-more-options-flutter`
+
+![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/listPage.png)
 
 ## EditTool
 Questa pagina mostra il nome dell'utensile un un campo `TextField` e l'immagine, la quale si può cambiare tramite il menu a discesa che si trova più in basso. Sotto l'immagine vi è un campo `TextField` che permette di mostrare il `diamentro` e all'occorenza si può modificare eventuele valore. Anche sul lato destro dell'utensile vi sono dei `TextField` che mostrano la lunghezza del tagliente `Flut` che la lunghezza dell'utensile, anch'essi modificabili.
@@ -63,6 +75,8 @@ Da notare il campo `TextField` del nome dell'utensile all'occorenza di una modif
 Nella parte sotto l'immagine partendo da sinistra vi è un "Slider" che permette di attivare o disattivare eventuale raffraddamento.
 Al centro in basso vi è un menù a discesa, `DropdownButton`, che permette di selezionare il numero di taglienti.
 A destra un menù a discesa, `DropdownButton`, che permette di selezionare i tipi di materiele utensile. vedi  `Materiale dell'utesile`.
+
+![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/edit.png)
 
 
 ## validateNumber
@@ -123,26 +137,21 @@ Poi ho implementato il tutto usando Colab.
 
     # stampo la matrice
     print(M1)
+    [[  1   1   1]
+    [ 25   5   1]
+    [100  10   1]]
+    
     # stampo il vettore
     print(M2)
+    [0.2  0.1  0.05]
     
     # ottengo i valori a b c
     np.linalg.solve(M1, M2)
+    
+    >>> array([ 0.00166667, -0.035     ,  0.23333333])
+    
 
-![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/FresaHm.png)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 
 
 ## rotazione dello schermo bloccata 
@@ -160,16 +169,32 @@ per bloccare la rotazione dello schermo si è aggiunta nel main
   		<string>UIInterfaceOrientationLandscapeRight</string>
   	</array>
   	
-  	
-## ToDo
-    sistemare il calcolo delle velocità nel lato web
-    convalidare i numeri decimali e approssimarli a 2 decimali
+
     
     
-## link
-   https://stackoverflow.com/questions/46651974/swipe-list-item-for-more-options-flutter
+## Riepilogo dei link
+Slidable è stao reperito da 
+    `https://stackoverflow.com/questions/46651974/swipe-list-item-for-more-options-flutter`
    
-   per costruire funzioni non lineari
-   https://www.mathepower.com/it/sistemiequazionilineari.php
-   https://computer4dummy.altervista.org/programmazione-guide-alla-programmazione/python-data-analisi/numpy-per-python/risolvere-un-sistema-lineare/
+Per costruire funzioni non lineari
+   `https://www.mathepower.com/it/sistemiequazionilineari.php`
+   `https://computer4dummy.altervista.org/programmazione-guide-alla-programmazione/python-data-analisi/numpy-per-python/risolvere-un-sistema-lineare/`
+   
+   
+   
+   
+   
+   
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
    

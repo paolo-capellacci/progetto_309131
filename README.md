@@ -12,6 +12,8 @@ L'app mette a disposizione una pagina iniziale `Home`, una pagina `List Tools`, 
 Inoltre la pagina `Home`, dipone di un menù in basso `BottomNavigationBar` che permette di ottenre informazioni sulla versione dell'app, e di settare la quantità di materiale da esportare sia radiale che lungo l'asse `Z`.
 La pagina `Home`, nella parte in alto, mostra l'utensile selezionato con le sue caratteristiche. Nella parte in basso vi è la possibilità di selezionare il tipo di materiale tramite un menù a discesa. Nella parte centrale vi è un riepologo della quantità del materiale da esportare e un pulsate che permette di avviare il calcolo delle velocità che vengono riportare come velocità di rotazione in giri al minuto, di avanzamento verso l'asse `XY` in millimetri al minuto ed eventuale velocità di avanzamento rispetto l'asse `Z`.
 
+![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/app_speed_tools.png)
+
 ## Materiale dell'utesile
 Le varie tiplogie di materiale da lavorare sono state inserite un un tipo enumerato con i seguenti tipi:
 

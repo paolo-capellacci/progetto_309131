@@ -150,8 +150,31 @@ Poi ho implementato il tutto usando Colab.
     
     >>> array([ 0.00166667, -0.035     ,  0.23333333])
     
+    x = np.array([0,1,2,3,4,5,6,7,8,9,10])
+    y = np.array([])
+    
+    for i in range(len(x)):
+    y = np.append(y, ((result[0] * x[i] * x[i]) + (result[1] * x[i]) + result[2]))
 
+    plt.scatter(x, y)
+    
 
+![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/grafico1.png)
+
+altre forme di funzioni non lineari che approssimano molto il calcolo le ho ottenute cosi
+       
+    x = np.array([0,1,2,3,4,5,6,7,8,9,10])
+    yd = np.array([])
+
+    def scaleSharp(n):
+        return (1/n + 1)
+
+    for i in x:
+        yd = np.append(yd, scaleSharp(x[i]))
+ 
+    plt.scatter(x, yd)
+
+![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/grafico2.png)
 
 
 ## rotazione dello schermo bloccata 

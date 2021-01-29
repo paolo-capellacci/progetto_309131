@@ -43,71 +43,89 @@ Le varie tiplogie di materiale da lavorare anch'esse state inserite un un tipo e
       TemperateSteel,
     }
     
-le tiplogie di materile da lavorare vanno dal Legno, ai materiali Plasiti, all'aluminio, nella quale tipologia è da considerare tutti que materilai non ferrisi, per passare al materiale ferroso, agli acciai ed acciai con trattamenti termici.
+le tiplogie di materile da lavorare vanno dal Legno, ai materiali Plasiti, all'aluminio, nella quale tipologia è da considerare tutti que materilai non ferrosi, per passare al materiale ferroso, agli acciai ed acciai con trattamenti termici.
 
 ## SettingPage
-Questa pagina nella parte mostra la figura di un'utensile ed eventuale box quadrato, che all'inizio e quasi totalmente nascosto che che si può spostare tramite uno "Slider" per impostare la quantità del materiale da esportare in percentuale radiale ed uno "Slider" per impostare la quantità di materile da esportare rispetto l'asse Z.
+Questa pagina nella parte in alto, mostra la figura di un'utensile ed eventuale box quadrato, che all'inizio e quasi totalmente nascosto che che si può spostare tramite uno `Slider` per impostare la quantità del materiale da esportare in percentuale `radiale` ed uno `Slider` per impostare la quantità di materile da esportare rispetto l'asse `Z`.
 
 ## InfoPage
 Questa pagina mostra mostra la versione dell'app ed in numero della Build oltre al logo ed un'immagine che mostra l'uso degli utensili.
 
 ## ListTools
 Questa pagina mostra la lista delgli utensili, libreria utensili, dove in ogni cella viene mostrato l'immagine dell'utensile cossispondente, il nome dell'utensile, e le carattristiche fisiche dell'utensile. In fondo alla pagine vi è un pulsante che permette di aggiungere unovi utensili con parametri di default.
-Le celle della lista dispongono del "GestureDetector" che permetta la selezione di una cella dove l'utensile al suo interno rarà quello che poi ritroviamo nella pagina "Home". Inoltre le celle dispongono di un effetto "Slidable" che permette di mostrate un menu nascosto trascinando la cella verso sinistra. Il menu mette a disposizione il comando "Delete" per eliminare quell'utensile, ed il pulsante "Edit" che permette di personolizzare l'utensile portandolo nella pagine Edit.
+Le celle della lista dispongono del `GestureDetector` che permetta la selezione di una cella dove l'utensile al suo interno rarà quello che poi ritroviamo nella pagina `Home`. Inoltre le celle dispongono di un effetto `Slidable` che permette di mostrate un menu nascosto trascinando la cella verso sinistra. Il menu mette a disposizione il comando `Delete` per eliminare quell'utensile, ed il pulsante `Edit` che permette di personolizzare l'utensile portandolo nella pagine Edit.
 
 ## EditTool
-Questa pagina mostra il nome dell'utensile e la sua immagine, la quale si può cambiare nel caso lo si vuole cambiare tramite il menu a discesa che si trova più in basso. Sotto l'immagine vi è un campo "TextField" che permette di mostrare il diamentro e all'occorenza di modificare eventuele valore. Anche sul lato destro dell'utensile vi sono dei "TextField" che mostrano la lunghezza del tagliente "Flut" che la lunghezza dell'utensile, anch'essi modificabili.
-Da notare il campo "TextField" del nome dell'utensile all'occorenza di una modifica l'app mette a disposizione la tastiera classica con i tasti alfanumerici, mentre i campi "TextField" del diamentro e della lunghezza del tagliente e dell'utensile mostrano la tastiera numerica con il punto decimale. Per questi campi è stata implementata una funzione che permette di controllare che i valori siano esatti, in caso contrario provvede a renderli conformi, vedi nota "validateNumber".
+Questa pagina mostra il nome dell'utensile un un campo `TextField` e l'immagine, la quale si può cambiare tramite il menu a discesa che si trova più in basso. Sotto l'immagine vi è un campo `TextField` che permette di mostrare il `diamentro` e all'occorenza si può modificare eventuele valore. Anche sul lato destro dell'utensile vi sono dei `TextField` che mostrano la lunghezza del tagliente `Flut` che la lunghezza dell'utensile, anch'essi modificabili.
+Da notare il campo `TextField` del nome dell'utensile all'occorenza di una modifica l'app mette a disposizione la tastiera classica con i tasti alfanumerici, mentre i campi `TextField` del diamentro e della lunghezza del tagliente e dell'utensile mostrano la tastiera numerica con il punto decimale. Per questi campi è stata implementata una funzione che permette di controllare che i valori siano esatti, in caso contrario provvede a renderli conformi, vedi nota `validateNumber`.
 Nella parte sotto l'immagine partendo da sinistra vi è un "Slider" che permette di attivare o disattivare eventuale raffraddamento.
-Al centro in basso vi è un menù a discesa, "DropdownButton", che permette di selezionare il numero di taglienti.
-A destra un menù a discesa, "DropdownButton", che permette di selezionare i tipi di materiele utensile. vedi  "Materiale dell'utesile".
+Al centro in basso vi è un menù a discesa, `DropdownButton`, che permette di selezionare il numero di taglienti.
+A destra un menù a discesa, `DropdownButton`, che permette di selezionare i tipi di materiele utensile. vedi  `Materiale dell'utesile`.
 
 
 ## validateNumber
-la funzione "String validateNumber(String s)", prende una stringa e restituisce una stringa. 
+la funzione `String validateNumber(String s)`, prende una stringa e restituisce una stringa. 
 In un primo passaggio controlla se il separatore decimale, punto, sia il punto e non la virgola, dato che la tastiera Apple mette a disposizione solo la virgola, mentre Android mette a disposizione sia il punto che la virgola, e lo trasforma tutto in punto. 
 Successivamente viene fatto uno split per separare ad ogni punto. Questo pechè l'utente potrebbe inserire più di un punto e in tal caso mi darebbe un'errore. 
 Così facendo ricompongo la stringa con la parte intera, un punto, e la parte decimane. 
 Successivamente viene convertito da stringa in double al fine di fare poi una successiva conversione da double in stringa troncando i decimanli a solo 2 unità.
 Poi viene tornata.
 
-Nell'implementazione dell'app è stato inserito un "DropdownButton" menù a discesa per selezionare il tipo di materiale da lavorare 
+Nell'implementazione dell'app è stato inserito un `DropdownButton` menù a discesa per selezionare il tipo di materiale da lavorare 
 
 
 ## Logica dell'App
-L'app permette di salvare i dati nel db locale tramite "sqflite: ^1.3.2".
-Nel main vi è il MultiProvider che mette a disposizione a tutto l'albero dell'app <ServiceTool> e <Work>, tramite "ChangeNotifierProvider", dove ServiceTool implementa anche il primo utensile. Un utensile deve essere comunque sempre presente.
-Quindi all'avvio dell'app viene istanziato un'oggetto Tool e inserito nel db. La classe Tool extends ChangeNotifier che a sua volta mette a disposizione di chi ascolta eventuli nuovi inserimenti.
-La pagina Home ha quindi un tool da mostrare e la relativa ListTools ha il primo utensile.
+L'app permette di salvare i dati nel db locale tramite la liberiria `sqflite: ^1.3.2`.
+Nel main vi è il `MultiProvider` che mette a disposizione a tutto l'albero dell'app `<ServiceTool>`, `<GetEngineVersion>` e `<Work>`.
+Il `ChangeNotifierProvider`, con `ServiceTool` implementa anche il primo utensile. Un utensile deve essere comunque sempre presente.
+Il `ChangeNotifierProvider`, con `GetEngineVersion` mette a disposizione un metodo per servire il numero di versione del motore di calcolo su file php.
+Il `ChangeNotifierProvider`, con `Work` implementa una classe per tenere i dati delle percentuali di lavorazione e del tipo di materiale da lavorare.
+
+Quindi all'avvio dell'app viene istanziato un'oggetto `Tool` e inserito nel db. La classe `Tool extends ChangeNotifier` che a sua volta mette a disposizione di chi ascolta eventuli nuovi inserimenti.
+La pagina Home ha quindi un tool da mostrare e la relativa `ListTools` ha il primo utensile.
 Dalla Lista Tool si possono inserire altri utensili e ad ongni nuovo utensile viene annotato l'aggiornamento e rigenerata la lista Tool.
 Dalla pagina ListTools si può selezionare un utensile e modificarlo in EditPage. Anche quì quando vengono fatte le modifiche e premuto il pulsante salva le modifiche aggiornano la classe ServiceTool ed il db.
  
-La pagina Setting "SettingPage", ulilizza i dato della classe "work" che si aggiornano in base alle preferenze delle lavorazioni e tali dati verranno poi utilizzati per il calcolo delle velocità utensile.
+La pagina Setting `SettingPage`, ulilizza i dato della classe "work" che si aggiornano in base alle preferenze delle lavorazioni e tali dati verranno poi utilizzati per il calcolo delle velocità utensile.
 
 Una volta definito l'utensile, la lavorazione ed il tipo di materiale da lavorare dalla pagina Home si può avviare il calcolo.
-Il calcolo viene fatto da una risorsa web. Per l'occasione ho implementato una pagina php in uno spazio di Altervista, che avevo già, alla quale vengono passate tramite una chiamanta POST tutte le variabili sin ora settate. La pagina php ritorna una stringa con tre numeri interi separati da virgola.
-Per rimanere in tema avrei dovuto trasformare in JSON per ricavare i dati da un dizionario, ma mi sembrava un calcolo superfluo e mi è sembrato più performante.
-Una volta ricevuto il corpo, "response.body", faccio split, "final result = response.body.split(',');" e popolo i campi dei valori delle velocità.
+Il calcolo viene fatto da una risorsa web. Per l'occasione ho implementato una pagina `php` in uno spazio di `Altervista`, che avevo già, alla quale vengono passate tramite una chiamanta `POST` tutte le variabili sin ora settate. La pagina php ritorna una stringa con tre numeri interi separati da virgola.
+Per rimanere in tema avrei dovuto trasformare in `JSON` per ricavare i dati da un dizionario, ma mi sembrava un calcolo superfluo e mi è sembrato più performante.
+Una volta ricevuto il corpo, `response.body`, faccio `split`, 
+      
+    final result = response.body.split(','); 
+e popolo i campi dei valori delle velocità.
 
-Il calcolo fatto dalla pagina php in parte sono calcoli lineari, come il diametro dell'utensile è un valore lineare dato che la velocità decresce con l'aumentare del diamentro ed aumenta se il diametro diminuisce, ma rimane comunque lineare. 
-Valori come la percentuale radiale dell'utensile, posso dire che mediamente l'avanzamento si aggira su 0.05mm - 0.1mm per tagliente, ma se la percentuale è molto piccola, 5% o 10%, posso andare il doppio di quando esporto il 50%, ma tra il 50% ed il 100% non ci sarà la stessa proporzione. Quindi mi sono fatto un grafico accettabile dell'andamento tra percentuale radiale ed avenzamento, poi ho preso un punto al massimo, 100%, un al minimo, 5%, ed uno intermendio al 50%. Usando questi tre valori discreti ho poi creato una funzione contiuna che mi permette di calcolare in modo esatto la velocità per ogni unumero percentule. Per il calcolo ho usato una funzione di secondo grado, non lineare, dove per avere i giusti valori senza fare un sistema manualmente ho utilizzato questa risorsa web https://www.mathepower.com/it/sistemiequazionilineari.php ma dopo diversi tentativi a volte dava valori non sempe esatti allora ho fatto uso di Python prendendo esempio da questa risorsa https://computer4dummy.altervista.org/programmazione-guide-alla-programmazione/python-data-analisi/numpy-per-python/risolvere-un-sistema-lineare/. 
-Risoluzione equazioni di secondo grado passante per 3 punti: https://www.lezionidimatematica.net/Parabola/lezioni/parabola_11.htm
+Il calcolo fatto dalla pagina `php` in parte sono calcoli `lineari`, come il diametro dell'utensile è un valore lineare dato che la velocità decresce con l'aumentare del diamentro ed aumenta se il diametro diminuisce, ma rimane comunque lineare. 
+Valori come la percentuale radiale dell'utensile, posso dire che mediamente l'avanzamento si aggira su 0.05mm - 0.1mm per tagliente, ma se la percentuale è molto piccola, 5% o 10%, posso andare il doppio di quando esporto il 50%, ma tra il 50% ed il 100% non ci sarà la stessa proporzione. Quindi mi sono fatto un grafico accettabile dell'andamento tra percentuale radiale ed avenzamento, poi ho preso un punto al massimo, 100%, un al minimo, 5%, ed uno intermendio al 50%. Usando questi tre valori discreti ho poi creato una funzione contiuna che mi permette di calcolare in modo esatto la velocità per ogni unumero percentule. Per il calcolo ho usato una funzione di secondo grado, non lineare, dove per avere i giusti valori senza fare un sistema manualmente ho utilizzato questa risorsa web 
+
+    https://www.mathepower.com/it/sistemiequazionilineari.php 
+
+ma dopo diversi tentativi a volte dava valori non sempe esatti allora ho fatto uso di Python prendendo esempio da questa risorsa 
+
+    https://computer4dummy.altervista.org/programmazione-guide-alla-programmazione/python-data-analisi/numpy-per-python/risolvere-un-sistema-lineare/. 
+Risoluzione equazioni di secondo grado passante per 3 punti: 
+    
+    https://www.lezionidimatematica.net/Parabola/lezioni/parabola_11.htm
 
 Poi ho implementato il tutto usando Colab.
 
-import numpy as np
+    # importo le librerie sia per i caloli matriciali che per il plot glafico
+    import numpy as np
+    import matplotlib.pyplot as plt
 
-import matplotlib.pyplot as plt
+    # definisco la matrice con i valori di input
+    M1 = np.array([[1,1,1],[25,5,1], [100, 10, 1]])
+    # definisco il vettore con i dati di output
+    M2 = np.array([0.2, 0.1, 0.05])
 
-M1 = np.array([[1,1,1],[25,5,1], [100, 10, 1]])
-
-M2 = np.array([0.2, 0.1, 0.05])
-
-print(M1)
-
-print(M2)
-
-np.linalg.solve(M1, M2)
+    # stampo la matrice
+    print(M1)
+    # stampo il vettore
+    print(M2)
+    
+    # ottengo i valori a b c
+    np.linalg.solve(M1, M2)
 
 ![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/FresaHm.png)
 

@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "FresaHss.png",
+      "filename" : "HssCutter.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "FresaHss@2x.png",
+      "filename" : "HssCutter@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "FresaHss@3x.png",
+      "filename" : "HssCutter@3x.png",
       "scale" : "3x"
     }
   ],

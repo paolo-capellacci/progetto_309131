@@ -104,7 +104,7 @@ class _EditToolState extends State<EditTool> {
                       /* image tool */
                       Center(
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.4,
+                          height: MediaQuery.of(context).size.height * 0.3,
                           //width: MediaQuery.of(context).size.width * 0.4,
 
                           child: Image.asset(
@@ -118,21 +118,23 @@ class _EditToolState extends State<EditTool> {
 
                       /* image cool */
                       Positioned(
-                        top: 80,
-                        left: 70,
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.25,
-                          width: MediaQuery.of(context).size.width * 0.15,
-                          child: _cool
-                              ? new Container(
-                                  child: Image.asset(
-                                    'assets/images/coll.png',
-                                    fit: BoxFit.fitWidth,
-                                    alignment: Alignment.center,
-                                    //height: MediaQuery.of(context).size.height * 0.15,
-                                  ),
-                                )
-                              : new Container(),
+                        top: MediaQuery.of(context).size.height * 0.13,
+                        left: MediaQuery.of(context).size.width * 0.25,
+                        child: Center(
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.15,
+                            width: MediaQuery.of(context).size.width * 0.1,
+                            child: _cool
+                                ? new Container(
+                                    child: Image.asset(
+                                      'assets/images/coll.png',
+                                      fit: BoxFit.fitWidth,
+                                      alignment: Alignment.center,
+                                      //height: MediaQuery.of(context).size.height * 0.15,
+                                    ),
+                                  )
+                                : new Container(),
+                          ),
                         ),
                       ),
                       Positioned(
@@ -175,7 +177,7 @@ class _EditToolState extends State<EditTool> {
 
                   /* label diameter */
                   Container(
-                    width: 60,
+                    width: MediaQuery.of(context).size.width * 0.1,
                     child: TextField(
                       keyboardType: TextInputType.numberWithOptions(
                           signed: false, decimal: true),

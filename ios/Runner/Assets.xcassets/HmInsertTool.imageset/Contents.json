@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "FresaHm.png",
+      "filename" : "HmInsertTool.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "FresaHm@2x.png",
+      "filename" : "HmInsertTool@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "FresaHm@3x.png",
+      "filename" : "HmInsertTool@3x.png",
       "scale" : "3x"
     }
   ],

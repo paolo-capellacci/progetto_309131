@@ -91,13 +91,12 @@ class _InfoAppState extends State<InfoApp> {
               FutureBuilder<PackageInfo>(
                 future: PackageInfo.fromPlatform(),
                 builder: (context, snapshot) {
-                  String name = '-';
+
                   String package = '-';
                   String version = '-';
                   String builder = '-';
 
                   if (snapshot.hasData) {
-                    name = snapshot.data.appName;
                     package = snapshot.data.packageName;
                     version = snapshot.data.version;
                     builder = snapshot.data.buildNumber;
@@ -106,12 +105,7 @@ class _InfoAppState extends State<InfoApp> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      /*
-                      Text(
-                        '$name',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      */
+
                       Text(
                         '$package',
                         style: TextStyle(fontWeight: FontWeight.bold),
@@ -126,16 +120,9 @@ class _InfoAppState extends State<InfoApp> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                      //Text('aa'),
+
                       EngineVersion(),
 
-                      // ElevatedButton(
-                      //   child: Text('Calcola'),
-                      //   onPressed: ()  {
-                      //     final engine =  GetEngineVersion().getEngine();
-                      //     print(engine);
-                      //   },
-                      // ),
                     ],
                   );
                 },

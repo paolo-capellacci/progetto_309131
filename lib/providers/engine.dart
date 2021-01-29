@@ -8,8 +8,6 @@ class GetEngineVersion extends ChangeNotifier {
 
   String version = 'no conection';
 
-
-
   Future<String>getVersion() async {
     print('eeee');
     //notifyListeners();
@@ -28,5 +26,4 @@ class GetEngineVersion extends ChangeNotifier {
     return version;
   }
 
-  String getEngine() {return version;}
 }

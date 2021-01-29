@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
@@ -79,7 +78,6 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
 
 class TopHome extends StatelessWidget {
   final Tool tool;
@@ -192,39 +190,57 @@ class CenterHome extends StatelessWidget {
     return Consumer<CalcolaNotifier>(
       builder: (BuildContext context, value, Widget child) {
         return Container(
-          child: Row(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Spacer(),
-              Column(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Text('Spindle Speed: '),
-                  Text('Work Speed xy: '),
-                  Text('Work Speed z: '),
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text('${value.speed1} g/m: '),
-                  Text('${value.speed2} mm/s:'),
-                  Text('${value.speed3} mm/s:'),
-                ],
-              ),
-              Spacer(),
-              if (value.loading)
-                Center(
-                  child: CircularProgressIndicator(),
-                )
-              else
-                Column(
-                  children: [
-                    Text('Diameter: ${context.watch<Work>().getX()} %'),
-                    Text('         Flut: ${context.watch<Work>().getZ()} %'),
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Spacer(),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Text('Spindle Speed: '),
+                      Text('Work Speed xy: '),
+                      Text('Work Speed z: '),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Text(
+                        '${value.speed1}',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        '${value.speed2}',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        '${value.speed3}',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(' g/m '),
+                      Text(' mm/s'),
+                      Text(' mm/s'),
+                    ],
+                  ),
+                  Spacer(),
+                  if (value.loading)
+                    Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  else
                     ElevatedButton(
                       child: Text('Calcola'),
                       onPressed: () async {
@@ -233,11 +249,25 @@ class CenterHome extends StatelessWidget {
                         context.read<CalcolaNotifier>().calcola(tool, work);
                       },
                     ),
-                  ],
-                ),
-              Spacer(),
+                  Spacer(),
 
-              //WhidgetSwitch(),//widget.tool.cool),
+                  //WhidgetSwitch(),//widget.tool.cool),
+                ],
+              ),
+              Row(
+                children: [
+                  Spacer(),
+                  Text('Diameter: '),
+                  Text('${context.watch<Work>().getX()}',
+                    style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text('%             '),
+                  Text('Flut: '),
+                  Text('${context.watch<Work>().getZ()}',
+                    style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text(' %'),
+                  Spacer(),
+                ],
+              ),
             ],
           ),
         );

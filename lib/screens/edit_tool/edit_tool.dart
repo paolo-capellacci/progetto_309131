@@ -241,7 +241,7 @@ class _EditToolState extends State<EditTool> {
                     child: ElevatedButton(
 
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreenAccent),
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
                       ),
 
 

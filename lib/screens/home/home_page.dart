@@ -229,7 +229,7 @@ class CenterHome extends StatelessWidget {
                       child: Text('Calcola'),
                       onPressed: () async {
                         final work = context.read<Work>();
-                        print('wqrerewrerew ${work.getX()}');
+                        //print('wqrerewrerew ${work.getX()}');
                         context.read<CalcolaNotifier>().calcola(tool, work);
                       },
                     ),
@@ -307,7 +307,7 @@ class CalcolaNotifier extends ChangeNotifier {
 
   calcola(Tool tool, Work work) async {
     loading = true;
-    notifyListeners();
+    //notifyListeners();
     // http://paoloweb.altervista.org/00/request.php?diameter=12.34&teeth=43.21%27
     var url = 'http://paoloweb.altervista.org/00/request.php';
     final response = await http.post(url, body: {
@@ -322,13 +322,13 @@ class CalcolaNotifier extends ChangeNotifier {
       'workHeight': '${work.getZ()}',
     });
     //print('material: ${tool.material.value}');
-    print('cool:  ${tool.cool}');
-    print('materialWork: ${work.getMaterial().value}');
-    print('workX: ${work.getX()}');
-    print('workZ: ${work.getZ()}');
-
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
+    // print('cool:  ${tool.cool}');
+    // print('materialWork: ${work.getMaterial().value}');
+    // print('workX: ${work.getX()}');
+    // print('workZ: ${work.getZ()}');
+    //
+    // print('Response status: ${response.statusCode}');
+    // print('Response body: ${response.body}');
 
     final result = response.body.split(',');
     //print(result[0]);

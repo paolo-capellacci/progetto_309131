@@ -25,7 +25,7 @@ class ServiceTool extends ChangeNotifier {
         diameter: 12.00,
         sharp: 12.00,
         length: 50.00,
-        material: FresaEnum.FresaHss,
+        material: FresaEnum.HmRCutter,
         teeth: 4,
         cool: true
 

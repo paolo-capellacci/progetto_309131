@@ -1,5 +1,4 @@
-
-
+import 'package:progetto_309131/providers/engine.dart';
 import 'package:provider/provider.dart';
 import 'providers/service_tool.dart';
 import 'providers/work.dart';
@@ -13,7 +12,6 @@ import 'screens/edit_tool/edit_tool.dart';
 import 'screens/info/info_page.dart';
 import 'screens/list_tools/list_page.dart';
 import 'screens/setting/setting_page.dart';
-
 
 void main() {
   /*
@@ -37,18 +35,18 @@ class MyApp extends StatelessWidget {
             //ServiceTool()..getAllTools()
             final service = ServiceTool();
             service.getAllTools();
-            //final SingletonWork work = SingletonWork.instance;
+
             return service;
           },
         ),
+        ChangeNotifierProvider(create: (context) => GetEngineVersion()..getVersion(),),
 
-        ChangeNotifierProvider(
-            create: (context) => Work()),
+
+        ChangeNotifierProvider(create: (context) => Work()),
       ],
       child: App(),
     );
   }
-
 }
 
 class App extends StatelessWidget {

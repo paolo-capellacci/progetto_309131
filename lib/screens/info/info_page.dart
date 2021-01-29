@@ -1,9 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:package_info/package_info.dart';
+import 'package:progetto_309131/providers/engine.dart';
 import 'package:progetto_309131/screens/widget/logo.dart';
+import 'package:provider/provider.dart';
 
 class InfoPage extends StatelessWidget {
   @override
@@ -25,7 +26,6 @@ class InfoPage extends StatelessWidget {
                 child: Logo(),
               ),
             ),
-
             Card(
               child: Container(
                 padding: EdgeInsets.all(8),
@@ -33,7 +33,6 @@ class InfoPage extends StatelessWidget {
                 child: InfoApp(),
               ),
             ),
-
             Expanded(
               child: Card(
                 child: Container(
@@ -49,15 +48,12 @@ class InfoPage extends StatelessWidget {
                 ),
               ),
             ),
-
-
           ],
         ),
       ),
     );
   }
 }
-
 
 /* ========== class InfoApp =============== */
 class InfoApp extends StatefulWidget {
@@ -66,11 +62,11 @@ class InfoApp extends StatefulWidget {
 }
 
 class _InfoAppState extends State<InfoApp> {
-
   String appName = " ";
   String packageName = " ";
   String version = " ";
   String buildNumber = " ";
+  String engine = " ";
 
   @override
   Widget build(BuildContext context) {
@@ -85,17 +81,16 @@ class _InfoAppState extends State<InfoApp> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
+                  //Text('Version: '),
+                  Text('Package: '),
                   Text('Version: '),
                   Text('Build: '),
-                  Text('Version: '),
-                  Text('Build: '),
+                  Text('Engine: '),
                 ],
               ),
-
               FutureBuilder<PackageInfo>(
                 future: PackageInfo.fromPlatform(),
                 builder: (context, snapshot) {
-
                   String name = '-';
                   String package = '-';
                   String version = '-';
@@ -111,29 +106,42 @@ class _InfoAppState extends State<InfoApp> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('$name',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
-                      Text('$package',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
-                      Text('$version',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold
-                      ),),
-                      Text('$builder',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
+                      /*
+                      Text(
+                        '$name',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      */
+                      Text(
+                        '$package',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        '$version',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Container(
+                        child: Text(
+                          '$builder',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      //Text('aa'),
+                      EngineVersion(),
+
+                      // ElevatedButton(
+                      //   child: Text('Calcola'),
+                      //   onPressed: ()  {
+                      //     final engine =  GetEngineVersion().getEngine();
+                      //     print(engine);
+                      //   },
+                      // ),
                     ],
                   );
                 },
               ),
-
             ],
-          )
+          ),
         ],
       ),
     );
@@ -163,3 +171,17 @@ class _InfoAppState extends State<InfoApp> {
   }
 }
 
+class EngineVersion extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    String engine = " ";
+    return Consumer<GetEngineVersion>(
+      builder: (context, value, _) {
+        return Text(
+          '${value.version}',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        );
+      },
+    );
+  }
+}

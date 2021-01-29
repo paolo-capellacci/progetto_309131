@@ -99,7 +99,7 @@ class _CenterSettingState extends State<CenterSetting> {
                         //top: 1,
                         //left: centerWidth,
                         child: Image.asset(
-                          'assets/images/${FresaEnum.FresaHmR.image}', //${_selectMaterialWork.image}',
+                          'assets/images/${FresaEnum.HmICutter.image}', //${_selectMaterialWork.image}',
                           fit: BoxFit.fitHeight,
                           alignment: Alignment.center,
                           height: MediaQuery.of(context).size.height * 0.18,

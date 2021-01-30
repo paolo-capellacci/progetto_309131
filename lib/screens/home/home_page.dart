@@ -259,6 +259,12 @@ class CenterHome extends StatelessWidget {
                     )
                   else
                     ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: context.watch<Status>().getCalculate() ? Colors.tealAccent : Colors.blue,
+                        //primary: Colors.blue, // background
+                        onPrimary: Colors.white, // foreground
+
+                      ),
                       child: Text('Calcola'),
                       onPressed: () async {
                         final work = context.read<Work>();

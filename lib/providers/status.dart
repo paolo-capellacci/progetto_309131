@@ -30,6 +30,8 @@ class Status extends ChangeNotifier {
   void setCalculate(bool b) {
     print('calculate false');
     _iscalculate = b;
+
+    notifyListeners();
   }
 
   bool getCalculate() {

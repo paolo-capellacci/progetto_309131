@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+import 'package:progetto_309131/providers/status.dart';
 import 'package:provider/provider.dart';
 
 import 'package:progetto_309131/providers/service_tool.dart';
@@ -132,6 +133,8 @@ class TopHome extends StatelessWidget {
               ),
             ),
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Row(
                   children: [
@@ -208,24 +211,38 @@ class CenterHome extends StatelessWidget {
                       Text('Work Speed z: '),
                     ],
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      Text(
-                        '${value.speed1}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        '${value.speed2}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        '${value.speed3}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
+                  if (context.watch<Status>().getCalculate())
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        Text(
+                          '${value.speed1}',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '${value.speed2}',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '${value.speed3}',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    )
+                  else
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        Text('...'),
+                        Text('...'),
+                        Text('...'),
+                      ],
+                    ),
+
+
+
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -247,6 +264,7 @@ class CenterHome extends StatelessWidget {
                         final work = context.read<Work>();
                         //print('wqrerewrerew ${work.getX()}');
                         context.read<CalcolaNotifier>().calcola(tool, work);
+                        context.read<Status>().setCalculate(true);
                       },
                     ),
                   Spacer(),
@@ -258,12 +276,16 @@ class CenterHome extends StatelessWidget {
                 children: [
                   Spacer(),
                   Text('Diameter: '),
-                  Text('${context.watch<Work>().getX()}',
-                    style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text(
+                    '${context.watch<Work>().getX()}',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   Text('%             '),
                   Text('Flut: '),
-                  Text('${context.watch<Work>().getZ()}',
-                    style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text(
+                    '${context.watch<Work>().getZ()}',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   Text(' %'),
                   Spacer(),
                 ],
@@ -316,6 +338,7 @@ class _BottomHomeState extends State<BottomHome> {
                   setState(() {
                     work.setMaterial(item); // = item;
                   });
+                  context.read<Status>().setCalculate(false);
                 },
               ),
             ],

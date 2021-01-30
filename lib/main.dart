@@ -1,4 +1,5 @@
 import 'package:progetto_309131/providers/engine.dart';
+import 'package:progetto_309131/providers/status.dart';
 import 'package:provider/provider.dart';
 import 'providers/service_tool.dart';
 import 'providers/work.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
           },
         ),
         ChangeNotifierProvider(create: (context) => GetEngineVersion()..getVersion(),),
+        ChangeNotifierProvider(create: (context) => Status(),),
 
 
         ChangeNotifierProvider(create: (context) => Work()),

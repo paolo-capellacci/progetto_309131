@@ -1,4 +1,6 @@
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:progetto_309131/models/tool.dart';
+import 'package:progetto_309131/providers/status.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart'
@@ -39,7 +41,7 @@ class ListTools extends StatelessWidget {
                   return Text('Non ci sono strumenti');
                 }
 
-                child:
+
                 return Expanded(
                   child: Container(
                     color: Colors.white,
@@ -47,11 +49,16 @@ class ListTools extends StatelessWidget {
                       itemCount: tools.length,
                       itemBuilder: (context, index) {
                         final tool = tools[index];
-                        final isSelected =
-                            context.read<ServiceTool>().selectedTool == tool;
+                        final isSelected = context.read<ServiceTool>().selectedTool == tool;
+                        //final isSelected = context.read<ServiceTool>().selectedTool.id == tool.id;
+                        /*if (context.read<ServiceTool>().selectedTool.id == tool.id) {
+                          context.read<ServiceTool>().setSelectedTool(index);
+                        }*/
                         return GestureDetector(
                           onTap: () {
                             context.read<ServiceTool>().setSelectedTool(index);
+                            context.read<Status>().setId(tool.id);
+                            context.read<Status>().setCalculate(false);
                           },
                           child: Slidable(
                             actionPane: SlidableDrawerActionPane(),
@@ -154,99 +161,13 @@ class ListTools extends StatelessWidget {
                                   Row(
                                     children: [
                                       Spacer(),
-                                      /*
-                                      IconButton(
-                                          icon: Icon(Icons.edit),
-                                          onPressed: () {
-                                            Navigator.of(context)
-                                                .push(MaterialPageRoute(
-                                                builder: (_) => EditTool(
-                                                  tool: tools[index],
-                                                )));
-                                          }),
-                                      */
-                                      /*
-                                  IconButton(
-                                      icon: Icon(Icons.delete),
-                                      onPressed: () {
-                                        context
-                                            .read<ServiceTool>()
-                                            .delete(tool.id);
-                                      }),
-                                  */
-                                      /*
-                                      IconButton(
-                                        icon: Icon(Icons.delete),
-                                        onPressed: () async {
-                                          // Apertura asincrona di dialogo
-                                          //var mustClose =
-                                          await showDialog(
-                                            context: context,
-                                            barrierDismissible: true,
-                                            builder: (context) {
-                                              return AlertDialog(
-                                                title: Text('Conferm the delete'),
-                                                content: Text(
-                                                    'The process is not reverse'),
-                                                actions: [
-                                                  TextButton(
-                                                      child: Text('Ok!'),
-                                                      onPressed: () {
-                                                        // Chiusura del dialogo con valore di ritorno true
 
-                                                        context
-                                                            .read<ServiceTool>()
-                                                            .delete(tool.id);
-                                                        Navigator.of(context)
-                                                            .pop(); //(false);
-                                                      },
-                                                      style: ButtonStyle(
-                                                          textStyle:
-                                                          MaterialStateProperty
-                                                              .all(TextStyle(
-                                                              fontWeight:
-                                                              FontWeight
-                                                                  .bold)))),
-                                                  TextButton(
-                                                    child: Text('Cancel'),
-                                                    onPressed: () {
-                                                      // Chiusura del dialogo con valore di ritorno false
-                                                      Navigator.of(context)
-                                                          .pop(); //(false);
-                                                    },
-                                                  )
-
-
-
-
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        },
-                                      ),
-                                      */
                                     ],
                                   ),
                                 ],
                               ),
                             ),
-                            /*
-                            actions: <Widget>[
-                              IconSlideAction(
-                                caption: 'Archive',
-                                color: Colors.blue,
-                                icon: Icons.archive,
-                                onTap: () => print('Archive'),
-                              ),
-                              IconSlideAction(
-                                caption: 'Share',
-                                color: Colors.indigo,
-                                icon: Icons.share,
-                                onTap: () => print('Share'),
-                              ),
-                            ],
-                            */
+
                             secondaryActions: <Widget>[
                               IconSlideAction(
                                 caption: 'Edit',
@@ -265,10 +186,43 @@ class ListTools extends StatelessWidget {
                                 caption: 'Delete',
                                 color: Colors.red,
                                 icon: Icons.delete,
-                                onTap: () {
+                                onTap: () async {
                                   print('Delete');
 
-                                  context.read<ServiceTool>().delete(tool.id);
+                                  //context.read<ServiceTool>().delete(tool.id);
+
+                                  var mustClose = await showDialog(
+                                      context: context,
+                                      barrierDismissible: true,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                            title: Text("Delete"),
+                                            content: Text("Irreversible action"),
+                                            actions: [
+                                              TextButton(
+                                                child: Text("ok"),
+                                                onPressed: () {
+                                                  context.read<ServiceTool>().delete(tool.id);
+
+                                                  Navigator.of(context).pop(false);
+                                                  print('Cancella');
+                                                },
+
+                                              ),
+                                              TextButton(
+                                                child: Text("Annulla"),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop(false);
+                                                  print("Annulla");
+                                                },
+
+                                              ),
+                                            ]
+                                        );
+                                      }
+                                  );
+                                  if (mustClose != null && mustClose)
+                                    Navigator.of(context).pop();
                                 },
                               ),
                             ],

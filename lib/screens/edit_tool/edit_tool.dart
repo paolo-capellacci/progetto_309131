@@ -1,7 +1,7 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:progetto_309131/providers/status.dart';
 import 'package:provider/provider.dart';
 
 import 'package:progetto_309131/models/tools_enum.dart';
@@ -141,7 +141,7 @@ class _EditToolState extends State<EditTool> {
                         bottom: 120,
                         right: 30,
                         child: Container(
-                          width: 60,
+                          width: 70,
                           child: TextField(
                             keyboardType: TextInputType.numberWithOptions(
                                 signed: false, decimal: true),
@@ -158,7 +158,7 @@ class _EditToolState extends State<EditTool> {
                         bottom: 20,
                         right: 50,
                         child: Container(
-                          width: 60,
+                          width: 70,
                           child: TextField(
                             keyboardType: TextInputType.numberWithOptions(
                                 signed: false, decimal: true),
@@ -177,13 +177,14 @@ class _EditToolState extends State<EditTool> {
 
                   /* label diameter */
                   Container(
-                    width: MediaQuery.of(context).size.width * 0.1,
+                    width: 70,
                     child: TextField(
+                      textAlignVertical: TextAlignVertical.center,
+                      textAlign: TextAlign.center,
                       keyboardType: TextInputType.numberWithOptions(
                           signed: false, decimal: true),
                       inputFormatters: [
-                        FilteringTextInputFormatter.allow(
-                            RegExp('[0-9.,]')),
+                        FilteringTextInputFormatter.allow(RegExp('[0-9.,]')),
                       ],
                       controller: _diameterTC,
                     ),
@@ -241,14 +242,11 @@ class _EditToolState extends State<EditTool> {
                     width: MediaQuery.of(context).size.width * 1,
 
                     child: ElevatedButton(
-
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Colors.deepPurpleAccent),
                       ),
-
-
                       child: Text('Salva'),
-
                       onPressed: () {
                         final String diameter =
                             validateNumber(_diameterTC.value.text);
@@ -256,7 +254,6 @@ class _EditToolState extends State<EditTool> {
                             validateNumber(_sharpTC.value.text);
                         final String length =
                             validateNumber(_lengthTC.value.text);
-
 
                         print('id: ${widget.tool.id} ');
 
@@ -271,23 +268,13 @@ class _EditToolState extends State<EditTool> {
                             _selectTeeth,
                             //int.parse(_teethTC.value.text),
                             _cool);
+                        //context.read<ServiceTool>().setSelectedTool(widget.tool);
+
+                        context.read<Status>().setCalculate(false);
                       },
                     ),
                   ),
-                  /*
-                  Container(
-                    width: MediaQuery.of(context).size.width * 1,
-                    child: ElevatedButton(
-                      child: Text('Go back'),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
 
-
-                  ),
-
-        */
                 ],
               ),
             ),

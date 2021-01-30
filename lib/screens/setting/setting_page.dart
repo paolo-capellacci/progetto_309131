@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:progetto_309131/providers/status.dart';
 
 import 'package:provider/provider.dart';
 import 'package:progetto_309131/providers/work.dart';
@@ -203,6 +204,7 @@ class _SliderXState extends State<SliderX> {
               setState(() {
                 work.setX(value);
               });
+              context.read<Status>().setCalculate(false);
             },
           ),
         );
@@ -232,6 +234,7 @@ class _SliderZState extends State<SliderZ> {
               setState(() {
                 work.setZ(value);
               });
+              context.read<Status>().setCalculate(false);
             },
           ),
           //transform: Matrix4.rotationZ(1),

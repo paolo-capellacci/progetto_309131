@@ -60,224 +60,215 @@ class _EditToolState extends State<EditTool> {
         title: Text('Edit Tools'),
       ),
       body: Container(
-        child: Scaffold(
-          body: Container(
-            margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(10),
-            child: new GestureDetector(
-              onTap: () {
-                FocusScope.of(context).requestFocus(new FocusNode());
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
+        margin: EdgeInsets.all(10),
+        padding: EdgeInsets.all(10),
+        child: new GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              /* name of the tool */
+              Row(
                 children: [
-                  /* name of the tool */
-                  Row(
-                    children: [
-                      Container(
-                        child: Text(
-                          "Name: ",
-                          style: TextStyle(
-                            color: Colors.black54,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 200,
-                        child: TextFormField(
-                          style: TextStyle(color: Colors.black54, fontSize: 20),
-                          controller: _nameTC,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-
-                  /* image of the tool, cool and the label */
-                  Stack(
-                    alignment: Alignment.topCenter,
-                    children: [
-                      /* image tool */
-                      Center(
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.3,
-                          //width: MediaQuery.of(context).size.width * 0.4,
-
-                          child: Image.asset(
-                            'assets/images/${_selectMaterialTool.image}',
-                            fit: BoxFit.fitHeight,
-                            alignment: Alignment.center,
-                            //height: MediaQuery.of(context).size.height * 0.3,
-                          ),
-                        ),
-                      ),
-
-                      /* image cool */
-                      Positioned(
-                        top: MediaQuery.of(context).size.height * 0.13,
-                        left: MediaQuery.of(context).size.width * 0.25,
-                        child: Center(
-                          child: Container(
-                            height: MediaQuery.of(context).size.height * 0.15,
-                            width: MediaQuery.of(context).size.width * 0.1,
-                            child: _cool
-                                ? new Container(
-                                    child: Image.asset(
-                                      'assets/images/coll.png',
-                                      fit: BoxFit.fitWidth,
-                                      alignment: Alignment.center,
-                                      //height: MediaQuery.of(context).size.height * 0.15,
-                                    ),
-                                  )
-                                : new Container(),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 120,
-                        right: 30,
-                        child: Container(
-                          width: 70,
-                          child: TextField(
-                            keyboardType: TextInputType.numberWithOptions(
-                                signed: false, decimal: true),
-                            inputFormatters: [
-                              FilteringTextInputFormatter.allow(
-                                  RegExp('[0-9.,]')),
-                            ],
-                            //onChanged: (value) => doubleVar = double.parse(value),
-                            controller: _lengthTC,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 20,
-                        right: 50,
-                        child: Container(
-                          width: 70,
-                          child: TextField(
-                            keyboardType: TextInputType.numberWithOptions(
-                                signed: false, decimal: true),
-                            inputFormatters: [
-                              FilteringTextInputFormatter.allow(
-                                  RegExp('[0-9.,]')),
-                            ],
-                            controller: _sharpTC,
-                          ),
-                        ),
-                      ),
-
-                      /* label of the data length, sharp, diameter */
-                    ],
-                  ),
-
-                  /* label diameter */
                   Container(
-                    width: 70,
-                    child: TextField(
-                      textAlignVertical: TextAlignVertical.center,
-                      textAlign: TextAlign.center,
-                      keyboardType: TextInputType.numberWithOptions(
-                          signed: false, decimal: true),
-                      inputFormatters: [
-                        FilteringTextInputFormatter.allow(RegExp('[0-9.,]')),
-                      ],
-                      controller: _diameterTC,
+                    child: Text(
+                      "Name: ",
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 20,
+                      ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        child: Switch(
-                          value: _cool,
-                          onChanged: (value) {
-                            setState(() {
-                              _cool = !_cool;
-                              print('cange the value $_cool');
-                            });
-                          },
-                          //activeTrackColor: Colors.lightGreenAccent,
-                          //activeColor: Colors.green,
-                        ),
-                      ),
-                      Text('Flut  '),
-                      Container(
-                        child: DropdownButton<int>(
-                            items: <int>[1, 2, 3, 4, 6, 8, 12]
-                                .map((e) => DropdownMenuItem<int>(
-                                    value: e, child: Text(e.toString())))
-                                .toList(),
-                            value: _selectTeeth,
-                            onChanged: (item) {
-                              print("selezionato ${item}");
-                              //context.read<EditTool>().createState()._teethTC;
-                              setState(() {
-                                _selectTeeth = item;
-                              });
-                            }),
-                      ),
-                      DropdownButton<FresaEnum>(
-                          items: FresaEnum.values
-                              .map((e) => DropdownMenuItem<FresaEnum>(
-                                  value: e, child: Text(e.text)))
-                              .toList(),
-                          value: _selectMaterialTool,
-                          onChanged: (item) {
-                            print("selezionato ${item}");
-                            setState(() {
-                              _selectMaterialTool = item;
-                            });
-                          }),
-                    ],
-                  ),
-                  Spacer(),
                   Container(
-                    //alignment: Alignment.topRight,
-                    width: MediaQuery.of(context).size.width * 1,
-
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Colors.deepPurpleAccent),
-                      ),
-                      child: Text('Salva'),
-                      onPressed: () {
-                        final String diameter =
-                            validateNumber(_diameterTC.value.text);
-                        final String sharp =
-                            validateNumber(_sharpTC.value.text);
-                        final String length =
-                            validateNumber(_lengthTC.value.text);
-
-                        print('id: ${widget.tool.id} ');
-
-                        Provider.of<ServiceTool>(context, listen: false).update(
-                            widget.tool.id,
-                            _nameTC.value.text,
-                            double.parse(diameter),
-                            double.parse(sharp),
-                            double.parse(length),
-                            _selectMaterialTool,
-                            //int.parse(_materiaTC.value.text),
-                            _selectTeeth,
-                            //int.parse(_teethTC.value.text),
-                            _cool);
-                        //context.read<ServiceTool>().setSelectedTool(widget.tool);
-
-                        context.read<Status>().setCalculate(false);
-                      },
+                    width: 200,
+                    child: TextFormField(
+                      style: TextStyle(color: Colors.black54, fontSize: 20),
+                      controller: _nameTC,
                     ),
                   ),
-
                 ],
               ),
-            ),
+              SizedBox(
+                height: 10,
+              ),
+
+              /* image of the tool, cool and the label */
+              Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  /* image tool */
+                  Center(
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      //width: MediaQuery.of(context).size.width * 0.4,
+
+                      child: Image.asset(
+                        'assets/images/${_selectMaterialTool.image}',
+                        fit: BoxFit.fitHeight,
+                        alignment: Alignment.center,
+                        //height: MediaQuery.of(context).size.height * 0.3,
+                      ),
+                    ),
+                  ),
+
+                  /* image cool */
+                  Positioned(
+                    top: MediaQuery.of(context).size.height * 0.13,
+                    left: MediaQuery.of(context).size.width * 0.25,
+                    child: Center(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.15,
+                        width: MediaQuery.of(context).size.width * 0.1,
+                        child: _cool
+                            ? new Container(
+                                child: Image.asset(
+                                  'assets/images/coll.png',
+                                  fit: BoxFit.fitWidth,
+                                  alignment: Alignment.center,
+                                  //height: MediaQuery.of(context).size.height * 0.15,
+                                ),
+                              )
+                            : new Container(),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 120,
+                    right: 30,
+                    child: Container(
+                      width: 70,
+                      child: TextField(
+                        keyboardType: TextInputType.numberWithOptions(
+                            signed: false, decimal: true),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp('[0-9.,]')),
+                        ],
+                        //onChanged: (value) => doubleVar = double.parse(value),
+                        controller: _lengthTC,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 20,
+                    right: 50,
+                    child: Container(
+                      width: 70,
+                      child: TextField(
+                        keyboardType: TextInputType.numberWithOptions(
+                            signed: false, decimal: true),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp('[0-9.,]')),
+                        ],
+                        controller: _sharpTC,
+                      ),
+                    ),
+                  ),
+
+                  /* label of the data length, sharp, diameter */
+                ],
+              ),
+
+              /* label diameter */
+              Container(
+                width: 70,
+                child: TextField(
+                  textAlignVertical: TextAlignVertical.center,
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.numberWithOptions(
+                      signed: false, decimal: true),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp('[0-9.,]')),
+                  ],
+                  controller: _diameterTC,
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    child: Switch(
+                      value: _cool,
+                      onChanged: (value) {
+                        setState(() {
+                          _cool = !_cool;
+                          print('cange the value $_cool');
+                        });
+                      },
+                      //activeTrackColor: Colors.lightGreenAccent,
+                      //activeColor: Colors.green,
+                    ),
+                  ),
+                  Text('Flut  '),
+                  Container(
+                    child: DropdownButton<int>(
+                        items: <int>[1, 2, 3, 4, 6, 8, 12]
+                            .map((e) => DropdownMenuItem<int>(
+                                value: e, child: Text(e.toString())))
+                            .toList(),
+                        value: _selectTeeth,
+                        onChanged: (item) {
+                          print("selezionato ${item}");
+                          //context.read<EditTool>().createState()._teethTC;
+                          setState(() {
+                            _selectTeeth = item;
+                          });
+                        }),
+                  ),
+                  DropdownButton<FresaEnum>(
+                      items: FresaEnum.values
+                          .map((e) => DropdownMenuItem<FresaEnum>(
+                              value: e, child: Text(e.text)))
+                          .toList(),
+                      value: _selectMaterialTool,
+                      onChanged: (item) {
+                        print("selezionato ${item}");
+                        setState(() {
+                          _selectMaterialTool = item;
+                        });
+                      }),
+                ],
+              ),
+              Spacer(),
+              Container(
+                //alignment: Alignment.topRight,
+                width: MediaQuery.of(context).size.width * 1,
+
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        Colors.deepPurpleAccent),
+                  ),
+                  child: Text('Salva'),
+                  onPressed: () {
+                    final String diameter =
+                        validateNumber(_diameterTC.value.text);
+                    final String sharp = validateNumber(_sharpTC.value.text);
+                    final String length = validateNumber(_lengthTC.value.text);
+
+                    print('id: ${widget.tool.id} ');
+
+                    Provider.of<ServiceTool>(context, listen: false).update(
+                        widget.tool.id,
+                        _nameTC.value.text,
+                        double.parse(diameter),
+                        double.parse(sharp),
+                        double.parse(length),
+                        _selectMaterialTool,
+                        //int.parse(_materiaTC.value.text),
+                        _selectTeeth,
+                        //int.parse(_teethTC.value.text),
+                        _cool);
+                    //context.read<ServiceTool>().setSelectedTool(widget.tool);
+
+                    context.read<Status>().setCalculate(false);
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),

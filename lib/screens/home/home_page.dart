@@ -95,7 +95,7 @@ class TopHome extends StatelessWidget {
           children: [
             Container(
               height: MediaQuery.of(context).size.height * 0.27,
-              width: MediaQuery.of(context).size.width * 0.35,
+              width: MediaQuery.of(context).size.width * 0.27,
               child: Stack(
                 //alignment: Alignment.center,
                 //fit: StackFit.loose,
@@ -111,7 +111,7 @@ class TopHome extends StatelessWidget {
                                 fit: BoxFit.fitWidth,
                                 alignment: Alignment.center,
                                 height:
-                                    MediaQuery.of(context).size.height * 0.10,
+                                    MediaQuery.of(context).size.height * 0.08,
                               ),
                             )
                           : new Container(),
@@ -120,6 +120,7 @@ class TopHome extends StatelessWidget {
                   Align(
                     alignment: Alignment.center,
                     child: Container(
+                      margin: EdgeInsets.all(4),
                       child: Image.asset(
                         'assets/images/${tool.material.image}',
                         fit: BoxFit.fitHeight,
@@ -260,7 +261,7 @@ class CenterHome extends StatelessWidget {
                   else
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: context.watch<Status>().getCalculate() ? Colors.tealAccent : Colors.blue,
+                        primary: context.watch<Status>().getCalculate() ? Color.fromARGB(255,200,200,255) : Colors.blue,
                         //primary: Colors.blue, // background
                         onPrimary: Colors.white, // foreground
 

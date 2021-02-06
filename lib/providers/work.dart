@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:progetto_309131/models/materials_enum.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Work extends ChangeNotifier {
   MaterialEnum _materialWork = MaterialEnum.Iron;

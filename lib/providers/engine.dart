@@ -9,7 +9,7 @@ class GetEngineVersion extends ChangeNotifier {
   String version = 'no conection';
 
   Future<String>getVersion() async {
-    print('eeee');
+    print('get version');
     //notifyListeners();
     var url = 'http://paoloweb.altervista.org/00/version.php';
     final response = await http.post(

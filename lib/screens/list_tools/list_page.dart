@@ -1,5 +1,4 @@
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:progetto_309131/models/tool.dart';
 import 'package:progetto_309131/providers/status.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';

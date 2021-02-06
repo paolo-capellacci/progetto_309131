@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 
 import 'package:package_info/package_info.dart';
 import 'package:progetto_309131/providers/engine.dart';
 import 'package:progetto_309131/screens/widget/logo.dart';
-import 'package:provider/provider.dart';
 
 class InfoPage extends StatelessWidget {
   @override
@@ -50,14 +50,6 @@ class InfoPage extends StatelessWidget {
                   ),
                 ),
               ),
-              // Card(
-              //   child: Container(
-              //     margin: EdgeInsets.all(4),
-              //     padding: EdgeInsets.all(4),
-              //     alignment: Alignment.center,
-              //     child: Text('Map to App'),
-              //   ),
-              // ),
               Card(
                 child: Container(
                   padding: EdgeInsets.all(8),
@@ -65,8 +57,10 @@ class InfoPage extends StatelessWidget {
                   child: Center(
                     child: Column(
                       children: [
-                        Text('Map to App',
-                          style: TextStyle(fontWeight: FontWeight.bold),),
+                        Text(
+                          'Map to App',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         Text(''),
                         Image.asset(
                           "assets/images/redame/app_speed_tools2.png",
@@ -78,6 +72,8 @@ class InfoPage extends StatelessWidget {
                   ),
                 ),
               ),
+
+              /* === Page home === */
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,7 +93,7 @@ class InfoPage extends StatelessWidget {
                           Container(
                             width: MediaQuery.of(context).size.width * .4,
                             child: Text(
-                              "In the Home page it is possible to see in the top select tool, in the bottom the select material work end in the center the value of the speed tool",
+                              "In the Home page it is possible to see in the top the select tool, in the bottom the select material work end in the center the value of the speed tool",
                               textAlign: TextAlign.justify,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 16,
@@ -123,7 +119,9 @@ class InfoPage extends StatelessWidget {
                   ),
                 ],
               ),
-Divider(),
+              Divider(),
+
+              /* === List Page === */
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -143,7 +141,7 @@ Divider(),
                           Container(
                             width: MediaQuery.of(context).size.width * .4,
                             child: Text(
-                              "In the list page it is possible to see ....",
+                              "In the list page it is possible to see the tools librery and it is possible to select a tool or to delete or go to in the edit page for change the type of tool.  ",
                               textAlign: TextAlign.justify,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 10,
@@ -169,8 +167,9 @@ Divider(),
                   ),
                 ],
               ),
-
               Divider(),
+
+              /* === Page edit === */
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -179,7 +178,6 @@ Divider(),
                     child: Container(
                       padding: EdgeInsets.all(8),
                       margin: EdgeInsets.all(8),
-
                       width: MediaQuery.of(context).size.width * .4,
                       child: Column(
                         children: [
@@ -191,10 +189,10 @@ Divider(),
                           Container(
                             width: MediaQuery.of(context).size.width * .4,
                             child: Text(
-                              "In the Edit page it is possible to see ....",
+                              "In the Edit page it is possible to see the tool name, the image tool end the attributes, it is possible to active the cooling system, the number of tool flut and the material type tool. In the bottom there is a buutom that which allows saving.",
                               textAlign: TextAlign.justify,
                               overflow: TextOverflow.ellipsis,
-                              maxLines: 10,
+                              maxLines: 16,
                             ),
                           )
                         ],
@@ -217,8 +215,8 @@ Divider(),
                   ),
                 ],
               ),
-
               Divider(),
+              /* === Page select === */
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -238,7 +236,7 @@ Divider(),
                           Container(
                             width: 150,
                             child: Text(
-                              "In the Edit page it is possible to see ....",
+                              "In the Edit page it is possible define the type of work depth and the work percentage XY.",
                               textAlign: TextAlign.justify,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 10,

@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 import 'tools_enum.dart';
-import 'materials_enum.dart';
 
 class Tool extends Equatable {
 

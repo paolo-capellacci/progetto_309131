@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:progetto_309131/prova1.dart';
 
 import 'screens/home/home_page.dart';
 import 'screens/info/info_page.dart';
@@ -18,7 +17,6 @@ class _NavigationPageState extends State<NavigationPage> {
   final List<Widget> _children = [
     HomePage(),
     InfoPage(),
-    //Prova2(),
     SettingPage(),
   ];
 

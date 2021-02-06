@@ -8,7 +8,7 @@ class Status extends ChangeNotifier {
 
   bool _iscalculate = false;
 
-
+/*
   void setId(int id) async {
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -26,9 +26,10 @@ class Status extends ChangeNotifier {
 
     return prefs.getInt('id');
   }
+  */
 
   void setCalculate(bool b) {
-    print('calculate false');
+    //print('calculate false');
     _iscalculate = b;
 
     notifyListeners();

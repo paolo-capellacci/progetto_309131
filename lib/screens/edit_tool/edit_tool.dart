@@ -44,17 +44,19 @@ class _EditToolState extends State<EditTool> {
 
   @override
   void dispose() {
-    super.dispose();
 
     _nameTC.dispose();
     _diameterTC.dispose();
     _sharpTC.dispose();
     _lengthTC.dispose();
+
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(122, 151, 185, 1.0),
         title: Text('Edit Tools'),
@@ -195,7 +197,7 @@ class _EditToolState extends State<EditTool> {
                       onChanged: (value) {
                         setState(() {
                           _cool = !_cool;
-                          print('cange the value $_cool');
+                          //print('cange the value $_cool');
                         });
                       },
                       //activeTrackColor: Colors.lightGreenAccent,
@@ -211,7 +213,7 @@ class _EditToolState extends State<EditTool> {
                             .toList(),
                         value: _selectTeeth,
                         onChanged: (item) {
-                          print("selezionato ${item}");
+                          //print("selezionato ${item}");
                           //context.read<EditTool>().createState()._teethTC;
                           setState(() {
                             _selectTeeth = item;
@@ -225,7 +227,7 @@ class _EditToolState extends State<EditTool> {
                           .toList(),
                       value: _selectMaterialTool,
                       onChanged: (item) {
-                        print("selezionato ${item}");
+                        //print("selezionato ${item}");
                         setState(() {
                           _selectMaterialTool = item;
                         });
@@ -249,7 +251,7 @@ class _EditToolState extends State<EditTool> {
                     final String sharp = validateNumber(_sharpTC.value.text);
                     final String length = validateNumber(_lengthTC.value.text);
 
-                    print('id: ${widget.tool.id} ');
+                    //print('id: ${widget.tool.id} ');
 
                     Provider.of<ServiceTool>(context, listen: false).update(
                         widget.tool.id,
@@ -292,7 +294,7 @@ class _EditToolState extends State<EditTool> {
     if (numberS1.contains('.')) {
       // change the eventual error point
       List<String> number_split = numberS1.split('.');
-      print(number_split);
+      //print(number_split);
 
       // take only int part and one decimal part
       numberS2 = number_split[0] + '.' + number_split[1];

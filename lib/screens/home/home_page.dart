@@ -130,7 +130,6 @@ class TopHome extends StatelessWidget {
                     ),
                   ),
                 ],
-                //overflow: Overflow.clip,
               ),
             ),
             Column(
@@ -170,9 +169,8 @@ class TopHome extends StatelessWidget {
                 ElevatedButton(
                   child: Text('Select Tools'),
                   onPressed: () async {
-                    print('vai alla lista tools');
+                    //print('vai alla lista tools');
                     Navigator.of(context).pushNamed('/listTools');
-                    //Navigator.of(context).pushNamedAndRemoveUntil('/listTools', (route) => route.settings.name == '/');
                   },
                 ),
               ],
@@ -269,7 +267,7 @@ class CenterHome extends StatelessWidget {
                       child: Text('Calcola'),
                       onPressed: () async {
                         final work = context.read<Work>();
-                        //print('wqrerewrerew ${work.getX()}');
+
                         context.read<CalcolaNotifier>().calcola(tool, work);
                         context.read<Status>().setCalculate(true);
                       },
@@ -341,7 +339,7 @@ class _BottomHomeState extends State<BottomHome> {
                     .toList(),
                 value: work.getMaterial(),
                 onChanged: (item) {
-                  print("selezionato ${item}");
+                  //print("selezionato ${item}");
                   setState(() {
                     work.setMaterial(item); // = item;
                   });

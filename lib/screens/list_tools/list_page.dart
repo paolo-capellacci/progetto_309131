@@ -41,7 +41,6 @@ class ListTools extends StatelessWidget {
                   return Text('Non ci sono strumenti');
                 }
 
-
                 return Expanded(
                   child: Container(
                     color: Colors.white,
@@ -49,15 +48,14 @@ class ListTools extends StatelessWidget {
                       itemCount: tools.length,
                       itemBuilder: (context, index) {
                         final tool = tools[index];
-                        final isSelected = context.read<ServiceTool>().selectedTool == tool;
-                        //final isSelected = context.read<ServiceTool>().selectedTool.id == tool.id;
-                        /*if (context.read<ServiceTool>().selectedTool.id == tool.id) {
-                          context.read<ServiceTool>().setSelectedTool(index);
-                        }*/
+
+                        final isSelected = context.read<ServiceTool>().selectedTool.id == tool.id;
+                        context.read<ServiceTool>().selectTool(isSelected, tool);
+
                         return GestureDetector(
                           onTap: () {
                             context.read<ServiceTool>().setSelectedTool(index);
-                            context.read<Status>().setId(tool.id);
+                            //context.read<Status>().setId(tool.id);
                             context.read<Status>().setCalculate(false);
                           },
                           child: Slidable(
@@ -161,20 +159,18 @@ class ListTools extends StatelessWidget {
                                   Row(
                                     children: [
                                       Spacer(),
-
                                     ],
                                   ),
                                 ],
                               ),
                             ),
-
                             secondaryActions: <Widget>[
                               IconSlideAction(
                                 caption: 'Edit',
                                 color: Colors.blue,
                                 icon: Icons.edit,
                                 onTap: () {
-                                  print('Edit');
+                                  //print('Edit');
 
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (_) => EditTool(
@@ -187,7 +183,7 @@ class ListTools extends StatelessWidget {
                                 color: Colors.red,
                                 icon: Icons.delete,
                                 onTap: () async {
-                                  print('Delete');
+                                  //print('Delete');
 
                                   //context.read<ServiceTool>().delete(tool.id);
 
@@ -197,30 +193,29 @@ class ListTools extends StatelessWidget {
                                       builder: (context) {
                                         return AlertDialog(
                                             title: Text("Delete"),
-                                            content: Text("Irreversible action"),
+                                            content:
+                                                Text("Irreversible action"),
                                             actions: [
                                               TextButton(
                                                 child: Text("ok"),
                                                 onPressed: () {
                                                   context.read<ServiceTool>().delete(tool.id);
+                                                  // per impost
 
+                                                  context.read<ServiceTool>().selectedTool = context.read<ServiceTool>().tools[0];
                                                   Navigator.of(context).pop(false);
-                                                  print('Cancella');
+                                                  //print('Cancella');
                                                 },
-
                                               ),
                                               TextButton(
                                                 child: Text("Annulla"),
                                                 onPressed: () {
                                                   Navigator.of(context).pop(false);
-                                                  print("Annulla");
+                                                  //print("Annulla");
                                                 },
-
                                               ),
-                                            ]
-                                        );
-                                      }
-                                  );
+                                            ]);
+                                      });
                                   if (mustClose != null && mustClose)
                                     Navigator.of(context).pop();
                                 },
@@ -240,7 +235,7 @@ class ListTools extends StatelessWidget {
                     .read<ServiceTool>()
                     .insert(); // .update(121) .delete(122);
 
-                print('insered tool new');
+                //print('insered tool new');
                 //Navigator.of(context).pushNamed('/editTool');
               },
               child: Icon(Icons.add),

@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:path/path.dart';
 import 'package:progetto_309131/models/database_tool.dart';
 import 'package:progetto_309131/models/materials_enum.dart';
 import 'package:progetto_309131/models/tools_enum.dart';
@@ -64,6 +67,24 @@ class ServiceTool extends ChangeNotifier {
     selectedTool = tools[index];
     notifyListeners();
   }
+
+  void selectTool(bool isSelected,tool) {
+    /*
+    bool trovato = false;
+    for(int i = 0 ; i < this.tools.length; i++){
+      if(this.tools[i] == tool)
+        trovato = true;
+    }
+    if(trovato == false && this.tools[0] == tool)
+      isSelected = true;*/
+
+    if (isSelected) {
+      this.selectedTool = tool;
+
+    }
+  }
+
+
 
   Future<int> countTools() async {
     final countRows = await dbTool.queryRowCount();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:progetto_309131/prova1.dart';
 
 import 'screens/home/home_page.dart';
 import 'screens/info/info_page.dart';
@@ -54,7 +55,7 @@ class _NavigationPageState extends State<NavigationPage> {
           ),
           new BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Setting', //Text('Settings'),
+            label: 'Setting Work', //Text('Settings'),
           ),
         ],
 

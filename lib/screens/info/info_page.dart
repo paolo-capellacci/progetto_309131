@@ -14,27 +14,30 @@ class InfoPage extends StatelessWidget {
         backgroundColor: Color.fromRGBO(122, 151, 185, 1.0),
         title: Text('Info'),
       ),
-      body: Container(
-        padding: EdgeInsets.all(4),
-        margin: EdgeInsets.all(4),
-        child: Column(
-          children: [
-            Card(
-              child: Container(
-                padding: EdgeInsets.all(4),
-                margin: EdgeInsets.all(4),
-                child: Logo(),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(4),
+          margin: const EdgeInsets.all(4),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Card(
+                child: Container(
+                  padding: EdgeInsets.all(4),
+                  margin: EdgeInsets.all(4),
+                  child: Logo(),
+                ),
               ),
-            ),
-            Card(
-              child: Container(
-                padding: EdgeInsets.all(8),
-                margin: EdgeInsets.all(8),
-                child: InfoApp(),
+              Card(
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  margin: EdgeInsets.all(8),
+                  child: InfoApp(),
+                ),
               ),
-            ),
-            Expanded(
-              child: Card(
+              Card(
                 child: Container(
                   padding: EdgeInsets.all(8),
                   margin: EdgeInsets.all(8),
@@ -47,8 +50,222 @@ class InfoPage extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-          ],
+              // Card(
+              //   child: Container(
+              //     margin: EdgeInsets.all(4),
+              //     padding: EdgeInsets.all(4),
+              //     alignment: Alignment.center,
+              //     child: Text('Map to App'),
+              //   ),
+              // ),
+              Card(
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  margin: EdgeInsets.all(8),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Text('Map to App',
+                          style: TextStyle(fontWeight: FontWeight.bold),),
+                        Text(''),
+                        Image.asset(
+                          "assets/images/redame/app_speed_tools2.png",
+                          //fit: BoxFit.fitWidth,
+                          alignment: Alignment.centerLeft,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Card(
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      margin: EdgeInsets.all(8),
+                      height: 200,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Home',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(''),
+                          Container(
+                            width: MediaQuery.of(context).size.width * .4,
+                            child: Text(
+                              "In the Home page it is possible to see in the top select tool, in the bottom the select material work end in the center the value of the speed tool",
+                              textAlign: TextAlign.justify,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 16,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Card(
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      margin: EdgeInsets.all(8),
+                      child: Center(
+                        child: Image.asset(
+                          "assets/images/redame/home.png",
+                          fit: BoxFit.fitWidth,
+                          width: MediaQuery.of(context).size.width * 0.32,
+                          //alignment: Alignment.centerLeft,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Card(
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      margin: EdgeInsets.all(8),
+                      height: 200,
+                      child: Column(
+                        children: [
+                          Text(
+                            'List Tools',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(''),
+                          Container(
+                            width: MediaQuery.of(context).size.width * .4,
+                            child: Text(
+                              "In the list page it is possible to see ....",
+                              textAlign: TextAlign.justify,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 10,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Card(
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      margin: EdgeInsets.all(8),
+                      child: Center(
+                        child: Image.asset(
+                          "assets/images/redame/listPage.png",
+                          fit: BoxFit.fitWidth,
+                          width: MediaQuery.of(context).size.width * 0.32,
+                          //alignment: Alignment.centerLeft,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Card(
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      margin: EdgeInsets.all(8),
+
+                      width: MediaQuery.of(context).size.width * .4,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Edit',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(''),
+                          Container(
+                            width: MediaQuery.of(context).size.width * .4,
+                            child: Text(
+                              "In the Edit page it is possible to see ....",
+                              textAlign: TextAlign.justify,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 10,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Card(
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      margin: EdgeInsets.all(8),
+                      child: Center(
+                        child: Image.asset(
+                          "assets/images/redame/edit.png",
+                          fit: BoxFit.fitWidth,
+                          width: MediaQuery.of(context).size.width * 0.32,
+                          //alignment: Alignment.centerLeft,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Card(
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      margin: EdgeInsets.all(8),
+                      width: MediaQuery.of(context).size.width * .4,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Setting Work',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(''),
+                          Container(
+                            width: 150,
+                            child: Text(
+                              "In the Edit page it is possible to see ....",
+                              textAlign: TextAlign.justify,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 10,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Card(
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      margin: EdgeInsets.all(8),
+                      child: Center(
+                        child: Image.asset(
+                          "assets/images/redame/setting.png",
+                          fit: BoxFit.fitWidth,
+                          width: MediaQuery.of(context).size.width * 0.32,
+                          //alignment: Alignment.centerLeft,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -91,7 +308,6 @@ class _InfoAppState extends State<InfoApp> {
               FutureBuilder<PackageInfo>(
                 future: PackageInfo.fromPlatform(),
                 builder: (context, snapshot) {
-
                   String package = '-';
                   String version = '-';
                   String builder = '-';
@@ -105,7 +321,6 @@ class _InfoAppState extends State<InfoApp> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
                       Text(
                         '$package',
                         style: TextStyle(fontWeight: FontWeight.bold),
@@ -120,9 +335,7 @@ class _InfoAppState extends State<InfoApp> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-
                       EngineVersion(),
-
                     ],
                   );
                 },

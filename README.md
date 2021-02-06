@@ -58,9 +58,10 @@ Questa pagina nella parte in alto, mostra la figura di un'utensile ed eventuale 
 ![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/setting.png)
 
 ## InfoPage
-Questa pagina mostra mostra la versione dell'app ed in numero della Build oltre al logo ed un'immagine che mostra l'uso degli utensili.
+Questa pagina oltre al logo, mostra mostra il nome del Package, la versione dell'app ed in numero della Build, ma anche il numero della versione del motore di calcolo, infine un'immagine che mostra l'uso degli utensili.
+Se si scrolla la pagina, dato che la pagina è una pagina statica, vi è un sesoconto delle varie schermate dell'app e una breve descrizione della varie pagine di vavigazione.
 Per prelevare le informazioni del numero di versione e di bild si è fatto uso della libreria `package_info: ^0.4.3+2`, si è fatto poi uso dell' `@override` del metodo `void initState()` che a sua volta richiama un metodo `async` dato che deve attendere le info dall'app.
-Per avere anche la versione del motore di calcolo ho inserito una pagina php che mi torna il numero della versione. La scelta di mettere sul web il calcolo è stata per evitare di aggiornare la app nello store solo per un aggiornamento che riguarda il calcolo. Così facendo è possibile fare delle modifice, perfezzionare il calcolo senza chiedere all'utente di aggiornare l'app. 
+Il motore di calcolo è ospitato in uno spazio di altervista come php ed ho inserito un olteriore file php che mi torna il numero della versione. La scelta di mettere sul web il calcolo è stata per evitare di aggiornare la app nello store solo per un aggiornamento che riguarda il calcolo. Così facendo è possibile fare delle modifice, perfezzionare il calcolo senza chiedere all'utente di aggiornare l'app. 
 
 ![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/info.png)
 

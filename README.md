@@ -1,9 +1,6 @@
 # progetto_309131
 
-## Speed Tools
 ![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/logo.png)
-
-
 
 
 ## Mappa dell'App
@@ -20,11 +17,12 @@ Inoltre la pagina `Home`, dipone in basso, di un menù `BottomNavigationBar` che
 
 ## Home Page
 
+<img src="https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/home.png" width="200">
+
 La pagina `Home`, nella parte in alto, mostra l'utensile selezionato con le sue caratteristiche. Nella parte in basso vi è la possibilità di selezionare il tipo di materiale tramite un menù a discesa implementato con `DropdownButton`. 
 Nella parte centrale vi è un riepologo della quantità del materiale da esportare e un pulsate che permette di avviare il calcolo delle velocità che vengono riportare come velocità di rotazione in giri al minuto, di avanzamento verso l'asse `XY` in millimetri al minuto ed eventuale velocità di avanzamento rispetto l'asse `Z`.
 Il pulsante che permette il calcolo viene visualizzato con 2 colorazioni diverse, il classico colore `blu` permette di fare il calcolo e i campi dei valori delle velocità non sono ancora visualizzati, verranno visualizzati solo dopo aver premuto il pulsante `Blu`. Una volta premuto il pulsante `Blu` il pulsante diverta di colore `Lilla` e nei campi delle velocità ci saranno i valori calcolati.
 
-![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/home.png)
 
 ## Materiale dell'utesile
 Le varie tiplogie di materiale da lavorare sono state inserite un un tipo enumerato con i seguenti tipi:
@@ -60,36 +58,46 @@ Le varie tiplogie di materiale da lavorare anch'esse state inserite un un tipo e
 le tiplogie di materile da lavorare vanno dal Legno, ai materiali Plasiti, all'aluminio, nella quale tipologia è da considerare tutti que materilai non ferrosi, per passare al materiale ferroso, agli acciai ed acciai con trattamenti termici.
 
 ## SettingPage
+
+<img src="https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/setting.png" width="200">
+
 Questa pagina nella parte in alto, mostra la figura di un'utensile ed eventuale box quadrato, che all'inizio e quasi totalmente nascosto che che si può spostare tramite uno `Slider` per impostare la quantità del materiale da esportare in percentuale `radiale` ed uno `Slider` per impostare la quantità di materile da esportare rispetto l'asse `Z`.
 
-![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/setting.png)
 
 ## InfoPage
+
+<img src="https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/info.png" width="200">
+
 Questa pagina oltre al logo, mostra il nome del Package, la versione dell'app ed in numero della Build ed anche il numero della versione del motore di calcolo, infine un'immagine che mostra l'uso degli utensili.
 Se si scrolla la pagina, dato che la pagina è una lista di widget, si può visualizzare le varie schermate dell'app e una breve descrizione della varie schermate di navigazione.
 Per prelevare le informazioni del numero di versione e di bild si è fatto uso della libreria `package_info: ^0.4.3+2`, si è fatto poi uso dell' `@override` del metodo `void initState()` che a sua volta richiama un metodo `async` dato che deve attendere le info dall'app.
 Il motore di calcolo è ospitato in uno spazio di altervista in un file `php` ed ho inserito un olteriore file `php` che mi torna il numero della versione. La scelta di mettere sul web il calcolo è stata per evitare di aggiornare la app nello store solo per un aggiornamento che riguarda il calcolo. Così facendo è possibile fare delle modifice, perfezzionare il calcolo senza chiedere all'utente di aggiornare l'app. 
 
-![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/info.png)
 
 
 ## ListTools
+
+<img src="https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/listPage.png" width="200">
+
 Questa pagina mostra la lista delgli utensili, libreria utensili, dove in ogni cella viene mostrato l'immagine del tipo id utensile, il nome dell'utensile, e le carattristiche fisiche dell'utensile. In fondo alla pagine vi è un pulsante che permette di aggiungere unovi utensili con parametri di default.
 Le celle della lista dispongono del `GestureDetector` che permetta la selezione di un utensile, il quale poi sarà l'utensile della pagina `Home`. 
 Inoltre le celle dispongono di un effetto `Slidable` che trascinando la cella verso sinistra mostra un menu nascosto . 
 Il menu mette a disposizione il comando `Delete` per eliminare quell'utensile, ed il pulsante `Edit` che permette di personolizzare l'utensile portandolo nella pagine Edit.
 L'esempio di codice per lo Slidable è stao reperito da `https://stackoverflow.com/questions/46651974/swipe-list-item-for-more-options-flutter`
 
-![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/listPage.png)
+
 
 ## EditTool
+
+<img src="https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/edit.png" width="200">
+
 Questa pagina mostra il nome dell'utensile un un campo `TextField` ed il tipo dell'immagine dell'utensile, il quale si può cambiare tramite il menu a discesa che si trova più in basso. Sotto l'immagine vi è un campo `TextField` che permette di mostrare il `diamentro` e all'occorenza si può modificare eventuele valore. Anche sul lato destro dell'utensile vi sono dei `TextField` che mostrano la lunghezza del tagliente `Sharp` che la lunghezza dell'utensile `Length`, anch'essi modificabili.
 Da notare il campo `TextField` del nome dell'utensile all'occorenza di una modifica l'app mette a disposizione la tastiera classica con i tasti alfanumerici, mentre i campi `TextField` del diamentro e della lunghezza del tagliente dell'utensile mostrano la tastiera numerica con il punto decimale. Per questi campi è stata implementata una funzione che permette di controllare che i valori siano esatti, in caso contrario provvede a renderli conformi, vedi nota `validateNumber`.
 Nella parte sotto l'immagine partendo da sinistra vi è un `Slider` che permette di attivare o disattivare eventuale raffraddamento.
 Al centro in basso vi è un menù a discesa, `DropdownButton`, che permette di selezionare il numero di taglienti.
 A destra un menù a discesa, `DropdownButton`, che permette di selezionare i tipi di materiele utensile. vedi  `Materiale dell'utesile`.
 
-![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/edit.png)
+
 
 
 ## validateNumber
@@ -175,7 +183,8 @@ Poi ho implementato il tutto usando Colab.
     plt.scatter(x, y)
     
 
-![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/grafico1.png)
+<img src="https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/grafico1.png" width="400">
+
 
 altre forme di funzioni non lineari che approssimano molto il calcolo le ho ottenute cosi
        
@@ -190,7 +199,8 @@ altre forme di funzioni non lineari che approssimano molto il calcolo le ho otte
  
     plt.scatter(x, yd)
 
-![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/grafico2.png)
+<img src="https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/grafico2.png" width="400">
+
 
 
 ## rotazione dello schermo bloccata 

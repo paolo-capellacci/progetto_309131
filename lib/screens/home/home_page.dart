@@ -379,14 +379,16 @@ class CalcolaNotifier extends ChangeNotifier {
       'workPercent': '${work.getX()}',
       'workHeight': '${work.getZ()}',
     });
-    //print('material: ${tool.material.value}');
-    // print('cool:  ${tool.cool}');
-    // print('materialWork: ${work.getMaterial().value}');
-    // print('workX: ${work.getX()}');
-    // print('workZ: ${work.getZ()}');
-    //
-    // print('Response status: ${response.statusCode}');
-    // print('Response body: ${response.body}');
+    /*
+    print('material: ${tool.material.value}');
+    print('cool:  ${tool.cool}');
+    print('materialWork: ${work.getMaterial().value}');
+    print('workX: ${work.getX()}');
+    print('workZ: ${work.getZ()}');
+
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+    */
 
     final result = response.body.split(',');
     //print(result[0]);

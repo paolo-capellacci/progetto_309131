@@ -29,22 +29,6 @@ class SettingPage extends StatelessWidget {
                 child: Logo(),
               ),
             ),
-/*
-            Card(
-              child: Container(
-                margin: const EdgeInsets.all(10.0),
-                child: Center(
-                  child: Text(
-                    'Setting Page',
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: MediaQuery.of(context).size.height * 0.04,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            */
 
             Card(
               child: Container(

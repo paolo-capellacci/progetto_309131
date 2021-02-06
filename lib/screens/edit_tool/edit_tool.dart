@@ -60,7 +60,7 @@ class _EditToolState extends State<EditTool> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(122, 151, 185, 1.0),
-        title: Text('Edit Tools'),
+        title: Text('Edit Tool'),
       ),
       body: Container(
         margin: EdgeInsets.all(10),

@@ -16,6 +16,8 @@ import 'package:progetto_309131/screens/widget/logo.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(122, 151, 185, 1.0),
@@ -239,8 +241,6 @@ class CenterHome extends StatelessWidget {
                         Text('...'),
                       ],
                     ),
-
-
 
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,

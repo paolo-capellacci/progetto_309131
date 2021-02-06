@@ -196,32 +196,57 @@ altre forme di funzioni non lineari che approssimano molto il calcolo le ho otte
 ## rotazione dello schermo bloccata 
 Dato che li layout dell'App è stata ottimizzata per lo scermo verticale ho dovuto provvedere a bloccare la rotazione dello schermo
 
- SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown
-  ]);
+    void main() {
+      WidgetsFlutterBinding.ensureInitialized();
+      SystemChrome.setPreferredOrientations(
+        [
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.portraitDown,
+        ],
+      ).then((val) {
+        runApp(MyApp());
+      });
+    }
+    
+ ed aggiungere nel file AndroidManifest.xml
+ 
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    ...
+    ...
+    
+    <application
+        ...
+        ...
+        <activity
+            ...
+            ...
+            android:screenOrientation="portrait"
+            ...
+            ...
   
   e per far si che funzioni anche in iOS si è modificato il file info.plist eliminando le orientazioni non compatibili 
-  	<key>UISupportedInterfaceOrientations</key>
-  	<array>
-  		<string>UIInterfaceOrientationPortrait</string>
-  		<string>UIInterfaceOrientationLandscapeLeft</string>
-  		<string>UIInterfaceOrientationLandscapeRight</string>
-  	</array>
+    
+    key>UISupportedInterfaceOrientations</key>
+  	    <array>
+  		    <string>UIInterfaceOrientationPortrait</string>
+  		    <string>UIInterfaceOrientationLandscapeLeft</string>
+  		    <string>UIInterfaceOrientationLandscapeRight</string>
+  	    </array>
   	
 
     
     
-## Riepilogo dei link
+#### Riepilogo dei link
 Slidable è stao reperito da 
     `https://stackoverflow.com/questions/46651974/swipe-list-item-for-more-options-flutter`
    
-Per costruire funzioni non lineari
+#### Per costruire funzioni non lineari
    `https://www.mathepower.com/it/sistemiequazionilineari.php`
    `https://computer4dummy.altervista.org/programmazione-guide-alla-programmazione/python-data-analisi/numpy-per-python/risolvere-un-sistema-lineare/`
    
    
-   
+#### Rotazione dello schermo
+    https://qastack.it/programming/49418332/flutter-how-to-prevent-device-orientation-changes-and-force-portrait
    
    
    
@@ -237,4 +262,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
    

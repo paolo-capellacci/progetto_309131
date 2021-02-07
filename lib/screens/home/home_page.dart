@@ -270,6 +270,8 @@ class CenterHome extends StatelessWidget {
 
                         context.read<CalcolaNotifier>().calcola(tool, work);
                         context.read<Status>().setCalculate(true);
+                        work.setX0();
+                        work.setZ0();
                       },
                     ),
                   Spacer(),
@@ -281,16 +283,27 @@ class CenterHome extends StatelessWidget {
                 children: [
                   Spacer(),
                   Text('Diameter: '),
-                  Text(
-                    '${context.watch<Work>().getX()}',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
+
+                  Text('${context.watch<Work>().getX()}',style: TextStyle(fontWeight: FontWeight.bold),),
+                  /*
+                  Consumer<Work>(
+                    builder: (context, work, _) {
+                      debugPrint('Building nel Consumer x');
+                      return Text('${work.getX()}',style: TextStyle(fontWeight: FontWeight.bold),);
+                    },
+                  ),*/
+
                   Text('%             '),
                   Text('Flut: '),
-                  Text(
-                    '${context.watch<Work>().getZ()}',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  /*
+                  Consumer<Work>(
+                    builder: (context, work, _) {
+                      debugPrint('Building nel Consumer z');
+                      return Text('${work.getZ()}',style: TextStyle(fontWeight: FontWeight.bold),);
+                    },
                   ),
+                  */
+                  Text('${context.watch<Work>().getZ()}',style: TextStyle(fontWeight: FontWeight.bold),),
                   Text(' %'),
                   Spacer(),
                 ],

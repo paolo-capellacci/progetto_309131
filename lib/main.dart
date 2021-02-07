@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(create: (context) => GetEngineVersion()..getVersion(),),
         ChangeNotifierProvider(create: (context) => Status(),),
-        ChangeNotifierProvider(create: (context) => Work()),
+        ChangeNotifierProvider(create: (context) => Work()..setWork()),
       ],
       child: App(),
     );

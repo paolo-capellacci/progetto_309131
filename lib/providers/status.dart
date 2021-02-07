@@ -7,6 +7,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Status extends ChangeNotifier {
 
   bool _iscalculate = false;
+  int x = 10;
+  int z = 10;
+
+
 
 /*
   void setId(int id) async {
@@ -27,6 +31,15 @@ class Status extends ChangeNotifier {
     return prefs.getInt('id');
   }
   */
+
+
+
+  Future<int> getId() async {
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    return prefs.getInt('id');
+  }
 
   void setCalculate(bool b) {
     //print('calculate false');

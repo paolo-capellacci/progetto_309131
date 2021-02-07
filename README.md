@@ -1,4 +1,7 @@
 # progetto_309131
+## Paolo Capellacci
+## Matricola 309131
+## nome dell'app SpeedTools
 
 ![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/logo.png)
 

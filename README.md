@@ -113,7 +113,8 @@ Poi viene tornata.
 
 ## Logica dell'App
 
-![alt text](https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/speed_tools.png)
+
+<img src="https://github.com/paolo-capellacci/progetto_309131/blob/main/assets/images/redame/speed_tools.png" >
 
 L'app permette di salvare i dati nel db locale tramite la liberiria `sqflite: ^1.3.2`.
 Nel main vi è il `MultiProvider` che mette a disposizione a tutto l'albero dell'app `<ServiceTool>`, `<GetEngineVersion>`, `<Work>` e `<Status>`.

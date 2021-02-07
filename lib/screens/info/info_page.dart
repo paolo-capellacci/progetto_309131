@@ -25,22 +25,22 @@ class InfoPage extends StatelessWidget {
             children: [
               Card(
                 child: Container(
-                  padding: EdgeInsets.all(4),
-                  margin: EdgeInsets.all(4),
+                  padding: const EdgeInsets.all(4),
+                  margin: const EdgeInsets.all(4),
                   child: Logo(),
                 ),
               ),
               Card(
                 child: Container(
-                  padding: EdgeInsets.all(8),
-                  margin: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(8),
                   child: InfoApp(),
                 ),
               ),
               Card(
                 child: Container(
-                  padding: EdgeInsets.all(8),
-                  margin: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(8),
                   child: Center(
                     child: Image.asset(
                       "assets/images/first_imag.png",
@@ -52,8 +52,8 @@ class InfoPage extends StatelessWidget {
               ),
               Card(
                 child: Container(
-                  padding: EdgeInsets.all(8),
-                  margin: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(8),
                   child: Center(
                     child: Column(
                       children: [
@@ -80,8 +80,8 @@ class InfoPage extends StatelessWidget {
                 children: [
                   Card(
                     child: Container(
-                      padding: EdgeInsets.all(8),
-                      margin: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
+                      margin: const EdgeInsets.all(8),
                       height: 200,
                       child: Column(
                         children: [
@@ -105,8 +105,8 @@ class InfoPage extends StatelessWidget {
                   ),
                   Card(
                     child: Container(
-                      padding: EdgeInsets.all(8),
-                      margin: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
+                      margin: const EdgeInsets.all(8),
                       child: Center(
                         child: Image.asset(
                           "assets/images/redame/home.png",
@@ -128,8 +128,8 @@ class InfoPage extends StatelessWidget {
                 children: [
                   Card(
                     child: Container(
-                      padding: EdgeInsets.all(8),
-                      margin: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
+                      margin: const EdgeInsets.all(8),
                       height: 200,
                       child: Column(
                         children: [
@@ -153,8 +153,8 @@ class InfoPage extends StatelessWidget {
                   ),
                   Card(
                     child: Container(
-                      padding: EdgeInsets.all(8),
-                      margin: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
+                      margin: const EdgeInsets.all(8),
                       child: Center(
                         child: Image.asset(
                           "assets/images/redame/listPage.png",
@@ -176,8 +176,8 @@ class InfoPage extends StatelessWidget {
                 children: [
                   Card(
                     child: Container(
-                      padding: EdgeInsets.all(8),
-                      margin: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
+                      margin: const EdgeInsets.all(8),
                       width: MediaQuery.of(context).size.width * .4,
                       child: Column(
                         children: [
@@ -201,8 +201,8 @@ class InfoPage extends StatelessWidget {
                   ),
                   Card(
                     child: Container(
-                      padding: EdgeInsets.all(8),
-                      margin: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
+                      margin: const EdgeInsets.all(8),
                       child: Center(
                         child: Image.asset(
                           "assets/images/redame/edit.png",
@@ -223,8 +223,8 @@ class InfoPage extends StatelessWidget {
                 children: [
                   Card(
                     child: Container(
-                      padding: EdgeInsets.all(8),
-                      margin: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
+                      margin: const EdgeInsets.all(8),
                       width: MediaQuery.of(context).size.width * .4,
                       child: Column(
                         children: [
@@ -248,8 +248,8 @@ class InfoPage extends StatelessWidget {
                   ),
                   Card(
                     child: Container(
-                      padding: EdgeInsets.all(8),
-                      margin: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
+                      margin: const EdgeInsets.all(8),
                       child: Center(
                         child: Image.asset(
                           "assets/images/redame/setting.png",

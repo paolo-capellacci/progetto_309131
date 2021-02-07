@@ -63,8 +63,8 @@ class _EditToolState extends State<EditTool> {
         title: Text('Edit Tool'),
       ),
       body: Container(
-        margin: EdgeInsets.all(10),
-        padding: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: new GestureDetector(
           onTap: () {
             FocusScope.of(context).requestFocus(new FocusNode());

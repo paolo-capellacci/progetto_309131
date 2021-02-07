@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
         create: (_) => CalcolaNotifier(),
         child: Scaffold(
           body: Container(
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
             child: Selector<ServiceTool, Tool>(shouldRebuild: (pre, next) {
               return pre != next;
             }, selector: (context, notifier) {
@@ -40,8 +40,8 @@ class HomePage extends StatelessWidget {
                 children: [
                   Card(
                     child: Container(
-                      padding: EdgeInsets.all(4),
-                      margin: EdgeInsets.all(4),
+                      padding: const EdgeInsets.all(4),
+                      margin: const EdgeInsets.all(4),
                       child: Logo(),
                     ),
                   ),
@@ -122,7 +122,7 @@ class TopHome extends StatelessWidget {
                   Align(
                     alignment: Alignment.center,
                     child: Container(
-                      margin: EdgeInsets.all(4),
+                      margin: const EdgeInsets.all(4),
                       child: Image.asset(
                         'assets/images/${tool.material.image}',
                         fit: BoxFit.fitHeight,
@@ -343,10 +343,10 @@ class _BottomHomeState extends State<BottomHome> {
 
         return Container(
           height: MediaQuery.of(context).size.height * 0.20,
-          margin: EdgeInsets.all(4),
+          margin: const EdgeInsets.all(4),
           //padding: EdgeInsets.all(4),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               LimitedBox(

@@ -93,7 +93,7 @@ class InfoPage extends StatelessWidget {
                           Container(
                             width: MediaQuery.of(context).size.width * .4,
                             child: Text(
-                              "In the Home page it is possible to see in the top the select tool, in the bottom the select material work end in the center the value of the speed tool",
+                              "In the Home page it is possible to see in the top the select tool, in the bottom the selected material to work with, and in the center the value of the speed tool",
                               textAlign: TextAlign.justify,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 16,
@@ -141,7 +141,7 @@ class InfoPage extends StatelessWidget {
                           Container(
                             width: MediaQuery.of(context).size.width * .4,
                             child: Text(
-                              "In the list page it is possible to see the tools librery and it is possible to select a tool or to delete or go to in the edit page for change the type of tool.  ",
+                              "In the list page it is possible to see the tools library and it is possible to select a tool, or delete one, or go in the edit page to change the type of tool.  ",
                               textAlign: TextAlign.justify,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 10,
@@ -189,7 +189,7 @@ class InfoPage extends StatelessWidget {
                           Container(
                             width: MediaQuery.of(context).size.width * .4,
                             child: Text(
-                              "In the Edit page it is possible to see the tool name, the image tool end the attributes, it is possible to active the cooling system, the number of tool flut and the material type tool. In the bottom there is a buutom that which allows saving.",
+                              "In the Edit page it is possible to see the tool name, the tool image, and its attributes. It is also possible to active the cooling system, the number of the tool's teeth, and the tool's type of material. In the bottom there is a button that permits to save.",
                               textAlign: TextAlign.justify,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 16,
@@ -236,7 +236,7 @@ class InfoPage extends StatelessWidget {
                           Container(
                             width: 150,
                             child: Text(
-                              "In the Edit page it is possible define the type of work depth and the work percentage XY.",
+                              "In the Setting Work page it is possible to define the depth and the percentage XY of the material one is going to remove.",
                               textAlign: TextAlign.justify,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 10,

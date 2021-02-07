@@ -31,9 +31,8 @@ class Work extends ChangeNotifier {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     prefs.setDouble('x', _workX);
-    print('status x: ${_workX}');
+    //print('work x: ${_workX}');
 
-    notifyListeners();
   }
 
   void setZ0() async {
@@ -41,9 +40,8 @@ class Work extends ChangeNotifier {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     prefs.setDouble('z', _workZ);
-    print('status z: ${_workZ}');
+    //print('work z: ${_workZ}');
 
-    notifyListeners();
   }
 
   double getX() {

@@ -16,7 +16,7 @@ import 'package:progetto_309131/screens/widget/logo.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
+    //debugPrint('consumer home');
 
     return Scaffold(
       appBar: AppBar(
@@ -191,14 +191,18 @@ class CenterHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CalcolaNotifier>(
-      builder: (BuildContext context, value, Widget child) {
-        return Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
+    //debugPrint('Building $runtimeType');
+
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Consumer<CalcolaNotifier>(
+            builder: (BuildContext context, value, Widget child) {
+              //debugPrint('consumer CalcolaNotifier');
+
+              return Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -259,10 +263,11 @@ class CenterHome extends StatelessWidget {
                   else
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: context.watch<Status>().getCalculate() ? Color.fromARGB(255,200,200,255) : Colors.blue,
+                        primary: context.watch<Status>().getCalculate()
+                            ? Color.fromARGB(255, 200, 200, 255)
+                            : Colors.blue,
                         //primary: Colors.blue, // background
                         onPrimary: Colors.white, // foreground
-
                       ),
                       child: Text('Calcola'),
                       onPressed: () async {
@@ -278,40 +283,46 @@ class CenterHome extends StatelessWidget {
 
                   //WhidgetSwitch(),//widget.tool.cool),
                 ],
-              ),
-              Row(
-                children: [
-                  Spacer(),
-                  Text('Diameter: '),
+              );
+            },
+          ),
+          Row(
+            children: [
+              Spacer(),
+              Text('Diameter: '),
 
-                  Text('${context.watch<Work>().getX()}',style: TextStyle(fontWeight: FontWeight.bold),),
-                  /*
-                  Consumer<Work>(
-                    builder: (context, work, _) {
-                      debugPrint('Building nel Consumer x');
-                      return Text('${work.getX()}',style: TextStyle(fontWeight: FontWeight.bold),);
-                    },
-                  ),*/
+              //Text('${context.watch<Work>().getX()}',style: TextStyle(fontWeight: FontWeight.bold),),
 
-                  Text('%             '),
-                  Text('Flut: '),
-                  /*
-                  Consumer<Work>(
-                    builder: (context, work, _) {
-                      debugPrint('Building nel Consumer z');
-                      return Text('${work.getZ()}',style: TextStyle(fontWeight: FontWeight.bold),);
-                    },
-                  ),
-                  */
-                  Text('${context.watch<Work>().getZ()}',style: TextStyle(fontWeight: FontWeight.bold),),
-                  Text(' %'),
-                  Spacer(),
-                ],
+              Consumer<Work>(
+                builder: (context, work, _) {
+                  //debugPrint('Building nel Consumer x');
+                  return Text(
+                    '${work.getX()}',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  );
+                },
               ),
+
+              Text('%             '),
+              Text('Flut: '),
+
+              Consumer<Work>(
+                builder: (context, work, _) {
+                  //debugPrint('Building nel Consumer z');
+                  return Text(
+                    '${work.getZ()}',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  );
+                },
+              ),
+
+              //Text('${context.watch<Work>().getZ()}',style: TextStyle(fontWeight: FontWeight.bold),),
+              Text(' %'),
+              Spacer(),
             ],
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 }
@@ -324,8 +335,12 @@ class BottomHome extends StatefulWidget {
 class _BottomHomeState extends State<BottomHome> {
   @override
   Widget build(BuildContext context) {
+    debugPrint('BottomHome');
+
     return Consumer<Work>(
       builder: (context, work, child) {
+        //debugPrint('consumer Work');
+
         return Container(
           height: MediaQuery.of(context).size.height * 0.20,
           margin: EdgeInsets.all(4),
